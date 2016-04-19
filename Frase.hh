@@ -40,7 +40,7 @@ public:
 
 	void escriure() const;
 	/*Pre: cert*/
-	/*Post: s'han escrit pel canal estandard de sortida del parametre implicit*/
+	/*Post: s'han escrit pel canal estandard de sortida els strings del parametre implicit*/
 
 };
 #endif
