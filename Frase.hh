@@ -31,7 +31,16 @@ public:
 	/*Pre: cert*/
 	/*Post: el resultat es el nombre de paraules d'una frase*/
 
-	
+	//Lectura i escriptura
 
+	void llegir();
+	/*Pre: al canal d'entrada estan esperant els strings que llegirem,
+			acabat en punt, interrogant o exclamacio*/
+	/*Post: al parametre implicit tenim el conjunt de strings que hem llegit*/
 
-}
+	void escriure() const;
+	/*Pre: cert*/
+	/*Post: s'han escrit pel canal estandard de sortida del parametre implicit*/
+
+};
+#endif
