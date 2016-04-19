@@ -1,5 +1,5 @@
-#ifndef "TEXTO"
-#define "TEXTO"
+#ifndef TEXTO
+#define TEXTO
 
 #include "Frase.hh"
 
