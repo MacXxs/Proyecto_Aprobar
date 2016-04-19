@@ -33,7 +33,7 @@ public:
 	//Construcotores
 	void consultar_autor();
 
-	Frase consultar_titol();
+	void info();
 	
 	int consultar_numF();
 	
