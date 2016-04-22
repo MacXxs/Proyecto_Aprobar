@@ -10,7 +10,7 @@ class Cjt_textos {
 
 
 private:
-	map<Autor, Texto> textos;
+	map<Autor, set<Texto> > textos;
 
 
 public:
@@ -30,26 +30,14 @@ public:
 	void afegir_text(const Texto& t);
 	/*Pre: el paràmetre implícit pot ser buit*/
 	/*Post: s'ha afegit el text al paràmetre implícit*/
-
-	void afegir_cita(const Texto& t, int x, int y); //guardar en alguna estructura
-
-	//void eliminar_cita(); //eliminar cita de la estructura
-
+	
 	void eliminar_text(const Texto& t);
 	/*Pre: el paràmetre implícit conté els textos de cada Autor*/
 	/*Post: s'ha eliminat del paràmetre implícit l'últim text triat*/
 
 	//Consultores
 
-	/*void info_cita();
-
-	void cites_autor();
-
-	void cites();
-
-	void totes_cites();*/
-
-	void triar_text(const Frase& f);
+	void triar_text(const vector<string> &par);
 	/*Pre: el paràmetre implícit conté els textos*/
 	/*Post: */
 

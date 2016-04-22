@@ -10,7 +10,7 @@ class Frase {
 
 
 private:
-	vector<string> fra;
+	vector<string> frase;
 	int n_paraules;
 
 
