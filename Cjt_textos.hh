@@ -1,8 +1,9 @@
 #ifndef CONJ_TEXTOS_HH
 #define CONJ_TEXTOS_HH
 
+#include<Texto.hh>
 
-#include <Texto.hh>
+#include<map>
 
 class Cjt_textos {
 	//Tipus de modul: dades
@@ -37,9 +38,9 @@ public:
 
 	//Consultores
 
-	void triar_text(const vector<string> &par);
+	Texto triar_text(const vector<string> &par);
 	/*Pre: el paràmetre implícit conté els textos*/
-	/*Post: */
+	/*Post: retorna el texto escogido*/
 
 	void textos_autor(Autor a);
 	/*Pre: */

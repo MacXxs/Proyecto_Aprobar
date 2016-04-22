@@ -3,6 +3,8 @@
 
 #include "Frase.hh"
 
+#include<set>
+
 struct Autor{
 		string nom;
 		string cognom;
@@ -19,6 +21,7 @@ struct Paraula{
 class Texto {
 	
 private:
+	vector<string> frase;
 	set<Paraula> parfreq; //conjunt de paraules del text ordenades decreixentment per frequencia, 
 						  //i en cas d'empat creixentment, primer per llargada i despres afabeticament
 	vector<Frase> Frases; //vector que conte totes las frases del text

@@ -1,8 +1,8 @@
 #ifndef FRASE_HH
 #define FRASE_HH
 
-#include <vector>
-#include <string>
+#include<vector>
+#include<string>
 
 class Frase {
 	//Tipus de modul: dades
