@@ -8,7 +8,7 @@
 struct Autor{
 		string nom;
 		string cognom;
-		bool operator<(const autor &a) const;
+		bool operator<(const Autor &a) const;
 };
 
 struct Paraula{
@@ -21,10 +21,10 @@ struct Paraula{
 class Texto {
 	
 private:
-	vector<string> frase;
+	
 	set<Paraula> parfreq; //conjunt de paraules del text ordenades decreixentment per frequencia, 
 						  //i en cas d'empat creixentment, primer per llargada i despres afabeticament
-	//vector<Frase> Frases; //vector que conte totes las frases del text
+	vector<Frase> Texto; //vector que conte totes las frases del text
 	int numF;             //numero de frases que conte el text
 	vector<string> titol; 
 	
@@ -40,6 +40,18 @@ public:
 	//Destructora
 
 	~Texto();
+	
+	void llegir_titol(string &n);
+	/*pre tenim un titol buit
+	 \post anem construint el titol a mesura que arriben paraules (n) d'aquest
+	 */
+	
+	void llegir_autor(string &nom, string &cognom);
+	/*pre tenim un autor buit
+	 \post assignem un nom i un cognom al autor buit
+	 */
+	
+	void llegir_text(string &m);
 	
 	//Consultores
 

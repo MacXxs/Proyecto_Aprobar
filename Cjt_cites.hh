@@ -18,7 +18,7 @@ private:
 	map<ref,Cita> cites; //conjunt de totes les cites;
 	
 public:
-	void afegir_cita(const Texto& t, int x, int y); //guardar en alguna estructura
+	void afegir_cita(const Texto& t, string x, string y); //guardar en alguna estructura
 	
 	void eliminar_cita(string refer); //eliminar cita de la estructura
 	

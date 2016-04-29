@@ -26,21 +26,20 @@ public:
 	~Frase();
 
 	//Consultoras
-
+	
+	void llegir(string paraula);
+	/*pre cert
+	 \post es va formant una frase a partir de les paraules que arriben
+	 */
+	
 	int paraules() const;
 	/*Pre: cert*/
 	/*Post: el resultat es el nombre de paraules d'una frase*/
 
-	//Lectura i escriptura
+	//Modificadora
 
-	void llegir();
-	/*Pre: al canal d'entrada estan esperant els strings que llegirem,
-			acabat en punt, interrogant o exclamacio*/
-	/*Post: al parametre implicit tenim el conjunt de strings que hem llegit*/
-
-	void escriure() const;
-	/*Pre: cert*/
-	/*Post: s'han escrit pel canal estandard de sortida els strings del parametre implicit*/
-
+	void intercanvia_paraula(string& a, string& b);
+	/*Pre: arriben dos paraules a = A, b = B*/
+	/*Post: s'intercanvia les paraules, a = B i b = A*/
 };
 #endif

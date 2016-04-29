@@ -12,7 +12,8 @@ class Cjt_textos {
 
 private:
 	map<Autor, set<Texto> > textos;
-
+	map<Autor,set<Texto> >::iterator it;
+	
 
 public:
 
@@ -27,18 +28,20 @@ public:
 	~Cjt_textos();
 
 	//Modificadores
-
-	void afegir_text(const Texto& t);
-	/*Pre: el paràmetre implícit pot ser buit*/
-	/*Post: s'ha afegit el text al paràmetre implícit*/
 	
-	void eliminar_text(const Texto& t);
-	/*Pre: el paràmetre implícit conté els textos de cada Autor*/
-	/*Post: s'ha eliminat del paràmetre implícit l'últim text triat*/
+	void llegir_tot(string &titol, string &autor, string &text);
+	/*pre cert
+	 \post es crida a la funcio llegir_titol, llegir_autor, llegir_text de la classe Texto per afegir un titol al Text que s'esta tractant
+	*/
 
 	//Consultores
+	
+	map<Autor,set<Texto> >::iterator text_actual();
+	/*pre cert
+	 \post retorna un iterator apuntant al utlim text triat
+	*/
 
-	Texto triar_text(const vector<string> &par);
+	void triar_text();
 	/*Pre: el paràmetre implícit conté els textos*/
 	/*Post: retorna el texto escogido*/
 
