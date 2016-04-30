@@ -38,8 +38,9 @@ public:
 
 	//Modificadora
 
-	void intercanvia_paraula(string& a, string& b);
+	void substituir_paraula(string& a, string& b);
 	/*Pre: arriben dos paraules a = A, b = B*/
-	/*Post: s'intercanvia les paraules, a = B i b = A*/
+	/*Post: es canvien totes les aparicions de la paraula a per la b
+	*/
 };
 #endif
