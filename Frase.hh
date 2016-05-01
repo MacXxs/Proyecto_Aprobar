@@ -1,25 +1,32 @@
+/** @file Frase.hh
+	@brief Especificació de la classe Frase
+*/
+
 #ifndef FRASE_HH
 #define FRASE_HH
 
-#include<vector>
-#include<string>
+#ifndef NO_DIAGRAM
+#include <vector>
+#include <string>
+#endif
+
+
+/** @class Frase
+	@brief Representa un conjunt de strings
+*/
 
 class Frase {
-	//Tipus de modul: dades
-	//Descripcio del tipus: 
-
-
-private:
-	vector<string> frase;
-	int n_paraules;
-
 
 public:
+
 	//Constructora
 
+	/** @brief Creadora per defecte
+		S'executa automàticament al declarar una frase
+		\pre <em>cert</em>
+		\post el resultat es una frase buida
+	*/
 	Frase();
-	/*Pre: cert*/
-	/*Post: el resultat es una frase buida*/
 
 	//Destructora
 
@@ -27,20 +34,31 @@ public:
 
 	//Consultoras
 	
-	void llegir(string paraula);
-	/*pre cert
-	 \post es va formant una frase a partir de les paraules que arriben
-	 */
-	
+	/** @brief Indica el nombre de paraules d'una frase
+		\pre <em>cert</em>
+		\post el resultat es el nombre de paraules d'una frase
+	*/	
 	int paraules() const;
-	/*Pre: cert*/
-	/*Post: el resultat es el nombre de paraules d'una frase*/
-
+	
 	//Modificadora
 
-	void substituir_paraula(string& a, string& b);
-	/*Pre: arriben dos paraules a = A, b = B*/
-	/*Post: es canvien totes les aparicions de la paraula a per la b
+	/** @brief S'intercanvien dues paraules
+		\pre <em>arriben dos paraules a = A, b = B</em>
+		\post es canvien totes les aparicions de la paraula a per la b
 	*/
+	void substituir_paraula(string& a, string& b);
+	
+	//Lectura
+
+	/** @brief Llegeix una frase
+		\pre <em>cert</em>
+		\post es va formant una frase a partir de les paraules que arriben
+	*/
+	void llegir(string paraula);
+
+private:
+	vector<string> frase;
+	int n_paraules;
+
 };
 #endif
