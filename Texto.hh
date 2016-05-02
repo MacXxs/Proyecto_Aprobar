@@ -12,7 +12,7 @@
 #include <string>
 #include <map>
 #include <vector>
-#endif
+
 
 struct Autor{
 		string nom;
@@ -34,6 +34,8 @@ struct Cita{
 		vector<Frase> vec_frase; //vector de Frases que formen la cita ordenat
 		string referencia; //referencia de la cita
 };
+
+#endif
 
 /** @class Texto
 	@brief Representa un conjunt de frases
