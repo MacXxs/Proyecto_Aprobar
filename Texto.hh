@@ -26,6 +26,15 @@ struct Paraula{
 	bool operator<(const Paraula &p) const;
 };
 
+struct Cita{
+		Autor autor;
+		vector<string> Titol;
+		int numini; //numero frase inicial
+		int numfin; //numero frase final
+		vector<Frase> vec_frase; //vector de Frases que formen la cita ordenat
+		string referencia; //referencia de la cita
+};
+
 /** @class Texto
 	@brief Representa un conjunt de frases
 */
@@ -180,21 +189,12 @@ public:
 	
 private:
 	
-	struct Cita{
-		Autor autor;
-		vector<string> Titol;
-		int numini; //numero frase inicial
-		int numfin; //numero frase final
-		vector<Frase> //vector de Frases que formen la cita ordenat
-		string referencia //referencia de la cita
-	};
-	
-	map<int,Cita>;     //mapa de cites del text on l'enter marca el numero de la referencia de la cita 
+	map<int,Cita> map_cites;  //mapa de cites del text on l'enter marca el numero de la referencia de la cita 
 	
 	set<Paraula> parfreq; //conjunt de paraules del text ordenades decreixentment per frequencia, 
 						  //i en cas d'empat creixentment, primer per llargada i despres afabeticament
 	int numP;            //numero de paraules del contingut del text
-	vector<Frase> Texto; //vector que conte totes las frases del text
+	vector<Frase> vec_frases; //vector que conte totes las frases del text
 	int numF;             //numero de frases del contingut del text
 	int numcites;         //nombre de cites associades a aquest text
 	vector<string> titol; //titol del text 

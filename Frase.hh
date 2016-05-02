@@ -10,6 +10,8 @@
 #include <string>
 #endif
 
+using namespace std;
+
 
 /** @class Frase
 	@brief Representa un conjunt de strings
