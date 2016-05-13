@@ -45,6 +45,11 @@ public:
 	void consultar_numini() const;
 	
 	void consultar_numfin() const;
+	
+	//Escrptura
+	
+	void escriure() const;
+	
     
 private:
     string autor;
