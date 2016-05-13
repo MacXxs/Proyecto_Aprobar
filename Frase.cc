@@ -13,14 +13,29 @@ Frase::paraules() const {
 }
 
 Frase::substituir_paraula(string& a, string& b) {
-	a = b;
+	for (int i = 0; i < n_paraules; ++i) {
+		string aux;
+		char last;
+		if (frase[i][frase[i].size()] >= 'a' and frase[i][frase[i].size()] <= 'z') { //no es ni ':', ni ',', ni ';' 
+			if (a == frase[i]) frase[i] = b;
+		}
+		else { //vol dir que l'ultim char de la paraula es o be ':', ',', ';', '.', '?', '!'
+			aux = frase[i];
+			aux.pop_back();
+			if (a == aux) {
+				last = frase[i][frase[i].size() - 1];
+				b.push_back(last);
+				frase[i] = b;
+			}
+		}
+	}
 }
 
-Frase::llegir(string& paraula) {
-	istringstream iss(paraula);
-	iss >> paraula;
-	while (paraula != "." or paraula != "?" or paraula != "!") {
+
+Frase::llegir(istringstream paraula) {
+	while (iss >> paraula) {
 		frase.push_back(paraula);
 		iss >> paraula;
+		++n_paraules;
 	}
 }
