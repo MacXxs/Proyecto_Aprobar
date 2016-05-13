@@ -56,7 +56,7 @@ public:
 		\pre <em>cert</em>
 		\post es va formant una frase a partir de les paraules que arriben
 	*/
-	void llegir(string paraula);
+	void llegir(istringstream paraula);
 
 private:
 	vector<string> frase;
