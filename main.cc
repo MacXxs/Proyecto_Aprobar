@@ -15,14 +15,11 @@ int main(){
 			iss >> m;
 			if (m == "text"){
 				iss >> m;
-				iss.str(linia);
+				linia.erase(linia.begin(), linia.begin() + 12);
 				string autor, text;
 				getline(cin,autor);
-				getline(cin,text);
-				istringstream iss(autor), issi(text);
-				iss >> m;
-				iss.str(autor);
-				issi.str(text);
+				getline(cin,text,'*');
+				autor.erase(autor.begin(), autor.begin() + 6);
 				textos.llegir_tot(linia,autor,text);
 			}
 			else {
@@ -66,7 +63,9 @@ int main(){
 		}
 		else if (m == "info"){
 			iss >> m;
-			if (m == "?") textos.info();
+			if (m == "?"){
+			    textos.info();
+			    cites.info();
 			else {
 				iss >> m;
 				cites.info_cita(m);

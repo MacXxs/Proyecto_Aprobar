@@ -6,6 +6,7 @@
 #define CJT_CITES_HH
 
 #include "Cjt_textos.hh"
+#include "Cita.hh"
 
 #ifndef NO_DIAGRAM
 #include <map>
@@ -54,12 +55,16 @@ public:
 	*/
 	void info_cita(string &refer);
 	
+	void info(); //ensenya les cites del ultim text triat
+	
 	/** @brief Mostra totes les cites emmagatzemades
 		\pre <em>cert</em>
 		\post mostra totes les cites emmagatzemades en el sistema (referencia, contingut de les frases.
 			  autor i titol del text)
 	*/
 	void totes_cites();
+	
+	void eliminar_cita(string &referencia);
 
 private:
 	

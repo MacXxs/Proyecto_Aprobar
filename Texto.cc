@@ -8,7 +8,8 @@ Texto::Texto(){
     numP = 0;
     numF = 0;
     numcites = 0;
-    vector<Frase> vec_frases(maxfrases);
+    map<int,Frase> map_frases;
+    
 }
 
 Texto::~Texto(){
@@ -16,14 +17,14 @@ Texto::~Texto(){
 
 void Texto::substituir(string &par1, string &par2){
     for(int i = 0; i < numF; ++i){
-	vec_frases[i].substituir(par1,par2);
+	map_frases[i].substituir(par1,par2);
     }
 }
 
 void Texto::afegir_cita(string &referencia, char &x, char &y){
-    vector<Frases> frases_cita = consultar_frases(x,y);
+    consultar_frases(x,y);
     Cita cita;
-    cita.crear_cita(referencia,x,y,frases_cita);
+    cita.crear_cita(referencia,x,y,frases_cita,consultar_autor,autor,titol);
     map_cites.insert(make_pair(referencia[2] - '0',cita);
     ++numcites;
 }
@@ -38,6 +39,30 @@ int Texto::paraules(){
 }
 
 void Texto::consultar_autor(){
+    string m;
+    iss >> m; 
+    cout << m;
+    while (iss >> m) cout << ' ' << m;
+}
+
+void Texto::consultar_contingut(){
+    string m;
+    for(int i = 0; i < numF; ++i){
+	cout << i + 1 << ' ';
+	for(int j = 0; j < vec_frases[j].paraules(); ++j) vec_frases[j].escriure;
+    }
+}
+
+void Texto::info(){
+    string aux = autor;
+    aux.erase(0,1);
+    aux.pop_back();
+    cout << aux << ' ' << titol << ' ' << numP << endl;
+}
+	
+	
+	
+
     
 
     

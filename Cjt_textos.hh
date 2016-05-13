@@ -172,7 +172,7 @@ public:
 	void llegir_tot(string &titol, string &autor, string &text);
     
 private:
-	map<Autor, set<Texto> > textos;
+	map<Autor,set<Texto> > textos;
 	map<Autor,set<Texto> >::iterator it;
 
 };

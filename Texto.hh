@@ -6,7 +6,6 @@
 #define TEXTO_HH
 
 #include "Frase.hh"
-#include "Cita.hh"
 
 #ifndef NO_DIAGRAM
 #include <set>
@@ -55,15 +54,7 @@ public:
 		\post s'afegeix una cita basada en les frases que van de la x-esima a la y-esima del 
 	 	contingut del text amb la referencia passada pel primer parametre (es crida a la funcio
 	 	crear_cita de la classe Cita.hh
-	*/
-	void afegir_cita(string &referencia, char &x, char &y);
-	
-	/** @brief Elimina una cita
-		\pre <em>existeix una cita amb una referencia igual a la que es passa pel parametre</em>
-		\post s'elimina la cita amb referencia = referencia
-	*/
-	void eliminar_cita(string &referencia);
-	
+	*/	
 	//Consultores
 
 	/** @brief Indica el nombre de paraules d'una frase
@@ -85,16 +76,9 @@ public:
 	*/
 	void consultar_contingut();
 	
-	/** @brief Incrementa el nombre de cites
-		\pre <em>cert</em>
-		\post cada cop que s'afegeix una cita al text s'incrementa el nombre de cites d'aquest
-	*/
-	void incrementar_cites();
-	
 	/** @brief Mostra tota la informacio d'un text
 		\pre <em>cert</em>
-		\post mostra l'autor, el titol, el nombre de frases, el nombre
-			  de paraules i les cites associades del text
+		\post mostra l'autor, el titol, el nombre de frases i el nombre de paraules.
 	*/
 	void info();
 	
@@ -115,13 +99,6 @@ public:
 		\post mostra les frases entre la x-essima i la y-essima del contingut del text
 	*/
 	void consultar_frases(char &x, char &y);
-	
-	/** @brief Retorna les frases entre x i y
-		\pre <em>cert</em>
-		\post retorna un vector de les frases entre la x-essima i la y-essima del contingut del text
-	*/
-	vector<Frase> consultar_frases(char &x, char &y);
-
 	
 	/** @brief Mostra les frases que compleixen l'expressio
 		\pre <em>arriba una expressio</em>
@@ -174,7 +151,7 @@ public:
 		\pre <em>tenim un autor buit</em>
 		\post assignem un nom i un cognom al autor buit
 	*/
-	void llegir_autor(string &nom, string &cognom);
+	void llegir_autor(string &autor);
 	
 	/** @brief Llegeix el text
 		\pre <em>tenim un text buit</em>
@@ -183,16 +160,16 @@ public:
 	void llegir_text(string &m);
 	
 private:
-	istringstream autor;
+	string autor;
 	map<int,Cita> map_cites;  //mapa de cites del text on l'enter marca el numero de la referencia de la cita 
 	
 	set<Paraula> parfreq; //conjunt de paraules del text ordenades decreixentment per frequencia, 
 						  //i en cas d'empat creixentment, primer per llargada i despres afabeticament
 	int numP;            //numero de paraules del contingut del text
-	vector<Frase> vec_frases; //vector que conte totes las frases del text
+	map<int,Frase> vec_frases; //vector que conte totes las frases del text
 	int numF;             //numero de frases del contingut del text
 	int numcites;         //nombre de cites associades a aquest text
-	vector<string> titol; //titol del text 
+	string titol; //titol del text 
 	static const int maxfrases = 50;
 
 
