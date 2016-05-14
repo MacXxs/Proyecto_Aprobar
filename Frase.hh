@@ -6,8 +6,10 @@
 #define FRASE_HH
 
 #ifndef NO_DIAGRAM
+#include <iostream>
 #include <vector>
 #include <string>
+#include <map>
 #endif
 
 using namespace std;
@@ -56,9 +58,9 @@ public:
 
 	/** @brief Llegeix una frase
 		\pre <em>cert</em>
-		\post es va formant una frase a partir de les paraules que arriben
+		\post genera una frase a partir d'una frase encapsulada en un string
 	*/
-	void llegir(string& paraula);
+	void llegir(string& frase);
 
 	//Escriptura
 	

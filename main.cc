@@ -12,7 +12,7 @@ int main(){
 	Cjt_textos textos;
 	while (iss >> m and m != "sortir"){
 		if (m == "afegir"){
-			iss >> m;
+			iss >> m;11
 			if (m == "text"){
 				iss >> m;
 				linia.erase(linia.begin(), linia.begin() + 12);

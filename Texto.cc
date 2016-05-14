@@ -2,7 +2,7 @@
 
 bool comp(const pair<string,int>& a, const pair<string,int>& b){
 	if (a.second != b.second) return a.second > b.second;
-	else if (a.first.lenght() != b.second.lenght()) return a.first.lenght > a.second.lenght;
+	else if (a.first.length() != b.first.length()) return a.first.length() > a.first.length();
 	else return a.first < b.first;
 }
 
@@ -22,21 +22,8 @@ Texto::~Texto(){
 
 void Texto::substituir(string &par1, string &par2){
     for(int i = 0; i < numF; ++i){
-	map_frases[i].substituir(par1,par2);
+	map_frases[i].substituir_paraula(par1,par2);
     }
-}
-
-void Texto::afegir_cita(string &referencia, char &x, char &y){
-    consultar_frases(x,y);
-    Cita cita;
-    cita.crear_cita(referencia,x,y,frases_cita,autor,titol);
-    map_cites.insert(make_pair(referencia[2] - '0',cita);
-    ++numcites;
-}
-
-void Texto::eliminar_cita(string &referencia){
-    map_cites.erase(referencia[2] - '0');
-    --numcites;
 }
 
 int Texto::paraules(){
@@ -44,17 +31,13 @@ int Texto::paraules(){
 }
 
 void Texto::consultar_autor(){
-    string m;
-    iss >> m; 
-    cout << m;
-    while (iss >> m) cout << ' ' << m;
+    cout << autor << endl;
 }
 
 void Texto::consultar_contingut(){
-    string m;
     for(int i = 0; i < numF; ++i){
 	cout << i + 1 << ' ';
-	for(int j = 0; j < vec_frases[j].paraules(); ++j) vec_frases[j].escriure;
+	for(int j = 0; j < map_frases[j].paraules(); ++j) map_frases[j].escriure();
     }
 }
 
@@ -77,24 +60,22 @@ void Texto::consultar_frases(char &x, char &y){
 	}
 }
 
-void Texto::frases(string& expres){
-}
+//void Texto::frases(string& expres);
 		
 void Texto::taula_freq(){
-	map<sting,int> a;
+	map<string,int> a;
 	for(int i = 0; i < numF; ++i){
 		map_frases[i].taula_freq(a);
 	}
-	map<sting,int>::iterator it = a.begin();
+	map<string,int>::iterator it = a.begin();
 	for(int i = 0; i < a.size(); ++i){
-		parfreq.first = it->first;
-		parfreq.second = it->second;
+		parfreq.push_back(make_pair(it->first,it->second));
 		++it;
 	}
 	sort(parfreq.begin(),parfreq.end(),comp);
 }
 
-bool Texto::operator<(const Texto &t){
+bool Texto::operator<(const Texto &t) const{
 	if (titol < t.titol) return true;
 	else return false;
 }
