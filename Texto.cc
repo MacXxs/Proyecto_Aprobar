@@ -33,9 +33,10 @@ void Texto::consultar_autor(){
 }
 
 void Texto::consultar_contingut(){
-    for(int i = 0; i < map_frases.size(); ++i){
-	cout << i + 1 << ' ';
-	for(int j = 0; j < map_frases[j].paraules(); ++j) map_frases[j].escriure();
+    for(int i = 1; i <= map_frases.size(); ++i){
+	cout << i << ' ';
+	map_frases[i].escriure();
+	cout << endl;
     }
 }
 
