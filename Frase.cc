@@ -8,6 +8,8 @@ Frase::Frase() {
 	n_paraules = 0;
 }
 
+Frase::~Frase() {}
+
 Frase::paraules() const {
 	return n_paraules;
 }
@@ -32,10 +34,10 @@ Frase::substituir_paraula(string& a, string& b) {
 }
 
 
-Frase::llegir(istringstream paraula) {
+Frase::llegir(string& paraula) {
+	istringstream iss(paraula);
 	while (iss >> paraula) {
 		frase.push_back(paraula);
-		iss >> paraula;
 		++n_paraules;
 	}
 }

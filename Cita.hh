@@ -23,6 +23,11 @@ public:
 	
 	// Constructora
 	
+	/** @brief Creadora per defecte
+		S'executa automàticament al declarar una cita
+		\pre <em>cert</em>
+		\post el resultat es una cita buida
+	*/
     Cita();
 	
 	//Destructora
@@ -31,31 +36,64 @@ public:
     
 	// Modificadora
 	
-    void crear_cita(string &referencia, char& x, char& y, vector<Frase>& frases, string& autor, vector<string>& Titol);
+	/** @brief Dona uns valors a la cita creada
+		\pre <em>tenim una cita</em>
+		\post modifiquem els valors implicits de la cita
+	*/
+    void crear_cita(string &referencia, char& x, char& y, string& autor, string& titol);
 	
 	
 	//Consultores
 	
-	void consultar_autor() const;
+	/** @brief Mostra l'autor de la cita
+		\pre <em>cert</em>
+		\post el resultat es el nom de l'autor de la cita
+	*/
+	string consultar_autor() const;
 	
-	void consultar_referencia() const;
+	/** @brief Mostra la referencia de la cita
+		\pre <em>cert</em>
+		\post el resultat es la referencia de la cita
+	*/
+	string consultar_referencia() const;
 	
-	void consultar_titol() const;
+	/** @brief Mostra el titol de la cita
+		\pre <em>cert</em>
+		\post el resultat es el titol de la cita
+	*/
+	string consultar_titol() const;
 	
-	void consultar_numini() const;
+	/** @brief Mostra el el nombre de linia on es troba la primera frase de la cita
+		\pre <em>cert</em>
+		\post el resultat es el nombre de linia on es troba la primera frase de la cita
+	*/
+	int consultar_numini() const;
 	
-	void consultar_numfin() const;
+	/** @brief Mostra el el nombre de linia on es troba la ultima frase de la cita
+		\pre <em>cert</em>
+		\post el resultat es el nombre de linia on es troba la ultima frase de la cita
+	*/
+	int consultar_numfin() const;
+
+	/** @brief Mostra el el nombre de linia on es troba la ultima frase de la cita
+		\pre <em>cert</em>
+		\post el resultat es el nombre de linia on es troba la ultima frase de la cita
+	*/
+	void info() const;
 	
 	//Escrptura
 	
+	/** @brief Escriu la referencia de la cita
+		\pre <em>tenim una cita amb referencia</em>
+		\post escriu per pantalla la referencia de la cita
+	*/
 	void escriure() const;
 	
     
 private:
     string autor;
-    vector<string> Titol;
+    string Titol; //string encapsulado con el titulo del texto al que corresponde la cita
     int numini; //numero frase inicial
     int numfin; //numero frase final
-    vector<Frase> vec_frase; //vector de Frases que formen la cita ordenat
     string referencia; //referencia de la cita
-}
+};
