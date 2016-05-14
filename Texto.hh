@@ -117,9 +117,7 @@ private:
 	string autor; 
 	vector<pair<string,int> > parfreq; //conjunt de paraules del text ordenades decreixentment per frequencia, 
 						//i en cas d'empat creixentment, primer per llargada i despres afabeticament
-	int numP;            //numero de paraules del contingut del text
 	map<int,Frase> map_frases; //vector que conte totes las frases del text
-	int numF;             //numero de frases del contingut del text
 	int numcites;         //nombre de cites associades a aquest text
 };
 

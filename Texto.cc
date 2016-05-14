@@ -10,8 +10,6 @@ Texto::Texto(){
     //autor;
     //vector<pair<string,int> > parfreq;
     //vector<string> titol;
-    numP = 0;
-    numF = 0;
     numcites = 0;
     map<int,Frase> map_frases;
     
@@ -21,13 +19,13 @@ Texto::~Texto(){
 }
 
 void Texto::substituir(string &par1, string &par2){
-    for(int i = 0; i < numF; ++i){
+    for(int i = 0; i < map_frases.size(); ++i){
 	map_frases[i].substituir_paraula(par1,par2);
     }
 }
 
 int Texto::paraules(){
-    return numP;
+    return parfreq.size();
 }
 
 void Texto::consultar_autor(){
@@ -35,18 +33,18 @@ void Texto::consultar_autor(){
 }
 
 void Texto::consultar_contingut(){
-    for(int i = 0; i < numF; ++i){
+    for(int i = 0; i < map_frases.size(); ++i){
 	cout << i + 1 << ' ';
 	for(int j = 0; j < map_frases[j].paraules(); ++j) map_frases[j].escriure();
     }
 }
 
 int Texto::consultar_numf(){
-	return numF;
+	return map_frases.size();
 }
 
 int Texto::consultar_nump(){
-	return numP;
+	return parfreq.size();
 }
 
 void Texto::consultar_frases(char &x, char &y){
@@ -64,7 +62,7 @@ void Texto::consultar_frases(char &x, char &y){
 		
 void Texto::taula_freq(){
 	map<string,int> a;
-	for(int i = 0; i < numF; ++i){
+	for(int i = 0; i < map_frases.size(); ++i){
 		map_frases[i].taula_freq(a);
 	}
 	map<string,int>::iterator it = a.begin();
