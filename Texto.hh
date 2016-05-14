@@ -12,13 +12,7 @@
 #include <string>
 #include <map>
 #include <vector>
-
-struct Paraula{
-	string paraula;
-	int freq;
-	bool operator<(const Paraula &p) const;
-};
-
+#include <algorithm>
 #endif
 
 /** @class Texto
@@ -76,12 +70,6 @@ public:
 	*/
 	void consultar_contingut();
 	
-	/** @brief Mostra tota la informacio d'un text
-		\pre <em>cert</em>
-		\post mostra l'autor, el titol, el nombre de frases i el nombre de paraules.
-	*/
-	void info();
-	
 	/** @brief Indica el nombre de frases del text
 		\pre <em>cert</em>
 		\post retorna el nombre de frases del contingut del text
@@ -106,15 +94,6 @@ public:
 	*/
 	void frases(string &expres);
 	
-	
-	void frases_paraules();
-	/*Pre: */
-	/*Post: */
-	
-	void frases_expressio();
-	/*Pre: */
-	/*Post: */
-	
 	/** @brief Mostra totes les paraules del contingut del text
 		\pre <em>cert</em>
 		\post mostra totes les paraules del contingut del text ordenades decreixentment per frequencia;
@@ -124,55 +103,24 @@ public:
 	
 	
 	bool operator<(const Texto &t) const; //ordena en funcio del titol del text.
-	
-	/** @brief Mostra les cites d'un autor
-		\pre <em>el text conte cites</em>
-		\post es mostren les cites del autor(referencia, contingut de les frases i titol del text)
-	*/
-	void cites_autor(istringstream &aut);
-	
-	/** @brief Mostra totes les cites del text
-		\pre <em>cert</em>
-		\post es mostren totes les cites del text (referencia, contingut de les frases, autor i el 
-			  titol  del text) 
-	*/
-	void cites();
-	
 
 	//Lectura
 
 	/** @brief Llegeix el titol
 		\pre <em>tenim un titol buit</em>
-		\post anem construint el titol a mesura que arriben paraules (n) d'aquest
+		\post afegim un Text al sistema amb Titol = titol, autor = autor i contingut = contingut
 	*/	
-	void llegir_titol(string &n);
-	
-	/** @brief Llegeix l'autor
-		\pre <em>tenim un autor buit</em>
-		\post assignem un nom i un cognom al autor buit
-	*/
-	void llegir_autor(string &autor);
-	
-	/** @brief Llegeix el text
-		\pre <em>tenim un text buit</em>
-		\post assignem el contingut del text al text buit
-	*/
-	void llegir_text(string &m);
+	void llegir(string& titol, string& autor, string& contingut);
 	
 private:
-	string autor;
-	map<int,Cita> map_cites;  //mapa de cites del text on l'enter marca el numero de la referencia de la cita 
-	
-	set<Paraula> parfreq; //conjunt de paraules del text ordenades decreixentment per frequencia, 
-						  //i en cas d'empat creixentment, primer per llargada i despres afabeticament
+	string titol; 
+	string autor; 
+	vector<pair<string,int> > parfreq; //conjunt de paraules del text ordenades decreixentment per frequencia, 
+						//i en cas d'empat creixentment, primer per llargada i despres afabeticament
 	int numP;            //numero de paraules del contingut del text
 	map<int,Frase> vec_frases; //vector que conte totes las frases del text
 	int numF;             //numero de frases del contingut del text
 	int numcites;         //nombre de cites associades a aquest text
-	string titol; //titol del text 
-	static const int maxfrases = 50;
-
-
 };
 
 #endif

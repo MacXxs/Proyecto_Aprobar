@@ -50,6 +50,8 @@ public:
 	*/
 	void substituir_paraula(string& a, string& b);
 	
+	void taula_freq(map<string,int>& parfreq); //afegeix les paraules de la frase a la taula de frequencies
+	
 	//Lectura
 
 	/** @brief Llegeix una frase

@@ -55,7 +55,11 @@ public:
 	*/
 	void info_cita(string &refer);
 	
-	void info(); //ensenya les cites del ultim text triat
+	/** @brief Mostra tota la informacio d'un text
+		\pre <em>cert</em>
+		\post mostra l'autor, el titol, el nombre de frases i el nombre de paraules.
+	*/
+	void info();
 	
 	/** @brief Mostra totes les cites emmagatzemades
 		\pre <em>cert</em>
@@ -65,6 +69,12 @@ public:
 	void totes_cites();
 	
 	void eliminar_cita(string &referencia);
+	
+	/** @brief Mostra les cites d'un autor
+		\pre <em>el text conte cites</em>
+		\post es mostren les cites del autor(referencia, contingut de les frases i titol del text)
+	*/
+	void cites_autor(istringstream &aut);
 
 private:
 	

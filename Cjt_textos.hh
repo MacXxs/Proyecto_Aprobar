@@ -166,14 +166,13 @@ public:
     
     /** @brief Llegeix un titol, un autor i un text
 		\pre <em>cert</em>
-		\post es crida a la funcio llegir_titol, llegir_autor,
-		 llegir_text de la classe Texto per afegir un titol al Text que s'esta tractant
-	*/
+		\post es crida a la funcio llegir de la classe Texto per afegir un Text al sistema.
 	void llegir_tot(string &titol, string &autor, string &text);
+	*/
     
 private:
-	map<Autor,set<Texto> > textos;
-	map<Autor,set<Texto> >::iterator it;
+	map<string,set<Texto> > textos;
+	map<string,set<Texto> >::iterator it;
 
 };
 #endif
