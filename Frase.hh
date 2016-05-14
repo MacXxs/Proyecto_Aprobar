@@ -58,6 +58,14 @@ public:
 	*/
 	void llegir(string& paraula);
 
+	//Escriptura
+	
+	/** @brief Escriu una frase
+		\pre <em>tenim una frase</em>
+		\post escriu per pantalla la frase
+	*/
+	void escriure() const;
+
 private:
 	vector<string> frase;
 	int n_paraules;

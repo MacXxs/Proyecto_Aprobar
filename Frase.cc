@@ -41,3 +41,14 @@ Frase::llegir(string& paraula) {
 		++n_paraules;
 	}
 }
+
+Frase::escriure() const {
+	bool primer = true;
+	for (int i = 0; i < frase.size(); ++i) {
+		if (primer) {
+			cout << frase[i];
+			primer = false;
+		}
+		else cout << ' ' << frase[i];
+	}
+}
