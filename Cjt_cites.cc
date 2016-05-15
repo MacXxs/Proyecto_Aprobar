@@ -38,10 +38,12 @@ Cjt_cites::totes_cites() {
 }
 
 Cjt_cites::cites_autor(string& aut) {
-	string referencia_aux;
-	for (int i = 0; i < aut.size(); ++i) {
-		if (aut[i] >= 'A' and aut[i] <= 'Z') referencia_aux.push_back(aut[i]); 
-		//guardem les mayuscules per poder buscar per referencia al map
+	string m, referencia_aux;
+	istringstream iss(aut);
+	while (iss >> m) {
+		//ho mirem per si hi ha casos com Alissa von Bismark
+		if (m[0] >= 'A' and m[0] <= 'Z') referencia_aux.push_back(m[0]);
+		//tenemos guardada la referencia con las iniciales del autor
 	}
 
 	//hay que contemplar que un autor tenga mas de una cita
