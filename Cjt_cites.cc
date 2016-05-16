@@ -8,7 +8,12 @@ Cjt_cites::Cjt_cites() {
 Cjt_cites::~Cjt_cites() {}
 
 Cjt_cites::afegir_cita(char& x, char& y) {
-	
+	Texto text_frases;
+	string autor, titol;
+	guarda_frases_cita(text_frases, x, y);
+	titol_autor_cita(autor, titol);
+
+
 }
 
 Cjt_cites::eliminar_cita(string& referencia) {
@@ -44,7 +49,8 @@ Cjt_cites::cites_autor(string& aut) {
 	istringstream iss(aut);
 	while (iss >> m) {
 		//ho mirem per si hi ha casos com Alissa von Bismark
-		if (m[0] >= 'A' and m[0] <= 'Z') referencia_aux.push_back(m[0]);
+		if (m[0] >= 'a' and m[0] <= 'a') referencia_aux.push_back(m[0] - ('a' - 'A'))
+		else referencia_aux.push_back(m[0]); 
 		//tenemos guardada la referencia con las iniciales del autor
 	}
 
