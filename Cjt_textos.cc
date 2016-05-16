@@ -17,13 +17,6 @@ void Cjt_textos::eliminar_text(){
 	else cout << "Error al elimnar text (no hi ha text triat)" << endl; 
 }
 
-void Cjt_textos::llegir_tot(string &titol, string &autor, string &text){
-	Texto Text;
-	Text.llegir(titol,autor,text);
-	textos[autor][titol] = Text;
-}
-
-
 void Cjt_textos::substituir(string &par1, string &par2){
 	it2->second.substituir(par1,par2);
 }
@@ -121,7 +114,8 @@ void Cjt_textos::tots_autors(){
 		cout << it->first << ' ' << t << ' ' << f << ' ' << p << endl;
 	}
 }
-			
 
-	
-	
+void Cjt_textos::info(){
+	cout << it->first << ' ' << it2->first << ' ' << it2->second.consultar_numf() << ' ' << it2->second.consultar_nump() << endl;
+}
+
