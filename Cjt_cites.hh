@@ -46,16 +46,14 @@ public:
 		\post s'ha eliminat la cita amb referencia = refer i es crida a la funcio eliminar_cita
 			  de la classe Cjt_textos
 	*/
-	void eliminar_cita(string &referencia);
+	void eliminar_cita(string &refer);
 	
-	//Consultores
-
 	/** @brief Mostra informacio sobre una cita
 		\pre <em>es passa una referencia d'una cita</em>
-		\post es mostra informacio de la cita referenciada (autor, titol, numero de la frase 
-			  inicial i numero de la frase final, contingut de la frase o frases que la componen).
+		\post es mostra informacio de la cita referenciada (autor, titol. numero de la frase 
+			  inicial i numero de la frase final. contingut de la frase o frases que la componen).
 	*/
-	void info_cita(string &referencia);
+	void info_cita(string &refer);
 	
 	/** @brief Mostra tota la informacio d'un text
 		\pre <em>cert</em>
@@ -65,16 +63,18 @@ public:
 	
 	/** @brief Mostra totes les cites emmagatzemades
 		\pre <em>cert</em>
-		\post mostra totes les cites emmagatzemades en el sistema (referencia, contingut de les frases,
+		\post mostra totes les cites emmagatzemades en el sistema (referencia, contingut de les frases.
 			  autor i titol del text)
 	*/
 	void totes_cites();
+	
+	void eliminar_cita(string &referencia);
 	
 	/** @brief Mostra les cites d'un autor
 		\pre <em>el text conte cites</em>
 		\post es mostren les cites del autor(referencia, contingut de les frases i titol del text)
 	*/
-	void cites_autor(string &aut);
+	void cites_autor(istringstream &aut);
 
 private:
 	
