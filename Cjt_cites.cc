@@ -12,14 +12,16 @@ Cjt_cites::afegir_cita(char& x, char& y) {
 }
 
 Cjt_cites::eliminar_cita(string& referencia) {
-
+	map<string, Cita>::const_iterator it = cites.find(referencia);
+	if (it != cites.end()) cites.erase(it);
+	else cout << "error" << endl;
 }
 
 Cjt_cites::info_cita(string& referencia) {
 	map<string, Cita>::const_iterator it = cites.find(referencia);
 	if (it != cites.end()) {
-		cout << cites[it].autor << ' ' << cites[it].titol << endl;
-		cout << cites[it].numini << '-' << cites[it].numfin << endl;
+		cout << it->second.autor << ' ' << it->second.titol << endl;
+		cout << it->second.numini << '-' << it->second.numfin << endl;
 
 		//escribir las frases
 	}
@@ -38,7 +40,7 @@ Cjt_cites::totes_cites() {
 }
 
 Cjt_cites::cites_autor(string& aut) {
-	string m, referencia_aux;
+	string m, referencia_aux, refer_aux_2;
 	istringstream iss(aut);
 	while (iss >> m) {
 		//ho mirem per si hi ha casos com Alissa von Bismark
@@ -46,12 +48,26 @@ Cjt_cites::cites_autor(string& aut) {
 		//tenemos guardada la referencia con las iniciales del autor
 	}
 
-	//hay que contemplar que un autor tenga mas de una cita
+	map<string, int>::const_iterator it1 = referencies.find(referencia_aux);
+	if (it1 != referencies.end()) {
+		string aux;
+		ostringstream convert;
+		convert << it1->second;
+		aux = convert.str(); //tenim el numero de la referencia en un string
+		referencia_aux = it1->first;
+		refer_aux_2 = it1->first;
+		refer_aux_2.insert(refer_aux_2.end(), 1);
+		referencia_aux.insert(referencia_aux.end(), aux); //tenim la referencia completa
+	}
 
-	map<string, Cita>::const_iterator it = cites.find(referencia_aux);
-	if (cites[it].autor == aut) {
-		cout << cites[it].referencia << endl;
-		//escribir frases de la cita
-		cout << cites[it].autor << ' ' << cites[it].titol << endl;
+	map<string, Cita>::const_iterator it2 = cites.find(refer_aux_2);
+	map<string, Cita>::const_iterator it3 = cites.find(referencia_aux);
+	while (it2 <= it3) {
+		if (it2->second.autor == aut) {
+			cout << it2->second.referencia << endl;
+			//escribir frases
+			cout << it2->second.autor << ' ' << it2->second.titol << endl;
+		}
+		++it2;
 	}
 }
