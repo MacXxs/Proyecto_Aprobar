@@ -11,6 +11,7 @@
 #include <map>
 #include <string>
 #include <set>
+#include <sstream>
 #endif
 
 
@@ -44,12 +45,6 @@ public:
 			  fins que no es torni a cridar a la funcio triar text
 	*/
 	void eliminar_text();
-    
-    /** @brief Elimina una cita
-		\pre <em>hi ha un autor igual que el que es passa com a parametre</em>
-		\post es crida a la funcio eliminar cita de la classe Texto
-	*/
-    void eliminar_cita(string& referencia, Autor& autor);
 	
 	/** @brief Canvia dues paraules
 		\pre <em>tenim un text triat</em>
@@ -62,7 +57,7 @@ public:
 		\pre <em>arriben dos caracters x i y i una referencia</em>
 		\post es crida a la funcio afegir_cita de la classe Texto
 	*/
-    void afegir_cita(string& referencia, char& x, char& y);
+    void afegir_cita(char& x, char& y);
 	
 	//Consultores
 	
@@ -78,7 +73,7 @@ public:
 	*/
 	void consultar_contingut();
 	
-	/** @brief Consulta el nombre de files de l'ultim text triat
+	/** @brief Consulta el nombre de frases de l'ultim text triat
 		\pre <em>tenim un text triat</em>
 		\post es crida a la funcio conultar_numf de la classe Texto de l'ultim text triat
 	*/
@@ -95,18 +90,6 @@ public:
 		\post es crida a la funcio consultar_frases de la classe Texto de l'ultim text triat
 	*/
 	void consultar_frases(char &x, char &y);
-    
-   /** @brief Mostra totes les cites de l'autor
-		\pre <em>rep el nom d'un autor</em>
-		\post es crida a la funcio cites_autor de la classe Texto
-	*/
-   void cites_autor(string& autor);
-   
-    /** @brief Mostra totes les cites de l'ultim text triat
-		\pre <em>hi ha un text triat</em>
-		\post es crida a la funcio cites de la classe Texto de l'ultim text triat
-	*/
-    void cites();
 	
 	/** @brief Mostra les frases del contingut de l'ultim text triat que compleixin l'expressio
 		\pre <em>tenim un text triat i es passa una expressio</em>
@@ -124,7 +107,7 @@ public:
 		\pre <em>cert</em>
 		\post retorna un iterator apuntant al utlim text triat
 	*/
-	map<Autor,set<Texto> >::iterator text_actual();
+	map<string,Texto>::iterator text_actual();
 
 	/** @brief Tria un text
 		\pre <em>el paràmetre implícit conté els textos</em>
@@ -167,12 +150,16 @@ public:
     /** @brief Llegeix un titol, un autor i un text
 		\pre <em>cert</em>
 		\post es crida a la funcio llegir de la classe Texto per afegir un Text al sistema.
-	void llegir_tot(string &titol, string &autor, string &text);
 	*/
+	void llegir_tot(string &titol, string &autor, string &text);
+	
     
 private:
-	map<string,set<Texto> > textos;
-	map<string,set<Texto> >::iterator it;
+	map<string,map<string,Texto> > textos; //mapa de set de textos ordenat per autor i set ordenat per titol del text
+	map<string,map<string,Texto> >::iterator it; // iterador que apunta al conjunt de textos d'un autor
+	map<string,Texto>::iterator it2; //iterador que apunta al ultim text triat del conjunt de textos d'un autor
+	bool text_triat; 				
 
 };
+
 #endif

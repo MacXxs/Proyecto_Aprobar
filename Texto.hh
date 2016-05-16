@@ -13,6 +13,7 @@
 #include <map>
 #include <vector>
 #include <algorithm>
+#include <sstream>
 #endif
 
 /** @class Texto
@@ -25,6 +26,8 @@ public:
 	
 	//Constructora
 
+	Texto(string& titol);
+	
 	/** @brief Creadora per defecte
 		\pre <em>cert</em>
 		\post el resultat es un text buit
@@ -34,7 +37,7 @@ public:
 	//Destructora
 
 	~Texto();
-	
+		
 	//Modificadores
 
 	/** @brief Intercanvia dues paraules
@@ -49,6 +52,9 @@ public:
 	 	contingut del text amb la referencia passada pel primer parametre (es crida a la funcio
 	 	crear_cita de la classe Cita.hh
 	*/	
+	
+	void augmentar_numcites();
+	
 	//Consultores
 
 	/** @brief Indica el nombre de paraules d'una frase
@@ -56,6 +62,12 @@ public:
 		\post el resultat es el nombre de paraules d'una frase
 	*/
 	int paraules();
+	
+	/** @brief Retorna el titol del text
+		\pre <em>cert</em>
+		\post retorna el titol del text
+	*/
+	string consultar_titol();
 	
 	/** @brief Mostra l'autor del text
 		\pre <em>cert</em>
@@ -101,6 +113,7 @@ public:
 	*/
 	void taula_freq();
 	
+	int triar_text(set<string> paraules); //retorna un enter = 1 si totes les paraules, del set paraules, es troben al text, autor o al titol
 	
 	bool operator<(const Texto &t) const; //ordena en funcio del titol del text.
 
@@ -119,6 +132,7 @@ private:
 						//i en cas d'empat creixentment, primer per llargada i despres afabeticament
 	map<int,Frase> map_frases; //vector que conte totes las frases del text
 	int numcites;         //nombre de cites associades a aquest text
+	int nump;             //nombtr de paraules del text
 };
 
 #endif

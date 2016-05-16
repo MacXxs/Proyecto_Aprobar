@@ -6,10 +6,20 @@ bool comp(const pair<string,int>& a, const pair<string,int>& b){
 	else return a.first < b.first;
 }
 
+Texto::Texto(string& titol){
+	this->titol = titol;
+	//vector<pair<string,int> > parfreq;
+	//autor;
+	nump = 0;
+    numcites = 0;
+    map<int,Frase> map_frases;
+}
+
 Texto::Texto(){
     //autor;
+	//titol;
     //vector<pair<string,int> > parfreq;
-    //vector<string> titol;
+	nump = 0;
     numcites = 0;
     map<int,Frase> map_frases;
     
@@ -19,13 +29,36 @@ Texto::~Texto(){
 }
 
 void Texto::substituir(string &par1, string &par2){
-    for(int i = 0; i < map_frases.size(); ++i){
-	map_frases[i].substituir_paraula(par1,par2);
+	int par_subs = 0;
+    for(int i = 0; i < map_frases.size(); ++i)
+		map_frases[i].substituir_paraula(par1,par2,par_subs);
+	int pos_par1;
+	bool par2_trobada = false;
+	for(int i = 0;  i < parfreq.size(); ++i){
+		if (parfreq[i].first == par1){
+			parfreq[i].second -= par_subs;
+			pos_par1 = i;
+		}
+		else if (parfreq[i].first == par2){
+			parfreq[i].second += par_subs;
+			par2_trobada = true;
+		}
     }
+    if (pos_par1 != -1){
+		if (parfreq[pos_par1].second < 1) parfreq.erase(parfreq.begin() + pos_par1);
+	}
+	else if (not par2_trobada){
+		parfreq.insert(parfreq.begin(),make_pair(par2,par_subs));
+		sort(parfreq.begin(),parfreq.end(),comp);
+	}
 }
 
 int Texto::paraules(){
     return parfreq.size();
+}
+
+string Texto::consultar_titol(){
+	return titol;
 }
 
 void Texto::consultar_autor(){
@@ -79,6 +112,10 @@ bool Texto::operator<(const Texto &t) const{
 	else return false;
 }
 
+void Texto::augmentar_numcites(){
+	++numcites;
+}
+
 void Texto::llegir(string& titol, string& autor, string& contingut){
 	this->titol = titol;
 	this->autor = autor;
@@ -104,10 +141,29 @@ void Texto::llegir(string& titol, string& autor, string& contingut){
 		if (buscar){
 			string frase = contingut.substr(0,pos+1);
 			contingut.erase(0,pos+1);
-			map_frases[count].llegir(frase);
+			map_frases[count].llegir(frase,nump);
 			++count;
 		}
 	}
+}
+
+int Texto::triar_text(set<string> paraules){
+	istringstream a(autor);
+	istringstream t(titol);
+	string p;
+	set<string>::iterator it;
+	while (a>>p){
+		it = paraules.find(p);
+		if (it != paraules.end()) paraules.erase(it);
+	}
+	while (t>>p){
+		it = paraules.find(p);
+		if (it != paraules.end()) paraules.erase(it);
+	}
+	for (int i = 1; i < map_frases.size() and paraules.size() != 0; ++i)
+		map_frases[i].triar_text(paraules);
+	if (paraules.size() == 0) return 1;
+	else return 0;
 }
 
 		

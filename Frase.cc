@@ -15,12 +15,24 @@ int Frase::paraules() const {
 	return n_paraules;
 }
 
-void Frase::substituir_paraula(string& a, string& b) {
+void Frase::triar_text(set<string>& paraules){
+	set<string>::iterator it;
+	for (int i = 0; i < n_paraules; ++i){
+		it = paraules.find(frase[i]);
+		if (it != paraules.end()) paraules.erase(it);
+	}
+}
+		
+
+void Frase::substituir_paraula(string& a, string& b, int& par_subs) {
 	for (int i = 0; i < n_paraules; ++i) {
 		string aux;
 		char last;
 		if (frase[i][frase[i].size()-1] >= 'a' and frase[i][frase[i].size()-1] <= 'z') { //l'ultim char esta entre la a i la z 
-			if (a == frase[i]) frase[i] = b;
+			if (a == frase[i]){
+				frase[i] = b;
+				++par_subs;
+			}
 		}
 		else { //vol dir que l'ultim char de la paraula es o be ':', ',', ';', '.', '?', '!'
 			aux = frase[i];
@@ -29,6 +41,7 @@ void Frase::substituir_paraula(string& a, string& b) {
 				last = frase[i][frase[i].size() - 1];
 				b.push_back(last);
 				frase[i] = b;
+				++par_subs;
 			}
 		}
 	}
@@ -43,10 +56,13 @@ void Frase::taula_freq(map<string,int>& a){
 	}
 }
 
-void Frase::llegir(string& frase) {
+void Frase::llegir(string& frase, int& nump) {
 	istringstream iss(frase);
 	string paraula;
-	while(iss >> paraula) this->frase.push_back(paraula);
+	while(iss >> paraula){
+		this->frase.push_back(paraula);
+		++nump;
+	}
 }
 
 void Frase::escriure() const {

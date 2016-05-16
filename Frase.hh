@@ -10,6 +10,7 @@
 #include <vector>
 #include <string>
 #include <map>
+#include <set>
 #endif
 
 using namespace std;
@@ -44,13 +45,15 @@ public:
 	*/	
 	int paraules() const;
 	
+	void triar_text(set<string>& paraules); //consulta si a la frase hi ha alguna o totes les paraules del text, en cas afirmatiu la/les elimina del set
+	
 	//Modificadora
 
 	/** @brief S'intercanvien dues paraules
 		\pre <em>arriben dos paraules a = A, b = B</em>
 		\post es canvien totes les aparicions de la paraula a per la b
 	*/
-	void substituir_paraula(string& a, string& b);
+	void substituir_paraula(string& a, string& b, int& par_subs);
 	
 	void taula_freq(map<string,int>& parfreq); //afegeix les paraules de la frase a la taula de frequencies
 	
@@ -60,7 +63,7 @@ public:
 		\pre <em>cert</em>
 		\post genera una frase a partir d'una frase encapsulada en un string
 	*/
-	void llegir(string& frase);
+	void llegir(string& frase, int& nump);
 
 	//Escriptura
 	
