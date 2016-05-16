@@ -119,3 +119,9 @@ void Cjt_textos::info(){
 	cout << it->first << ' ' << it2->first << ' ' << it2->second.consultar_numf() << ' ' << it2->second.consultar_nump() << endl;
 }
 
+void Cjt_textos::llegir_tot(string &titol, string &autor, string &text){
+	Texto Text;
+	Text.llegir(titol,autor,text);
+	textos[autor][titol] = Text;
+}
+
