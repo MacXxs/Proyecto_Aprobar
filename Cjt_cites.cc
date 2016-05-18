@@ -2,21 +2,37 @@
 
 
 Cjt_cites::Cjt_cites() {
-	cites = map<string, Cita>();
+	//cites = map<string, Cita>;
 }
 
 Cjt_cites::~Cjt_cites() {}
 
-Cjt_cites::afegir_cita(char& x, char& y) {
-	Texto text_frases;
-	string autor, titol;
-	guarda_frases_cita(text_frases, x, y);
-	titol_autor_cita(autor, titol);
-
-
+void Cjt_cites::afegir_cita(Cjt_textos& textos, char& x, char& y) {
+	map<string,Texto>::iterator it = textos.text_actual();
+	string autor, titol, a, ref;
+	autor = textos.consultar_autor();
+	istringstream iss(autor);
+	while (iss>>a){
+		if (a[0] >= 'a' and a[0] <= 'z') ref.push_back(a[0] - 32);
+		else ref.push_back(a[0]);
+	}	
+	map<string,int>::iterator it = referencies.find(ref);
+	if (it != referencies.end(){
+		++(*it).second;
+		num_ref = (*it).second;
+	}
+	else {
+		num_ref = 1;
+		referencies[ref] = 1;
+	}
+	ref += to_string(num_ref); //afegeix a les inicials del autor el numero de la referencia passat a string
+	Cita cita;
+	titol = textos.consultar_titol();
+	cita.crear_cita(ref,x,y,autor,titol);
+	cites[ref] = cita;
 }
 
-Cjt_cites::eliminar_cita(string& referencia) {
+void Cjt_cites::eliminar_cita(string& referencia) {
 	map<string, Cita>::const_iterator it = cites.find(referencia);
 	if (it != cites.end()) cites.erase(it);
 	else cout << "error" << endl;
@@ -32,11 +48,11 @@ Cjt_cites::info_cita(string& referencia) {
 	}
 }
 
-Cjt_cites::info() {
+/*void Cjt_cites::info() {
 
-}
+}*/
 
-Cjt_cites::totes_cites() {
+void Cjt_cites::totes_cites() {
 	for (map<string, Cita>::const_iterator it = cites.begin(); it != cites.end(); ++it) {
 		cout << it->first << endl;
 		//escribir linea de la frase y el contenido de la cita
@@ -44,12 +60,12 @@ Cjt_cites::totes_cites() {
 	}
 }
 
-Cjt_cites::cites_autor(string& aut) {
+void Cjt_cites::cites_autor(string& aut) {
 	string m, referencia_aux, refer_aux_2;
 	istringstream iss(aut);
 	while (iss >> m) {
 		//ho mirem per si hi ha casos com Alissa von Bismark
-		if (m[0] >= 'a' and m[0] <= 'a') referencia_aux.push_back(m[0] - ('a' - 'A'))
+		if (m[0] >= 'a' and m[0] <= 'a') referencia_aux.push_back(m[0] - 32)
 		else referencia_aux.push_back(m[0]); 
 		//tenemos guardada la referencia con las iniciales del autor
 	}

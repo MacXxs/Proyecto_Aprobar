@@ -65,7 +65,9 @@ public:
 		\pre <em>tenim un text triat</em>
 		\post es crida la funcio consultar_autor de la classe Texto de l'ultim text triat
 	*/
-	void consultar_autor();
+	string consultar_autor();
+	
+	string consultar_titol(); 
 	
 	/** @brief Consulta el contingut de l'ultim text triat
 		\pre <em>tenim un text triat</em>

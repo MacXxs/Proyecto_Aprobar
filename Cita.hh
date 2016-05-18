@@ -5,8 +5,6 @@
 #ifndef CITA_HH
 #define CITA_HH
 
-#include "Frase.hh"
-
 #ifndef NO_DIAGRAM
 #include <string>
 #include <vector>
@@ -97,3 +95,5 @@ private:
     int numfin; //numero frase final
     string referencia; //referencia de la cita
 };
+
+#endif
