@@ -14,23 +14,23 @@ void Cita::crear_cita(string& referencia, char& x, char& y, string& autor, strin
 	numfin = y - '0';
 }
 
-void Cita::consultar_autor() const {
+string Cita::consultar_autor() const {
 	return autor;
 }
 
-void Cita::consultar_referencia() const {
+string Cita::consultar_referencia() const {
 	return referencia;
 }
 
-void Cita::consultar_titol() const {
+string Cita::consultar_titol() const {
 	return titol;
 }
 
-void Cita::consultar_numini() const {
+int Cita::consultar_numini() const {
 	return numini;
 }
 
-void Cita::consultar_numfin() const {
+int Cita::consultar_numfin() const {
 	return numfin;
 }
 
