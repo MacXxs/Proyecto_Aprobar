@@ -85,7 +85,7 @@ public:
 		\pre <em>tenim una cita amb referencia</em>
 		\post escriu per pantalla la referencia de la cita
 	*/
-	void escriure() const;
+	void escriure();
 	
     
 private:
