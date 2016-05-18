@@ -11,6 +11,7 @@
 #ifndef NO_DIAGRAM
 #include <map>
 #include <string>
+using namespace std;
 #endif
 
 class Cjt_cites{

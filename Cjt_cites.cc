@@ -38,7 +38,7 @@ void Cjt_cites::eliminar_cita(string& referencia) {
 	else cout << "error" << endl;
 }
 
-Cjt_cites::info_cita(string& referencia) {
+void Cjt_cites::info_cita(string& referencia) {
 	map<string, Cita>::const_iterator it = cites.find(referencia);
 	if (it != cites.end()) {
 		cout << it->second.autor << ' ' << it->second.titol << endl;
