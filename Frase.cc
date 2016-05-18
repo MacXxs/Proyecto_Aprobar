@@ -17,8 +17,11 @@ int Frase::paraules() const {
 
 void Frase::triar_text(set<string>& paraules){
 	set<string>::iterator it;
-	for (int i = 0; i < n_paraules; ++i){
-		it = paraules.find(frase[i]);
+	string par;
+	for (int i = 0; i < n_paraules and not paraules.empty(); ++i){
+		par = frase[i];
+		if (par[par.size()-1] < 'A' or par[par.size()-1] > 'z') par.pop_back();
+		it = paraules.find(par);
 		if (it != paraules.end()) paraules.erase(it);
 	}
 }
