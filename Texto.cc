@@ -25,8 +25,7 @@ Texto::Texto(){
     
 }
 
-Texto::~Texto(){
-}
+Texto::~Texto(){}
 
 void Texto::substituir(string &par1, string &par2){
 	int par_subs = 0;
@@ -160,9 +159,9 @@ int Texto::triar_text(set<string> paraules){
 		it = paraules.find(p);
 		if (it != paraules.end()) paraules.erase(it);
 	}
-	for (int i = 1; i < map_frases.size() and not paraules.empty() != 0; ++i)
+	for (int i = 1; i < map_frases.size() and paraules.size() != 0; ++i)
 		map_frases[i].triar_text(paraules);
-	if (paraules.empty()) return 1;
+	if (paraules.size() == 0) return 1;
 	else return 0;
 }
 
