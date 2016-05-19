@@ -54,8 +54,8 @@ public:
 	void substituir(string &par1, string &par2);
     
     /** @brief Afegeix una cita
-		\pre <em>arriben dos caracters x i y</em>
-		\post es crida a les funcions consultar_frases i augmentar_numcites de la classe Texto
+		\pre <em>arriben dos caracters x i y i una referencia</em>
+		\post es crida a la funcio afegir_cita de la classe Texto
 	*/
     void afegir_cita(char& x, char& y);
 	
@@ -63,43 +63,45 @@ public:
 	
 	/** @brief Consulta l'autor de l'ultim text triat
 		\pre <em>tenim un text triat</em>
-		\post treu per pantalla l'autor de l'ultim text triat
+		\post es crida la funcio consultar_autor de la classe Texto de l'ultim text triat
 	*/
-	void consultar_autor();
+	string consultar_autor();
+	
+	string consultar_titol(); 
 	
 	/** @brief Consulta el contingut de l'ultim text triat
 		\pre <em>tenim un text triat</em>
-		\post es crida a la funcio conultar_contingut de la classe Texto per a l'ultim text triat
+		\post es crida a la funcio conultar_contingut de la classe Texto de l'ultim text triat
 	*/
 	void consultar_contingut();
 	
 	/** @brief Consulta el nombre de frases de l'ultim text triat
 		\pre <em>tenim un text triat</em>
-		\post treu per pantalla el resultat de cridar a la funcio de consultar_numf de la classe Texto per a l'ultim text triat
+		\post es crida a la funcio conultar_numf de la classe Texto de l'ultim text triat
 	*/
 	void consultar_numf();
 	
 	/** @brief Consulta el nombre de paraules de l'ultim text triat
 		\pre <em>tenim un text triat</em>
-		\post treu per pantalla el resultat de cridar a la funcio de consultar_nump de la classe Texto per a l'ultim text triats
+		\post es crida a la funcio conultar_nump de la classe Texto de l'ultim text triat
 	*/
 	void consultar_nump();
 	
 	/** @brief Consulta les frases entre x i y de l'ultim text triat
 		\pre <em>tenim un text triat i es passen uns valors x i y</em>
-		\post es crida a la funcio consultar_frases de la classe Texto per a l'ultim text triat
+		\post es crida a la funcio consultar_frases de la classe Texto de l'ultim text triat
 	*/
 	void consultar_frases(char &x, char &y);
 	
-    /** @brief Mostra les frases del contingut de l'ultim text triat que compleixin l'expressio
+	/** @brief Mostra les frases del contingut de l'ultim text triat que compleixin l'expressio
 		\pre <em>tenim un text triat i es passa una expressio</em>
 		\post es crida a la funcio frases de la classe Texto
 	*/
-    void frases(string &expres);
+	void frases(string &expres);
 	
-	/** @brief Mostra totes les paraules del contingut de l'ultim text triat
+	/** @brief 
 		\pre <em>tenim un text triat</em>
-		\post es crida a la funcio taula_freq de la classe Texto per a l'ultim text triat
+		\post es crida a la funcio taula_freq de la classe Texto de l'ultim text triat
 	*/
 	void taula_freq();
 	
@@ -111,7 +113,7 @@ public:
 
 	/** @brief Tria un text
 		\pre <em>el paràmetre implícit conté els textos</em>
-		\post assigna el text que volem escollir
+		\post retorna el text escollit
 	*/
 	void triar_text(string &paraules);
 	
@@ -141,7 +143,7 @@ public:
 	
 	/**@brief Mostra la informacio de l'ultim text triat
 		\pre <em>tenim un text triat</em>
-		\post treu per pantalla la informacio de l'ultim text triat (autor, titol, numf, nump)
+		\post crida a la funcio info de la classe Texto de l'ultim text triat
 	*/
 	void info();
 

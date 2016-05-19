@@ -25,8 +25,12 @@ void Cjt_textos::afegir_cita(char& x, char& y){
 	it2->second.consultar_frases(x,y);
 	it2->second.augmentar_numcites();
 }
-void Cjt_textos::consultar_autor(){
-	cout << it->first << endl;
+string Cjt_textos::consultar_autor(){
+	return it->first;
+}
+
+string Cjt_textos::consultar_titol(){
+	return it2->first;
 }
 
 void Cjt_textos::consultar_contingut(){
