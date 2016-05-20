@@ -1,13 +1,16 @@
-#include "Cita.hh"
-#include <iostream>
+#include"Cita.hh"
+#include <map>
+#include "Frase.hh"
+
+using namespace std;
 
 Cita::Cita() {
 	numini = numfin = 0;
 }
 
-Cita::~Cita() {}
+Cita::~Cita(){}
 
-void Cita::crear_cita(string& referencia, char& x, char& y, string& autor, string& Titol, map<int, Frase>& frases) {
+void Cita::crear_cita(string& referencia, char& x, char& y, string& autor, string& Titol, map<int,Frase>& frases) {
 	this->referencia = referencia;
 	this->autor = autor;
 	this->Titol = Titol;
@@ -40,7 +43,7 @@ void Cita::escriure() {
 	cout << referencia << endl;
 }
 
-void escriure_frases_cita() {
+void Cita::escriure_frases_cita() {
 	for (map<int, Frase>::iterator it = frases.begin(); it != frases.end(); ++it) {
 		cout << it->first << ' ' << it->second.escriure() << endl;
 	}

@@ -11,7 +11,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-using namespace std;
+#include <map>
 #endif
 
 
@@ -42,7 +42,7 @@ public:
 		\pre <em>tenim una cita</em>
 		\post modifiquem els valors implicits de la cita
 	*/
-	void crear_cita(string &referencia, char& x, char& y, string& autor, string& titol, map<int, Frase>& frases);
+	void crear_cita(string &referencia, char& x, char& y, string& autor, string& Titol, map<int, Frase>& frases);
 	
 	
 	//Consultores
