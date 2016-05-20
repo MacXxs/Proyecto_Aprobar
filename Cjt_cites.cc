@@ -26,8 +26,12 @@ void Cjt_cites::afegir_cita(Cjt_textos& textos, char& x, char& y) {
 	}
 	ref += to_string(num_ref); //afegeix a les inicials del autor el numero de la referencia passat a string
 	Cita cita;
+	
+	map<int, Frase> frases;
+	textos.consultar_cont_frases(frases, x, y);
+	
 	titol = textos.consultar_titol();
-	cita.crear_cita(ref,x,y,autor,titol);
+	cita.crear_cita(ref,x,y,autor,titol, frases);
 	cites[ref] = cita;
 }
 
@@ -37,12 +41,12 @@ void Cjt_cites::eliminar_cita(string& referencia) {
 	else cout << "error" << endl;
 }
 
-void Cjt_cites::info_cita(Cjt_textos& textos, string& referencia) {
+void Cjt_cites::info_cita(string& referencia) {
 	map<string, Cita>::iterator it = cites.find(referencia);
 	if (it != cites.end()) {
 		cout << it->second.consultar_autor() << ' ' << it->second.consultar_titol() << endl;
 		cout << it->second.consultar_numini() << '-' << it->second.consultar_numfin() << endl;
-		textos.consultar_frases(it->second.consultar_numini(),it->second.consultar_numfin());
+		it->second.escriure_frases_cita();
 	}
 }
 
@@ -59,21 +63,22 @@ void Cjt_cites::info(Cjt_textos& textos){
 	for(int i = 0; i < top; ++i){
 		if (it->second.consultar_autor() == aut){
 			cout << ref << endl;
-			textos.consultar_frases(it->second.consultar_numfin(),it->second.consultar_numfin());
+			//textos.consultar_frases(it->second.consultar_numfin(),it->second.consultar_numfin());
+			it->second.escriure_frases_cita();
 		}
 	}
 }
 
-void Cjt_cites::totes_cites(Cjt_textos& textos) {
+void Cjt_cites::totes_cites() {
 	for (map<string, Cita>::iterator it = cites.begin(); it != cites.end(); ++it) {
 		cout << it->first << endl;
-		textos.consultar_frases(it->second.consultar_numini(),it->second.consultar_numfin());
+		it->second.escriure_frases_cita();
 		cout << it->second.consultar_autor() << ' ' << it->second.consultar_titol() << endl;
 	}
 }
 
 void Cjt_cites::cites_autor(string& aut) {
-	string m, ref;
+	string m, ref, refe1;
 	istringstream iss(aut);
 	while (iss >> m) ref.push_back(m[0]); 
 	ref.push_back('1');
@@ -81,8 +86,9 @@ void Cjt_cites::cites_autor(string& aut) {
 	map<string,Cita>::iterator it = cites.find(ref);
 	for (int i = 1; i <= top; ++i){
 		if(it->second.consultar_autor() == aut){
-			cout << it->first << endl;
-			it->second.consultar_frases();
+			cout << it->first << endl; //escriu referencia
+			it->second.escriure_frases_cita; //escriu les frases de la cita
+			cout << it->second.consultar_titol << endl;
 		}
 	}
 }

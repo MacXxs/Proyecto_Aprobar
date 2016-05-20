@@ -101,6 +101,8 @@ public:
 	*/
 	void consultar_frases(char &x, char &y);
 	
+	void consultar_cont_frase(map<int, Frase>& frases, char&x, char& y);
+	
 	/** @brief Mostra les frases que compleixen l'expressio
 		\pre <em>arriba una expressio</em>
 		\post mostra per pantalla les frases que compleixen l'expressio

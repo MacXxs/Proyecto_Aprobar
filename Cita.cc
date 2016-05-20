@@ -7,12 +7,13 @@ Cita::Cita() {
 
 Cita::~Cita() {}
 
-void Cita::crear_cita(string& referencia, char& x, char& y, string& autor, string& Titol) {
+void Cita::crear_cita(string& referencia, char& x, char& y, string& autor, string& Titol, map<int, Frase>& frases) {
 	this->referencia = referencia;
 	this->autor = autor;
 	this->Titol = Titol;
 	numini = x - '0';
 	numfin = y - '0';
+	this->frases = frases;
 }
 
 string Cita::consultar_autor() const {
@@ -37,4 +38,10 @@ int Cita::consultar_numfin() const {
 
 void Cita::escriure() {
 	cout << referencia << endl;
+}
+
+void escriure_frases_cita() {
+	for (map<int, Frase>::iterator it = frases.begin(); it != frases.end(); ++it) {
+		cout << it->first << ' ' << it->second.escriure() << endl;
+	}
 }

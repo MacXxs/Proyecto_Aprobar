@@ -42,7 +42,7 @@ public:
 		\pre <em>tenim una cita</em>
 		\post modifiquem els valors implicits de la cita
 	*/
-	void crear_cita(string &referencia, char& x, char& y, string& autor, string& titol);
+	void crear_cita(string &referencia, char& x, char& y, string& autor, string& titol, map<int, Frase>& frases);
 	
 	
 	//Consultores
@@ -71,7 +71,7 @@ public:
 	*/
 	int consultar_numini() const;
 	
-	/** @brief Mostra el el nombre de linia on es troba la ultima frase de la cita
+	/** @brief Mostra el nombre de linia on es troba la ultima frase de la cita
 		\pre <em>cert</em>
 		\post el resultat es el nombre de linia on es troba la ultima frase de la cita
 	*/
@@ -90,6 +90,9 @@ public:
 		\post escriu per pantalla la referencia de la cita
 	*/
 	void escriure();
+	
+	
+	void escriure_frases_cita();
     
 private:
     string autor;

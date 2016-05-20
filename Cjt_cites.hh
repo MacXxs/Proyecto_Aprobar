@@ -56,7 +56,7 @@ public:
 		\post es mostra informacio de la cita referenciada (autor, titol, numero de la frase 
 			  inicial i numero de la frase final, contingut de la frase o frases que la componen).
 	*/
-	void info_cita(Cjt_textos& textos, string& referencia);
+	void info_cita(string& referencia);
 	
 	/** @brief Mostra tota la informacio d'un text
 		\pre <em>cert</em>
@@ -69,7 +69,7 @@ public:
 		\post mostra totes les cites emmagatzemades en el sistema (referencia, contingut de les frases,
 			  autor i titol del text)
 	*/
-	void totes_cites(Cjt_textos& textos);
+	void totes_cites();
 	
 	/** @brief Mostra les cites d'un autor
 		\pre <em>el text conte cites</em>

@@ -97,6 +97,8 @@ public:
 	*/
 	void consultar_frases(char &x, char &y);
 	
+	void consultar_cont_frases(map<int, Frase>& frases, char& x, char& y);
+	
 	/** @brief Mostra les frases del contingut de l'ultim text triat que compleixin l'expressio
 		\pre <em>tenim un text triat i es passa una expressio</em>
 		\post es crida a la funcio frases de la classe Texto

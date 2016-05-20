@@ -92,6 +92,15 @@ void Texto::consultar_frases(char &x, char &y){
 	}
 }
 
+void consultar_cont_frase(map<int, Frase>& frases, char& x, char& y) {
+	int aux = x - '0';
+	int auy = y - '0';
+	for (int i = 0; i < auy - aux; ++i) {
+		frases.insert(make_pair(aux + i, map_frases[aux+i]));
+		}
+	}
+}
+
 //void Texto::frases(string& expres);
 		
 void Texto::taula_freq(){
