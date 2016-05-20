@@ -3,6 +3,7 @@
 
 Cjt_cites::Cjt_cites() {
 	//cites = map<string, Cita>;
+	//map<string, int> referencies;
 }
 
 Cjt_cites::~Cjt_cites() {}
@@ -12,14 +13,12 @@ void Cjt_cites::afegir_cita(Cjt_textos& textos, char& x, char& y) {
 	string autor, titol, a, ref;
 	autor = textos.consultar_autor();
 	istringstream iss(autor);
-	while (iss>>a){
-		if (a[0] >= 'a' and a[0] <= 'z') ref.push_back(a[0] - 32);
-		else ref.push_back(a[0]);
-	}	
-	map<string,int>::iterator it = referencies.find(ref);
-	if (it != referencies.end(){
-		++(*it).second;
-		num_ref = (*it).second;
+	while (iss>>a) ref.push_back(a[0]);
+	int num_ref;
+	map<string,int>::iterator it2 = referencies.find(ref);
+	if (it2 != referencies.end())	{
+		++(*it2).second;
+		num_ref = (*it2).second;
 	}
 	else {
 		num_ref = 1;
@@ -33,63 +32,57 @@ void Cjt_cites::afegir_cita(Cjt_textos& textos, char& x, char& y) {
 }
 
 void Cjt_cites::eliminar_cita(string& referencia) {
-	map<string, Cita>::const_iterator it = cites.find(referencia);
+	map<string, Cita>::iterator it = cites.find(referencia);
 	if (it != cites.end()) cites.erase(it);
 	else cout << "error" << endl;
 }
 
-void Cjt_cites::info_cita(string& referencia) {
-	map<string, Cita>::const_iterator it = cites.find(referencia);
+void Cjt_cites::info_cita(Cjt_textos& textos, string& referencia) {
+	map<string, Cita>::iterator it = cites.find(referencia);
 	if (it != cites.end()) {
-		cout << it->second.autor << ' ' << it->second.titol << endl;
-		cout << it->second.numini << '-' << it->second.numfin << endl;
-
-		//escribir las frases
+		cout << it->second.consultar_autor() << ' ' << it->second.consultar_titol() << endl;
+		cout << it->second.consultar_numini() << '-' << it->second.consultar_numfin() << endl;
+		textos.consultar_frases(it->second.consultar_numini(),it->second.consultar_numfin());
 	}
 }
 
-/*void Cjt_cites::info() {
+void Cjt_cites::info(Cjt_textos& textos){
+	textos.info();
+	cout << "Cites associades:" << endl;
+	string aut = textos.consultar_autor();
+	istringstream iss(aut);
+	string ref;
+	while(iss>>aut) ref.push_back(aut[0]);
+	int top = referencies[aut];
+	ref.push_back('1');
+	map<string,Cita>::iterator it = cites.find(ref); 
+	for(int i = 0; i < top; ++i){
+		if (it->second.consultar_autor() == aut){
+			cout << ref << endl;
+			textos.consultar_frases(it->second.consultar_numfin(),it->second.consultar_numfin());
+		}
+	}
+}
 
-}*/
-
-void Cjt_cites::totes_cites() {
-	for (map<string, Cita>::const_iterator it = cites.begin(); it != cites.end(); ++it) {
+void Cjt_cites::totes_cites(Cjt_textos& textos) {
+	for (map<string, Cita>::iterator it = cites.begin(); it != cites.end(); ++it) {
 		cout << it->first << endl;
-		//escribir linea de la frase y el contenido de la cita
-		cout << it->second.autor << ' ' << it->second.titiol << endl;
+		textos.consultar_frases(it->second.consultar_numini(),it->second.consultar_numfin());
+		cout << it->second.consultar_autor() << ' ' << it->second.consultar_titol() << endl;
 	}
 }
 
 void Cjt_cites::cites_autor(string& aut) {
-	string m, referencia_aux, refer_aux_2;
+	string m, ref;
 	istringstream iss(aut);
-	while (iss >> m) {
-		//ho mirem per si hi ha casos com Alissa von Bismark
-		if (m[0] >= 'a' and m[0] <= 'a') referencia_aux.push_back(m[0] - 32)
-		else referencia_aux.push_back(m[0]); 
-		//tenemos guardada la referencia con las iniciales del autor
-	}
-
-	map<string, int>::const_iterator it1 = referencies.find(referencia_aux);
-	if (it1 != referencies.end()) {
-		string aux;
-		ostringstream convert;
-		convert << it1->second;
-		aux = convert.str(); //tenim el numero de la referencia en un string
-		referencia_aux = it1->first;
-		refer_aux_2 = it1->first;
-		refer_aux_2.insert(refer_aux_2.end(), 1);
-		referencia_aux.insert(referencia_aux.end(), aux); //tenim la referencia completa
-	}
-
-	map<string, Cita>::const_iterator it2 = cites.find(refer_aux_2);
-	map<string, Cita>::const_iterator it3 = cites.find(referencia_aux);
-	while (it2 <= it3) {
-		if (it2->second.autor == aut) {
-			cout << it2->second.referencia << endl;
-			//escribir frases
-			cout << it2->second.autor << ' ' << it2->second.titol << endl;
+	while (iss >> m) ref.push_back(m[0]); 
+	ref.push_back('1');
+	int top = referencies[aut];
+	map<string,Cita>::iterator it = cites.find(ref);
+	for (int i = 1; i <= top; ++i){
+		if(it->second.consultar_autor() == aut){
+			cout << it->first << endl;
+			it->second.consultar_frases();
 		}
-		++it2;
 	}
 }

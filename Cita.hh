@@ -5,7 +5,10 @@
 #ifndef CITA_HH
 #define CITA_HH
 
+#include "Frase.hh"
+
 #ifndef NO_DIAGRAM
+#include <iostream>
 #include <string>
 #include <vector>
 using namespace std;
@@ -39,7 +42,7 @@ public:
 		\pre <em>tenim una cita</em>
 		\post modifiquem els valors implicits de la cita
 	*/
-    void crear_cita(string &referencia, char& x, char& y, string& autor, string& titol);
+	void crear_cita(string &referencia, char& x, char& y, string& autor, string& titol);
 	
 	
 	//Consultores
@@ -73,7 +76,7 @@ public:
 		\post el resultat es el nombre de linia on es troba la ultima frase de la cita
 	*/
 	int consultar_numfin() const;
-
+	
 	/** @brief Mostra el el nombre de linia on es troba la ultima frase de la cita
 		\pre <em>cert</em>
 		\post el resultat es el nombre de linia on es troba la ultima frase de la cita
@@ -87,7 +90,6 @@ public:
 		\post escriu per pantalla la referencia de la cita
 	*/
 	void escriure();
-	
     
 private:
     string autor;
@@ -95,6 +97,7 @@ private:
     int numini; //numero frase inicial
     int numfin; //numero frase final
     string referencia; //referencia de la cita
+    map<int,Frase> frases;
 };
 
 #endif

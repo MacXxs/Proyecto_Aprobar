@@ -50,13 +50,6 @@ public:
 	*/
 	void substituir(string &par1, string &par2);
 	
-	/* /** @brief Afegeix una cita
-		\pre <em>arriben dos caracters x i y, i hi ha un text triat</em>
-		\post s'afegeix una cita basada en les frases que van de la x-esima a la y-esima del 
-	 	contingut del text amb la referencia passada pel primer parametre (es crida a la funcio
-	 	crear_cita de la classe Cita.hh
-	*/	
-	
 	/** @brief Contador del nombre de cites
 		\pre <em>cert</em>
 		\post augmentem en un el nombre de cites

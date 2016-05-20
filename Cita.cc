@@ -1,4 +1,5 @@
 #include "Cita.hh"
+#include <iostream>
 
 Cita::Cita() {
 	numini = numfin = 0;
@@ -6,10 +7,10 @@ Cita::Cita() {
 
 Cita::~Cita() {}
 
-void Cita::crear_cita(string& referencia, char& x, char& y, string& autor, string& titol) {
+void Cita::crear_cita(string& referencia, char& x, char& y, string& autor, string& Titol) {
 	this->referencia = referencia;
 	this->autor = autor;
-	this->titol = titol;
+	this->Titol = Titol;
 	numini = x - '0';
 	numfin = y - '0';
 }
@@ -23,7 +24,7 @@ string Cita::consultar_referencia() const {
 }
 
 string Cita::consultar_titol() const {
-	return titol;
+	return Titol;
 }
 
 int Cita::consultar_numini() const {
