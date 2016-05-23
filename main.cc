@@ -26,14 +26,13 @@ int main(){
 			}
 			else {
 				iss >> m;
-				char x = m[0];
+				int x = atoi(m.c_str());
 				iss >> m;
-				char y = m[0];
+				int y = atoi(m.c_str());
 				cites.afegir_cita(textos,x,y);
 			}
 		}
 		else if (m == "triar"){
-			cout << "triar text" << endl;
 			linia.erase(0,12);
 			linia.pop_back();
 			textos.triar_text(linia);
@@ -83,9 +82,9 @@ int main(){
 		else if (m == "frases"){
 			iss >> m;
 			if (m[0] > '0' and m[0] < '9'){
-				char x = m[0];
+				int x = atoi(m.c_str());
 				iss >> m;
-				char y = m[0];
+				int y = atoi(m.c_str());
 				textos.consultar_frases(x,y);
 			}
 			//else textos.frases(m);

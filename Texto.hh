@@ -99,9 +99,9 @@ public:
 		\pre <em>arriben dos caracters x i y</em>
 		\post mostra per pantalla les frases entre la x-essima i la y-essima del contingut del text
 	*/
-	void consultar_frases(char &x, char &y);
+	void consultar_frases(int &x, int &y);
 	
-	void consultar_cont_frases(map<int, Frase>& frases, char&x, char& y);
+	void consultar_cont_frases(map<int, Frase>& frases, int& x, int& y);
 	
 	/** @brief Mostra les frases que compleixen l'expressio
 		\pre <em>arriba una expressio</em>

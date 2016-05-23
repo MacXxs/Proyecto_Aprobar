@@ -57,7 +57,7 @@ public:
 		\pre <em>arriben dos caracters x i y</em>
 		\post es crida a les funcions consultar_frases i augmentar_numcites de la classe Texto
 	*/
-    void afegir_cita(char& x, char& y);
+    void afegir_cita(int& x, int& y);
 	
 	//Consultores
 	
@@ -95,9 +95,9 @@ public:
 		\pre <em>tenim un text triat i es passen uns valors x i y</em>
 		\post es crida a la funcio consultar_frases de la classe Texto per a l'ultim text triat
 	*/
-	void consultar_frases(char &x, char &y);
+	void consultar_frases(int &x, int &y);
 	
-	void consultar_cont_frases(map<int, Frase>& frases, char& x, char& y);
+	void consultar_cont_frases(map<int, Frase>& frases, int& x, int& y);
 	
 	/** @brief Mostra les frases del contingut de l'ultim text triat que compleixin l'expressio
 		\pre <em>tenim un text triat i es passa una expressio</em>

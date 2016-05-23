@@ -25,7 +25,7 @@ void Cjt_textos::substituir(string &par1, string &par2){
 	it2->second.substituir(par1,par2);
 }
 
-void Cjt_textos::afegir_cita(char& x, char& y){
+void Cjt_textos::afegir_cita(int& x, int& y){
 	it2->second.consultar_frases(x,y);
 	it2->second.augmentar_numcites();
 }
@@ -49,11 +49,11 @@ void Cjt_textos::consultar_nump(){
 	cout << it2->second.consultar_nump() << endl;
 }
 
-void Cjt_textos::consultar_frases(char& x, char& y){
+void Cjt_textos::consultar_frases(int& x, int& y){
 	it2->second.consultar_frases(x,y);
 }
 
-void Cjt_textos::consultar_cont_frases(map<int, Frase>& frases, char& x, char& y) {
+void Cjt_textos::consultar_cont_frases(map<int, Frase>& frases, int& x, int& y) {
 	it2->second.consultar_cont_frases(frases, x, y);
 }
 
@@ -72,17 +72,19 @@ void Cjt_textos::triar_text(string &paraules){
 	set<string> p;
 	string paraula;
 	while (iss >> paraula) p.insert(paraula);
-	int trobats = 0;
+	int trobats = 0, t;
 	map<string,map<string,Texto> >::iterator it = textos.begin();
 	map<string,Texto>::iterator it2;
 	while (it != textos.end() and trobats < 2){
 		it2 = it->second.begin();
 		while (it2 != it->second.end() and trobats < 2){
-			trobats += it2->second.triar_text(p);
-			if (trobats == 1){
+			t = it2->second.triar_text(p);
+			trobats += t;
+			if (t == 1){
 				this->it = it;
 				this->it2 = it2;
 			}
+			t = 0;
 			++it2;
 		}
 		++it;

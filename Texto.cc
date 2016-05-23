@@ -78,22 +78,17 @@ int Texto::consultar_nump(){
 	return nump;
 }
 
-void Texto::consultar_frases(char &x, char &y){
-	int aux = x-'0';
-	int auy = y-'0';
-	for(int i = 0; i < auy - aux; ++i){
-		cout << aux + i << ' ';
-		for(int j = aux - 1; j < auy; ++j){
-			map_frases[j].escriure();
-		}
+void Texto::consultar_frases(int &x, int &y){
+	for(int i = 0; i < y - x; ++i){
+		cout << x + i << ' ';
+		map_frases[x+i].escriure();
+		cout << endl;
 	}
 }
 
-void Texto::consultar_cont_frases(map<int, Frase>& frases, char& x, char& y) {
-	int aux = x - '0';
-	int auy = y - '0';
-	for (int i = 0; i < auy - aux; ++i) {
-		frases.insert(make_pair(aux + i, map_frases[aux+i]));
+void Texto::consultar_cont_frases(map<int, Frase>& frases, int& x, int& y) {
+	for (int i = 0; i < y - x; ++i) {
+		frases.insert(make_pair(x + i, map_frases[x+i]));
 	}
 }
 

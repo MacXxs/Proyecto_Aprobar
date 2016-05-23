@@ -40,7 +40,7 @@ public:
 	 		  al sistema basada en les frases que van de la x-esima a la y-esima del contingut de 
 			  l'ultim text triat
 	*/
-	void afegir_cita(Cjt_textos& textos, char &x, char &y);
+	void afegir_cita(Cjt_textos& textos, int &x, int &y);
 	
 	/** @brief Elimina una cita
 		\pre <em>hi ha una referencia amb referencia = refer</em>

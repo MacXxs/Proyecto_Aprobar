@@ -8,7 +8,7 @@ Cjt_cites::Cjt_cites() {
 
 Cjt_cites::~Cjt_cites() {}
 
-void Cjt_cites::afegir_cita(Cjt_textos& textos, char& x, char& y) {
+void Cjt_cites::afegir_cita(Cjt_textos& textos, int& x, int& y) {
 	map<string,Texto>::iterator it = textos.text_actual();
 	string autor, titol, a, ref;
 	autor = textos.consultar_autor();
