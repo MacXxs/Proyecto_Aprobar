@@ -20,7 +20,7 @@ void Frase::triar_text(set<string>& paraules){
 	string par;
 	for (int i = 0; i < n_paraules and not paraules.empty(); ++i){
 		par = frase[i];
-		if (par[par.size()-1] < 'A' or par[par.size()-1] > 'z') par.pop_back();
+		if (par[par.size()-1] < 'A') par.pop_back();
 		it = paraules.find(par);
 		if (it != paraules.end()) paraules.erase(it);
 	}
@@ -31,7 +31,7 @@ void Frase::substituir_paraula(string& a, string& b, int& par_subs) {
 	for (int i = 0; i < n_paraules; ++i) {
 		string aux;
 		char last;
-		if (frase[i][frase[i].size()-1] >= 'a' and frase[i][frase[i].size()-1] <= 'z') { //l'ultim char esta entre la a i la z 
+		if (frase[i][frase[i].size()-1] >= 'A') { //l'ultim char es o una vocal o una consonant
 			if (a == frase[i]){
 				frase[i] = b;
 				++par_subs;
@@ -65,6 +65,7 @@ void Frase::llegir(string& frase, int& nump) {
 	while(iss >> paraula){
 		this->frase.push_back(paraula);
 		++nump;
+		++n_paraules;
 	}
 }
 

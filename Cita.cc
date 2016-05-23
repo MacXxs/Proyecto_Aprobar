@@ -1,6 +1,4 @@
 #include"Cita.hh"
-#include <map>
-#include "Frase.hh"
 
 using namespace std;
 
@@ -44,7 +42,9 @@ void Cita::escriure() {
 }
 
 void Cita::escriure_frases_cita() {
-	for (map<int, Frase>::iterator it = frases.begin(); it != frases.end(); ++it) {
-		cout << it->first << ' ' << it->second.escriure() << endl;
+	map<int, Frase>::iterator it = frases.begin();
+	while (it != frases.end()){
+		cout << it->first << ' ';
+		it->second.escriure();
 	}
 }

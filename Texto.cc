@@ -32,24 +32,21 @@ void Texto::substituir(string &par1, string &par2){
 	int par_subs = 0;
     for(int i = 0; i < map_frases.size(); ++i)
 		map_frases[i].substituir_paraula(par1,par2,par_subs);
-	int pos_par1;
+	int pos_par1 = -1;
 	bool par2_trobada = false;
-	for(int i = 0;  i < parfreq.size(); ++i){
-		if (parfreq[i].first == par1){
-			parfreq[i].second -= par_subs;
-			pos_par1 = i;
-		}
+	for(int i = 0;  i < parfreq.size() and (pos_par1 == -1 or not par2_trobada); ++i){
+		if (parfreq[i].first == par1) pos_par1 = i;
 		else if (parfreq[i].first == par2){
 			parfreq[i].second += par_subs;
 			par2_trobada = true;
 		}
     }
     if (pos_par1 != -1){
-		if (parfreq[pos_par1].second < 1) parfreq.erase(parfreq.begin() + pos_par1);
-	}
-	else if (not par2_trobada){
-		parfreq.insert(parfreq.begin(),make_pair(par2,par_subs));
-		sort(parfreq.begin(),parfreq.end(),comp);
+		parfreq.erase(parfreq.begin() + pos_par1);
+		if (not par2_trobada){
+			parfreq.insert(parfreq.begin(),make_pair(par2,par_subs));
+			sort(parfreq.begin(),parfreq.end(),comp);
+		}
 	}
 }
 
@@ -78,7 +75,7 @@ int Texto::consultar_numf(){
 }
 
 int Texto::consultar_nump(){
-	return parfreq.size();
+	return nump;
 }
 
 void Texto::consultar_frases(char &x, char &y){
@@ -92,12 +89,11 @@ void Texto::consultar_frases(char &x, char &y){
 	}
 }
 
-void consultar_cont_frase(map<int, Frase>& frases, char& x, char& y) {
+void Texto::consultar_cont_frases(map<int, Frase>& frases, char& x, char& y) {
 	int aux = x - '0';
 	int auy = y - '0';
 	for (int i = 0; i < auy - aux; ++i) {
 		frases.insert(make_pair(aux + i, map_frases[aux+i]));
-		}
 	}
 }
 
@@ -130,7 +126,7 @@ void Texto::llegir(string& titol, string& autor, string& contingut){
 	this->autor = autor;
 	bool buscar = true;
 	size_t pos, posp, pose, posi;
-	int count = 1;
+	int count = 1, nump = 0;
 	while (buscar){ 
 		posp = contingut.find('.');
 		pose = contingut.find('!');
@@ -153,23 +149,34 @@ void Texto::llegir(string& titol, string& autor, string& contingut){
 			map_frases[count].llegir(frase,nump);
 			++count;
 		}
+		this->nump = nump;
 	}
 }
 
 int Texto::triar_text(set<string> paraules){
 	istringstream a(autor);
 	istringstream t(titol);
-	string p;
+	string p, aux;
 	set<string>::iterator it;
 	while (a>>p){
-		it = paraules.find(p);
+		aux = p;
+		if (p[p.size()-1] < 'A'){
+			aux.pop_back();
+			it = paraules.find(aux);
+		}
+		else it = paraules.find(p);
 		if (it != paraules.end()) paraules.erase(it);
 	}
 	while (t>>p){
+		aux = p;
+		if (p[p.size()-1] < 'A'){
+			aux.pop_back();
+			it = paraules.find(aux);
+		}
 		it = paraules.find(p);
 		if (it != paraules.end()) paraules.erase(it);
 	}
-	for (int i = 1; i < map_frases.size() and not paraules.empty() != 0; ++i)
+	for (int i = 1; i <= map_frases.size() and not paraules.empty(); ++i)
 		map_frases[i].triar_text(paraules);
 	if (paraules.empty()) return 1;
 	else return 0;
