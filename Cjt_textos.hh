@@ -1,27 +1,37 @@
+/** @file Cjt_textos.hh
+	@brief Especificació de la classe Cjt_textos
+*/
+
 #ifndef CONJ_TEXTOS_HH
 #define CONJ_TEXTOS_HH
 
-#include<Texto.hh>
+#include "Texto.hh"
 
-#include<map>
+#ifndef NO_DIAGRAM
+#include <map>
+#include <string>
+#include <set>
+#include <sstream>
+#endif
+
+
+/** @class Cjt_textos
+	@brief Representa un conjunt de tots els textos
+*/
 
 class Cjt_textos {
-	//Tipus de modul: dades
-	//Descripcio del tipus:
-
-
-private:
-	map<Autor,set<Texto> > textos;       //mapa de textos ordenats per autor
-	map<Autor,set<Texto> >::iterator it; //iterator que apunta al ultim text triat
-	
 
 public:
 
-	//Creadora
+	//Constructora
 
+	
+	/** @brief Creadora per defecte
+		S'executa automàticament al declarar un conjunt
+		\pre <em>cert</em>
+		\post El resultat es un conjunt de textos buit
+	*/
 	Cjt_textos();
-	/*Pre: cert*/
-	/*Post: el resultat es un conjunt de textos buit*/
 
 	//Destructora
 	
@@ -29,111 +39,135 @@ public:
 
 	//Modificadores
 	
-	void llegir_tot(string &titol, string &autor, string &text);
-	/*pre cert
-	 \post es crida a la funcio llegir_titol, llegir_autor, llegir_text de la classe Texto per afegir un titol al Text que s'esta tractant
+	/** @brief Elimina l'ultim text triat
+		\pre <em>tenim un text triat</em>
+		\post el text triat s'elimina i no hi ha un altre text triat 
+			  fins que no es torni a cridar a la funcio triar text
 	*/
-	
 	void eliminar_text();
-	/*pre hi ha un text triat
-	 \post el text triat s'elimina i no hi ha un altre text triat fins que no es torni a cridar a la funcio triar text
-	 */
 	
-	void eliminar_cita(string &referencia, Autor &autor);
-	/*pre hi ha un autor igual que el que es passa com a parametre
-	 \post es crida a la funcio eliminar cita de la classe Texto
-	 */
-	
+	/** @brief Canvia dues paraules
+		\pre <em>tenim un text triat</em>
+		\post es crida a la funcio substitur de la classe Texto per canviar totes les aparicions de la paraula
+                  par1 per par2
+	*/
 	void substituir(string &par1, string &par2);
-	/*pre hi ha un text triat
-	 \post es crida a la funcio substitur de la classe Texto per canviar totes les aparicions de la paraula
-	 par1 per par2
-	 */
-	
-	void afegir_cita(string &referencia, char &x, char &y);
-	/*pre arriben dos caracters x i y i una referencia
-	 \post es crida a la funcio afegir_cita de la classe Texto
-	 */
+    
+    /** @brief Afegeix una cita
+		\pre <em>arriben dos caracters x i y</em>
+		\post es crida a les funcions consultar_frases i augmentar_numcites de la classe Texto
+	*/
+    void afegir_cita(char& x, char& y);
 	
 	//Consultores
 	
-	void consultar_autor();
-	/*pre tenim un text triat
-	 \post es crida la funcio consultar_autor de la classe Texto de l'ultim text triat
-	 */
-	
-	void consultar_contingut();
-	/*pre tenim un text triat
-	 \post es crida a la funcio conultar_contingut de la classe Texto de l'ultim text triat
-	 */
-	
-	void consultar_numf();
-	/*pre tenim un text triat
-	 \post es crida a la funcio consultar_numf de la classe Texto de l'ultim text triat
-	 */
-	
-	void consultar_nump();
-	/*pre tenim un text triat
-	 \post es crida a la funcio consultar_nump de la classe Texto de l'ultim text triat
-	 */	
-	
-	void consultar_frases(char &x, char &y);
-	/*pre hi ha un text triat i es passen uns valors x i y
-	 \post es crida a la funcio consultar_frases de la classe Texto de l'ultim text triat
-	 */
-	
-	void cites_autor(string &autor); //mostra les cites d'un autor
-	/*pre rep el nom d'un autor
-	 \post es crida a la funcio cites_autor de la classe Texto
-	 */
-	
-	void cites();
-	/*pre hi ha un text triat
-	 \post crida a la funcio cites de cla classe Texto de lultim text triat
-	 */
-	
-	void frases(string &expres);
-	/*pre hi ha un text triat i es passa una expressio
-	 \post es crida a la funcio frases de la classe Texto de l'ultim text triat
-	 */
-	
-	void taula_freq();
-	/*pre hi ha un text triat
-	 /post es crida a la funcio taula_freq de la classe Texto de l'ultim text triat
-	 */
-	
-	map<Autor,set<Texto> >::iterator text_actual();
-	/*pre cert
-	 \post retorna un iterator apuntant al utlim text triat
+	/** @brief Consulta l'autor de l'ultim text triat
+		\pre <em>tenim un text triat</em>
+		\post retorna l'autor de l'ultim text triat
 	*/
+	string consultar_autor();
+	
+    /** @brief Consulta el titol de l'ultim text triat
+		\pre <em>tenim un text triat</em>
+		\post retorna el titol de l'ultim text triat
+	*/
+	string consultar_titol(); 
+	
+	/** @brief Consulta el contingut de l'ultim text triat
+		\pre <em>tenim un text triat</em>
+		\post es crida a la funcio conultar_contingut de la classe Texto per a l'ultim text triat
+	*/
+	void consultar_contingut();
+	
+	/** @brief Consulta el nombre de frases de l'ultim text triat
+		\pre <em>tenim un text triat</em>
+		\post treu per pantalla el resultat de cridar a la funcio de consultar_numf de la classe Texto per a l'ultim text triat
+	*/
+	void consultar_numf();
+	
+	/** @brief Consulta el nombre de paraules de l'ultim text triat
+		\pre <em>tenim un text triat</em>
+		\post treu per pantalla el resultat de cridar a la funcio de consultar_nump de la classe Texto per a l'ultim text triats
+	*/
+	void consultar_nump();
+	
+	/** @brief Consulta les frases entre x i y de l'ultim text triat
+		\pre <em>tenim un text triat i es passen uns valors x i y</em>
+		\post es crida a la funcio consultar_frases de la classe Texto per a l'ultim text triat
+	*/
+	void consultar_frases(char &x, char &y);
+	
+	void consultar_cont_frases(map<int, Frase>& frases, char& x, char& y);
+	
+	/** @brief Mostra les frases del contingut de l'ultim text triat que compleixin l'expressio
+		\pre <em>tenim un text triat i es passa una expressio</em>
+		\post es crida a la funcio frases de la classe Texto
+	*/
+	void frases(string &expres);
+	
+	/** @brief Mostra totes les paraules del contingut de l'ultim text triat
+		\pre <em>tenim un text triat</em>
+		\post es crida a la funcio taula_freq de la classe Texto per a l'ultim text triat
+	*/
+	void taula_freq();
+	
+	/** @brief Proporciona la posicio del text que volem escollir
+		\pre <em>cert</em>
+		\post retorna un iterator apuntant al utlim text triat
+	*/
+	map<string,Texto>::iterator text_actual();
 
+	/** @brief Tria un text
+		\pre <em>el paràmetre implícit conté els textos</em>
+		\post assigna el text que volem escollir
+	*/
 	void triar_text(string &paraules);
-	/*Pre: el paràmetre implícit conté els textos*/
-	/*Post: retorna el texto escogido*/
-
+	
+	/** @brief Mostra els textos d'un autor
+		\pre <em>arriba un autor
+		\post mostra tots els textos d'un determinat autor, 
+			ordenats alfabeticament per títol
+	*/
 	void textos_autor(string &autor);
-	/*Pre: */
-	/*Post: mostra tots els textos d'un determinat autor, 
-			ordenats alfabeticament per títol*/
-
-	void tots_textos();
-	/*Pre: cert*/
-	/*Post: mostra tots els textos del paràmetre implícit
+	
+	/** @brief Mostra els textos del conjunt
+		\pre <em>cert</em>
+		\post mostra tots els textos del paràmetre implícit
 			(només títol i autor de cada text), ordenats
-			per autor i després per títol*/
+			per autor i després per títol
+	*/
+	void tots_textos();
 	
-	void tots_autors();
-	/*Pre: cert*/
-	/*Post: mostra tots els autors (ordre alfabeticament) amb textos
-			del paràmetre implícit indicant el nombre de textos que hi consten,
+	/**@brief Mostra els autors del conjunt
+		\pre <em>cert</em>
+		\post mostra tots els autors (ordre alfabeticament) del paràmetre implícit
+			indicant el nombre de textos que hi consten,
 			el nombre total de frases i de paraules del 
-			contingut dels seus textos*/
+			contingut dels seus textos
+	*/
+	void tots_autors();
 	
+	/**@brief Mostra la informacio de l'ultim text triat
+		\pre <em>tenim un text triat</em>
+		\post treu per pantalla la informacio de l'ultim text triat (autor, titol, numf, nump)
+	*/
 	void info();
-	/*pre hi ha un text triat
-	 \post crida a la funcio info de la classe Texto de l'ultim text triat
-	 */
 
+    //Lectura
+    
+    /** @brief Llegeix un titol, un autor i un text
+		\pre <em>cert</em>
+		\post es crida a la funcio llegir de la classe Texto per afegir un Text al sistema.
+	*/
+	void llegir_tot(string &titol, string &autor, string &text);
+	
+    
+private:
+	map<string,map<string,Texto> > textos; //mapa de set de textos ordenat per autor i set ordenat per titol del text
+	map<string,map<string,Texto> >::iterator it; // iterador que apunta al conjunt de textos d'un autor
+	map<string,Texto>::iterator it2; //iterador que apunta al ultim text triat del conjunt de textos d'un autor
+	bool text_triat; 				
 
 };
+
 #endif
