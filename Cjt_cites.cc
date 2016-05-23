@@ -87,8 +87,9 @@ void Cjt_cites::cites_autor(string& aut) {
 	for (int i = 1; i <= top; ++i){
 		if(it->second.consultar_autor() == aut){
 			cout << it->first << endl; //escriu referencia
-			it->second.escriure_frases_cita; //escriu les frases de la cita
-			cout << it->second.consultar_titol << endl;
+			it->second.escriure_frases_cita(); //escriu les frases de la cita
+			cout << it->second.consultar_titol() << endl;
 		}
 	}
 }
+

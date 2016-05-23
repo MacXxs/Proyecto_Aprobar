@@ -18,6 +18,10 @@ void Cjt_textos::eliminar_text(){
 }
 
 void Cjt_textos::substituir(string &par1, string &par2){
+	par1.erase(0,1);
+	par1.pop_back();
+	par2.erase(0,1);
+	par2.pop_back();
 	it2->second.substituir(par1,par2);
 }
 
@@ -34,7 +38,7 @@ string Cjt_textos::consultar_titol(){
 }
 
 void Cjt_textos::consultar_contingut(){
-	it2->second.consultar_contingut();
+	if (text_triat) it2->second.consultar_contingut();
 }
 
 void Cjt_textos::consultar_numf(){
@@ -71,18 +75,19 @@ void Cjt_textos::triar_text(string &paraules){
 	int trobats = 0;
 	map<string,map<string,Texto> >::iterator it = textos.begin();
 	map<string,Texto>::iterator it2;
-	for(int i = 0; i < textos.size(); ++i){
+	while (it != textos.end() and trobats < 2){
 		it2 = it->second.begin();
-		for (int j = 0; j < it->second.size() and trobats < 2; ++j){
+		while (it2 != it->second.end() and trobats < 2){
 			trobats += it2->second.triar_text(p);
 			if (trobats == 1){
-				it = this->it;
-				it2 = this->it2;
+				this->it = it;
+				this->it2 = it2;
 			}
+			++it2;
 		}
 		++it;
 	}
-	if (trobats > 1 or trobats < 1) text_triat = true;
+	if (trobats == 1) text_triat = true;
 	else text_triat = false;
 }
 
@@ -118,8 +123,10 @@ void Cjt_textos::tots_autors(){
 			++t;
 			f += it2->second.consultar_numf();
 			p += it2->second.consultar_nump();
+			++it2;
 		}
 		cout << it->first << ' ' << t << ' ' << f << ' ' << p << endl;
+		++it;
 	}
 }
 

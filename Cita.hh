@@ -91,7 +91,6 @@ public:
 	*/
 	void escriure();
 	
-	
 	void escriure_frases_cita();
     
 private:
