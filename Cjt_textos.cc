@@ -109,7 +109,7 @@ void Cjt_textos::tots_textos(){
 	while (it != textos.end()){
 		it2 = it->second.begin();
 		while (it2 != it->second.end()){
-			cout << it->first << ' ' << it2->first << endl;
+			cout << it->first << " " << '"' << it2->first << '"' << endl;
 			++it2;
 		}
 		++it;
