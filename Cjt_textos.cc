@@ -57,7 +57,9 @@ void Cjt_textos::consultar_cont_frases(map<int, Frase>& frases, int& x, int& y) 
 	it2->second.consultar_cont_frases(frases, x, y);
 }
 
-//void Cjt_textos::frases(string &expres); 
+void Cjt_textos::frases(string &expres){
+	it2->second.recur(expres);
+}
 
 void Cjt_textos::taula_freq(){
 	it2->second.taula_freq();

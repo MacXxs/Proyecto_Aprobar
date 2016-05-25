@@ -47,6 +47,8 @@ public:
 	
 	void triar_text(set<string>& paraules); //consulta si a la frase hi ha alguna o totes les paraules del text, en cas afirmatiu la/les elimina del set
 	
+	void buscar_par(string& p, bool& b); //Posa b = true si totes les paraules passades per parametre estan en la Frase	
+	
 	//Modificadora
 
 	/** @brief S'intercanvien dues paraules
@@ -72,7 +74,7 @@ public:
 		\post escriu per pantalla la frase
 	*/
 	void escriure() const;
-
+	
 private:
 	vector<string> frase;
 	int n_paraules;

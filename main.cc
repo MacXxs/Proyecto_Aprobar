@@ -87,7 +87,11 @@ int main(){
 				int y = atoi(m.c_str());
 				textos.consultar_frases(x,y);
 			}
-			//else textos.frases(m);
+			else{
+				linia.erase(0,7);
+				linia.pop_back();
+				textos.frases(linia);
+			}
 		}
 		else if (m == "nombre"){
 			iss >> m;

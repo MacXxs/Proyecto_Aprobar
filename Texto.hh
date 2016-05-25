@@ -128,6 +128,8 @@ public:
         \post ordena el conjunt en funcio del titol del text
     */
 	bool operator<(const Texto &t) const; //ordena en funcio del titol del text.
+	
+	void recur(string& expres); //crida a la funcio recur_im per cada frase del text amb la expressio expres
 
 	//Lectura
 
@@ -145,6 +147,7 @@ private:
 	map<int,Frase> map_frases; //vector que conte totes las frases del text
 	int numcites;         //nombre de cites associades a aquest text
 	int nump;             //nombtr de paraules del text
+	void recur_im(string& expres, int& pos, bool& b, Frase& f); //funcio recursiva que mira si la expresio expres que es compleix per la frase f
 };
 
 #endif

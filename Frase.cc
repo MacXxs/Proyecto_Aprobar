@@ -25,6 +25,15 @@ void Frase::triar_text(set<string>& paraules){
 		if (it != paraules.end()) paraules.erase(it);
 	}
 }
+
+void Frase::buscar_par(string& p, bool& b) {
+	b = false;
+	for (int i = 0; i < frase.size() and not b; ++i){
+		string aux = frase[i];
+		if (aux[aux.size()-1] < 'A') aux.pop_back();
+		b = aux == p;
+	}
+}
 		
 
 void Frase::substituir_paraula(string& a, string& b, int& par_subs) {
