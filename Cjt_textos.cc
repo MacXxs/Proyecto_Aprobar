@@ -91,11 +91,15 @@ void Cjt_textos::triar_text(string &paraules){
 		}
 		++it;
 	}
-	if (trobats == 1) text_triat = true;
+	if (trobats == 1) {
+		text_triat = true;
+		taula_freq();
+	}
 	else text_triat = false;
 }
 
 void Cjt_textos::textos_autor(string &autor){
+	cout << autor << endl;
 	map<string,Texto>::iterator it = textos[autor].begin();
 	while (it != textos[autor].end()){
 		cout << it->first << endl;
@@ -138,9 +142,20 @@ void Cjt_textos::info(){
 	cout << it->first << ' ' << it2->first << ' ' << it2->second.consultar_numf() << ' ' << it2->second.consultar_nump() << endl;
 }
 
+void Cjt_textos::consultar_taula_freq(){
+	if (text_triat) it2->second.consultar_taula_freq();
+}
 void Cjt_textos::llegir_tot(string &titol, string &autor, string &text){
 	Texto Text;
-	Text.llegir(titol,autor,text);
-	textos[autor][titol] = Text;
+	if (textos.find(autor) != textos.end()){
+		if (textos[autor].find(titol) == textos[autor].end()){
+			Text.llegir(titol,autor,text);
+			textos[autor][titol] = Text;
+		}
+	}
+	else {
+		Text.llegir(titol,autor,text);
+		textos[autor][titol] = Text;
+	}
 }
 

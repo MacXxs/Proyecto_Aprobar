@@ -51,8 +51,8 @@ void Frase::substituir_paraula(string& a, string& b, int& par_subs) {
 			aux.pop_back();
 			if (a == aux) {
 				last = frase[i][frase[i].size() - 1];
-				b.push_back(last);
 				frase[i] = b;
+				frase[i].push_back(last);
 				++par_subs;
 			}
 		}
@@ -61,10 +61,13 @@ void Frase::substituir_paraula(string& a, string& b, int& par_subs) {
 
 void Frase::taula_freq(map<string,int>& a){
 	map<string,int>::iterator it;
+	string aux;
 	for(int i = 0; i < n_paraules; ++i){
-		it = a.find(frase[i]);
-		if (it != a.end()) it->second;
-		else a[frase[i]] = 1;
+		aux = frase[i];
+		if (aux[aux.size()-1] < 'A') aux.pop_back();
+		it = a.find(aux);
+		if (it != a.end()) ++it->second;
+		else a[aux] = 1;
 	}
 }
 

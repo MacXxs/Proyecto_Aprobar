@@ -152,6 +152,8 @@ public:
 		\post treu per pantalla la informacio de l'ultim text triat (autor, titol, numf, nump)
 	*/
 	void info();
+	
+	void consultar_taula_freq(); //si hi ha un text triat es mostra la taula de frequencies
 
     //Lectura
     

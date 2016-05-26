@@ -116,6 +116,8 @@ public:
 	*/
 	void taula_freq();
 	
+	void consultar_taula_freq(); //Es mostra la taula de frequencies
+	
      /** @brief Indica si les paraules estan al text, titol o autor del text
 		\pre <em>arriba una sequencia de paraules</em>
 		\post retorna 1 si totes les paraules del set de paraules

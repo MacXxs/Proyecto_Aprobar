@@ -2,7 +2,7 @@
 
 bool comp(const pair<string,int>& a, const pair<string,int>& b){
 	if (a.second != b.second) return a.second > b.second;
-	else if (a.first.length() != b.first.length()) return a.first.length() > a.first.length();
+	else if (a.first.length() != b.first.length()) return a.first.length() < b.first.length();
 	else return a.first < b.first;
 }
 
@@ -30,7 +30,7 @@ Texto::~Texto(){
 
 void Texto::substituir(string &par1, string &par2){
 	int par_subs = 0;
-    for(int i = 0; i < map_frases.size(); ++i)
+    for(int i = 1; i <= map_frases.size(); ++i)
 		map_frases[i].substituir_paraula(par1,par2,par_subs);
 	int pos_par1 = -1;
 	bool par2_trobada = false;
@@ -145,7 +145,7 @@ void Texto::recur_im(string& exp, int& pos, bool& b, Frase& f){
 
 void Texto::taula_freq(){
 	map<string,int> a;
-	for(int i = 0; i < map_frases.size(); ++i){
+	for(int i = 1; i <= map_frases.size(); ++i){
 		map_frases[i].taula_freq(a);
 	}
 	map<string,int>::iterator it = a.begin();
@@ -154,6 +154,12 @@ void Texto::taula_freq(){
 		++it;
 	}
 	sort(parfreq.begin(),parfreq.end(),comp);
+}
+
+void Texto::consultar_taula_freq(){
+	for (int i = 0; i < parfreq.size(); ++i){
+		cout << parfreq[i].first << ' ' << parfreq[i].second << endl;
+	}
 }
 
 bool Texto::operator<(const Texto &t) const{
