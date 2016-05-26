@@ -8,7 +8,7 @@ Cjt_cites::Cjt_cites() {
 
 Cjt_cites::~Cjt_cites() {}
 
-void Cjt_cites::afegir_cita(Cjt_textos& textos, char& x, char& y) {
+void Cjt_cites::afegir_cita(Cjt_textos& textos, int& x, int& y) {
 	map<string,Texto>::iterator it = textos.text_actual();
 	string autor, titol, a, ref;
 	autor = textos.consultar_autor();
@@ -36,15 +36,20 @@ void Cjt_cites::afegir_cita(Cjt_textos& textos, char& x, char& y) {
 }
 
 void Cjt_cites::eliminar_cita(string& referencia) {
+    referencia.erase(referencia.begin());
+    referencia.pop_back();
 	map<string, Cita>::iterator it = cites.find(referencia);
 	if (it != cites.end()) cites.erase(it);
 	else cout << "error" << endl;
 }
 
 void Cjt_cites::info_cita(string& referencia) {
+    referencia.erase(referencia.begin());
+    referencia.pop_back();
+    //hem eliminat les comilles
 	map<string, Cita>::iterator it = cites.find(referencia);
 	if (it != cites.end()) {
-		cout << it->second.consultar_autor() << ' ' << it->second.consultar_titol() << endl;
+		cout << it->second.consultar_autor() << ' ' << '"' << it->second.consultar_titol() << '"' << endl;
 		cout << it->second.consultar_numini() << '-' << it->second.consultar_numfin() << endl;
 		it->second.escriure_frases_cita();
 	}
@@ -73,22 +78,23 @@ void Cjt_cites::totes_cites() {
 	for (map<string, Cita>::iterator it = cites.begin(); it != cites.end(); ++it) {
 		cout << it->first << endl;
 		it->second.escriure_frases_cita();
-		cout << it->second.consultar_autor() << ' ' << it->second.consultar_titol() << endl;
+		cout << it->second.consultar_autor() << ' ' << '"' << it->second.consultar_titol() << '"' << endl;
 	}
 }
 
 void Cjt_cites::cites_autor(string& aut) {
-	string m, ref, refe1;
+    string m, ref, refe1;
 	istringstream iss(aut);
 	while (iss >> m) ref.push_back(m[0]); 
+    refe1 = ref;
 	ref.push_back('1');
-	int top = referencies[aut];
+	int top = referencies[refe1];
 	map<string,Cita>::iterator it = cites.find(ref);
 	for (int i = 1; i <= top; ++i){
 		if(it->second.consultar_autor() == aut){
 			cout << it->first << endl; //escriu referencia
 			it->second.escriure_frases_cita(); //escriu les frases de la cita
-			cout << it->second.consultar_titol() << endl;
+			cout << '"' << it->second.consultar_titol() << '"' << endl;
 		}
 	}
 }

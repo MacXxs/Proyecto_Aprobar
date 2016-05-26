@@ -45,7 +45,14 @@ public:
 	*/	
 	int paraules() const;
 	
+    
 	void triar_text(set<string>& paraules); //consulta si a la frase hi ha alguna o totes les paraules del text, en cas afirmatiu la/les elimina del set
+	
+    /** @brief Mira si les paraules hi son a la Frase
+        \pre <em>ens arriba un conjunt de paraules</em>
+        \post b es true si es troben totes les paraules del connjunt a la frase
+    */
+	void buscar_par(string& p, bool& b); //Posa b = true si totes les paraules passades per parametre estan en la Frase	
 	
 	//Modificadora
 
@@ -72,7 +79,7 @@ public:
 		\post escriu per pantalla la frase
 	*/
 	void escriure() const;
-
+	
 private:
 	vector<string> frase;
 	int n_paraules;

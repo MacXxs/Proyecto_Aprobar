@@ -25,7 +25,7 @@ void Cjt_textos::substituir(string &par1, string &par2){
 	it2->second.substituir(par1,par2);
 }
 
-void Cjt_textos::afegir_cita(char& x, char& y){
+void Cjt_textos::afegir_cita(int& x, int& y){
 	it2->second.consultar_frases(x,y);
 	it2->second.augmentar_numcites();
 }
@@ -49,15 +49,17 @@ void Cjt_textos::consultar_nump(){
 	cout << it2->second.consultar_nump() << endl;
 }
 
-void Cjt_textos::consultar_frases(char& x, char& y){
+void Cjt_textos::consultar_frases(int& x, int& y){
 	it2->second.consultar_frases(x,y);
 }
 
-void Cjt_textos::consultar_cont_frases(map<int, Frase>& frases, char& x, char& y) {
+void Cjt_textos::consultar_cont_frases(map<int, Frase>& frases, int& x, int& y) {
 	it2->second.consultar_cont_frases(frases, x, y);
 }
 
-//void Cjt_textos::frases(string &expres); 
+void Cjt_textos::frases(string &expres){
+	it2->second.recur(expres);
+}
 
 void Cjt_textos::taula_freq(){
 	it2->second.taula_freq();
@@ -72,26 +74,32 @@ void Cjt_textos::triar_text(string &paraules){
 	set<string> p;
 	string paraula;
 	while (iss >> paraula) p.insert(paraula);
-	int trobats = 0;
+	int trobats = 0, t;
 	map<string,map<string,Texto> >::iterator it = textos.begin();
 	map<string,Texto>::iterator it2;
 	while (it != textos.end() and trobats < 2){
 		it2 = it->second.begin();
 		while (it2 != it->second.end() and trobats < 2){
-			trobats += it2->second.triar_text(p);
-			if (trobats == 1){
+			t = it2->second.triar_text(p);
+			trobats += t;
+			if (t == 1){
 				this->it = it;
 				this->it2 = it2;
 			}
+			t = 0;
 			++it2;
 		}
 		++it;
 	}
-	if (trobats == 1) text_triat = true;
+	if (trobats == 1) {
+		text_triat = true;
+		taula_freq();
+	}
 	else text_triat = false;
 }
 
 void Cjt_textos::textos_autor(string &autor){
+	cout << autor << endl;
 	map<string,Texto>::iterator it = textos[autor].begin();
 	while (it != textos[autor].end()){
 		cout << it->first << endl;
@@ -105,7 +113,7 @@ void Cjt_textos::tots_textos(){
 	while (it != textos.end()){
 		it2 = it->second.begin();
 		while (it2 != it->second.end()){
-			cout << it->first << ' ' << it2->first << endl;
+			cout << it->first << " " << '"' << it2->first << '"' << endl;
 			++it2;
 		}
 		++it;
@@ -134,9 +142,25 @@ void Cjt_textos::info(){
 	cout << it->first << ' ' << it2->first << ' ' << it2->second.consultar_numf() << ' ' << it2->second.consultar_nump() << endl;
 }
 
+void Cjt_textos::info_text_triat(string& aut, string& tit) {
+    aut = it->first;
+    tit = it2->first;
+}
+
+void Cjt_textos::consultar_taula_freq(){
+	if (text_triat) it2->second.consultar_taula_freq();
+}
 void Cjt_textos::llegir_tot(string &titol, string &autor, string &text){
 	Texto Text;
-	Text.llegir(titol,autor,text);
-	textos[autor][titol] = Text;
+	if (textos.find(autor) != textos.end()){
+		if (textos[autor].find(titol) == textos[autor].end()){
+			Text.llegir(titol,autor,text);
+			textos[autor][titol] = Text;
+		}
+	}
+	else {
+		Text.llegir(titol,autor,text);
+		textos[autor][titol] = Text;
+	}
 }
 

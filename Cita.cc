@@ -8,12 +8,12 @@ Cita::Cita() {
 
 Cita::~Cita(){}
 
-void Cita::crear_cita(string& referencia, char& x, char& y, string& autor, string& Titol, map<int,Frase>& frases) {
+void Cita::crear_cita(string& referencia, int& x, int& y, string& autor, string& Titol, map<int,Frase>& frases) {
 	this->referencia = referencia;
 	this->autor = autor;
 	this->Titol = Titol;
-	numini = x - '0';
-	numfin = y - '0';
+	numini = x;
+	numfin = y;
 	this->frases = frases;
 }
 
@@ -46,5 +46,6 @@ void Cita::escriure_frases_cita() {
 	while (it != frases.end()){
 		cout << it->first << ' ';
 		it->second.escriure();
+        ++it;
 	}
 }

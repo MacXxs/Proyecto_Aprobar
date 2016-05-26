@@ -2,7 +2,7 @@
 
 bool comp(const pair<string,int>& a, const pair<string,int>& b){
 	if (a.second != b.second) return a.second > b.second;
-	else if (a.first.length() != b.first.length()) return a.first.length() > a.first.length();
+	else if (a.first.length() != b.first.length()) return a.first.length() < b.first.length();
 	else return a.first < b.first;
 }
 
@@ -30,7 +30,7 @@ Texto::~Texto(){
 
 void Texto::substituir(string &par1, string &par2){
 	int par_subs = 0;
-    for(int i = 0; i < map_frases.size(); ++i)
+    for(int i = 1; i <= map_frases.size(); ++i)
 		map_frases[i].substituir_paraula(par1,par2,par_subs);
 	int pos_par1 = -1;
 	bool par2_trobada = false;
@@ -78,30 +78,74 @@ int Texto::consultar_nump(){
 	return nump;
 }
 
-void Texto::consultar_frases(char &x, char &y){
-	int aux = x-'0';
-	int auy = y-'0';
-	for(int i = 0; i < auy - aux; ++i){
-		cout << aux + i << ' ';
-		for(int j = aux - 1; j < auy; ++j){
-			map_frases[j].escriure();
+void Texto::consultar_frases(int &x, int &y){
+	for(int i = 0; i <= y - x; ++i){
+		cout << x + i << ' ';
+		map_frases[x+i].escriure();
+		cout << endl;
+	}
+}
+
+void Texto::consultar_cont_frases(map<int, Frase>& frases, int& x, int& y) {
+	for (int i = 0; i <= y - x; ++i) {
+		frases.insert(make_pair(x + i, map_frases[x+i]));
+	}
+}
+
+void Texto::recur(string& expres){
+	bool b; 
+	int pos;
+	for (int i = 0; i < map_frases.size(); ++i){
+		b = false;
+		pos = 0;
+		recur_im(expres,pos,b,map_frases[1+i]);
+		if (b){
+			int x = i+1;
+			consultar_frases(x,x);
 		}
 	}
 }
 
-void Texto::consultar_cont_frases(map<int, Frase>& frases, char& x, char& y) {
-	int aux = x - '0';
-	int auy = y - '0';
-	for (int i = 0; i < auy - aux; ++i) {
-		frases.insert(make_pair(aux + i, map_frases[aux+i]));
+void Texto::recur_im(string& exp, int& pos, bool& b, Frase& f){
+	if (pos < exp.size()){
+		if (exp[pos] == '('){
+			recur_im(exp,++pos,b,f);
+			recur_im(exp,++pos,b,f);
+		}
+		else if (exp[pos] == '{'){
+			string aux = "";
+			++pos;
+			while(exp[pos] != '}'){
+				aux += exp[pos];
+				++pos;
+			}
+			istringstream iss(aux);
+			string m;
+			bool b1,b2;
+			b1 = true;
+			while (iss >> m){
+				f.buscar_par(m,b2);
+				b1 = b1 and b2;
+			}
+			b = b1;
+		}
+		else if (exp[pos] == '&'){
+			bool b1;
+			recur_im(exp,++pos,b1,f);
+			b = b and b1;
+		}
+		else if (exp[pos] == '|'){
+			bool b1;
+			recur_im(exp,++pos,b1,f);
+			b = b or b1;
+		}
+		else recur_im(exp,++pos,b,f);
 	}
 }
 
-//void Texto::frases(string& expres);
-		
 void Texto::taula_freq(){
 	map<string,int> a;
-	for(int i = 0; i < map_frases.size(); ++i){
+	for(int i = 1; i <= map_frases.size(); ++i){
 		map_frases[i].taula_freq(a);
 	}
 	map<string,int>::iterator it = a.begin();
@@ -110,6 +154,12 @@ void Texto::taula_freq(){
 		++it;
 	}
 	sort(parfreq.begin(),parfreq.end(),comp);
+}
+
+void Texto::consultar_taula_freq(){
+	for (int i = 0; i < parfreq.size(); ++i){
+		cout << parfreq[i].first << ' ' << parfreq[i].second << endl;
+	}
 }
 
 bool Texto::operator<(const Texto &t) const{

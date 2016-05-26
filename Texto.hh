@@ -99,9 +99,9 @@ public:
 		\pre <em>arriben dos caracters x i y</em>
 		\post mostra per pantalla les frases entre la x-essima i la y-essima del contingut del text
 	*/
-	void consultar_frases(char &x, char &y);
+	void consultar_frases(int &x, int &y);
 	
-	void consultar_cont_frases(map<int, Frase>& frases, char&x, char& y);
+	void consultar_cont_frases(map<int, Frase>& frases, int& x, int& y);
 	
 	/** @brief Mostra les frases que compleixen l'expressio
 		\pre <em>arriba una expressio</em>
@@ -116,6 +116,8 @@ public:
 	*/
 	void taula_freq();
 	
+	void consultar_taula_freq(); //Es mostra la taula de frequencies
+	
      /** @brief Indica si les paraules estan al text, titol o autor del text
 		\pre <em>arriba una sequencia de paraules</em>
 		\post retorna 1 si totes les paraules del set de paraules
@@ -128,6 +130,8 @@ public:
         \post ordena el conjunt en funcio del titol del text
     */
 	bool operator<(const Texto &t) const; //ordena en funcio del titol del text.
+	
+	void recur(string& expres); //crida a la funcio recur_im per cada frase del text amb la expressio expres
 
 	//Lectura
 
@@ -145,6 +149,7 @@ private:
 	map<int,Frase> map_frases; //vector que conte totes las frases del text
 	int numcites;         //nombre de cites associades a aquest text
 	int nump;             //nombtr de paraules del text
+	void recur_im(string& expres, int& pos, bool& b, Frase& f); //funcio recursiva que mira si la expresio expres que es compleix per la frase f
 };
 
 #endif
