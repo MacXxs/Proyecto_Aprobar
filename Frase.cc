@@ -64,16 +64,16 @@ void Frase::substituir_paraula(string& a, string& b, int& par_subs) {
 	for (int i = 0; i < n_paraules; ++i) {
 		string aux = frase[i];
 		char last;
-		if (aux[aux.size()-1] != '.' or aux[aux.size()-1] != ',' or aux[aux.size()-1] != '?' or aux[aux.size()-1] != '!' or aux[aux.size()-1] != ':' or aux[aux.size()-1] != ';') { //l'ultim char es o una vocal o una consonant
-			if (a == frase[i]){
+		if (aux[aux.size()-1] != '.' and aux[aux.size()-1] != ',' and aux[aux.size()-1] != '?' and aux[aux.size()-1] != '!' and aux[aux.size()-1] != ':' and aux[aux.size()-1] != ';') {//l'ultim char es o una vocal o una consonant
+			if (a == aux){
 				frase[i] = b;
 				++par_subs;
 			}
 		}
 		else { //vol dir que l'ultim char de la paraula es o be ':', ',', ';', '.', '?', '!'
+			last = aux[aux.size()-1];
 			aux.pop_back();
 			if (a == aux) {
-				last = frase[i][frase[i].size() - 1];
 				frase[i] = b;
 				frase[i].push_back(last);
 				++par_subs;

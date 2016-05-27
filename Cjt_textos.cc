@@ -34,7 +34,8 @@ void Cjt_textos::afegir_cita(int& x, int& y){
 	it2->second.augmentar_numcites();
 }
 string Cjt_textos::consultar_autor(){
-	return it->first;
+	if (text_triat) return it->first;
+	else return "error";
 }
 
 string Cjt_textos::consultar_titol(){
@@ -61,7 +62,10 @@ void Cjt_textos::consultar_nump(){
 }
 
 void Cjt_textos::consultar_frases(int& x, int& y){
-	if (text_triat) it2->second.consultar_frases(x,y);
+	if (text_triat) {
+		if (y <= it2->second.consultar_numf()) it2->second.consultar_frases(x,y);
+		else cout << "error" << endl;
+	}
 	else cout << "error" << endl;
 }
 
@@ -153,7 +157,7 @@ void Cjt_textos::tots_autors(){
 			p += it2->second.consultar_nump();
 			++it2;
 		}
-		cout << it->first << ' ' << t << ' ' << f << ' ' << p << endl;
+		if (it->second.size() > 0) 	cout << it->first << ' ' << t << ' ' << f << ' ' << p << endl;
 		++it;
 	}
 }
@@ -163,7 +167,7 @@ void Cjt_textos::info(){
 }
 
 void Cjt_textos::consultar_taula_freq(){
-	if (text_triat) it2->second.consultar_taula_freq();
+	if (text_triat)	it2->second.consultar_taula_freq();
 	else cout << "error" << endl;
 }
 
@@ -183,6 +187,7 @@ void Cjt_textos::llegir_tot(string &titol, string &autor, string &text){
 			Text.llegir(titol,autor,text);
 			textos[autor][titol] = Text;
 		}
+		else cout << "error" << endl;
 	}
 	else {
 		Text.llegir(titol,autor,text);

@@ -45,8 +45,8 @@ void Texto::substituir(string &par1, string &par2){
 		parfreq.erase(parfreq.begin() + pos_par1);
 		if (not par2_trobada){
 			parfreq.insert(parfreq.begin(),make_pair(par2,par_subs));
-			sort(parfreq.begin(),parfreq.end(),comp);
 		}
+		sort(parfreq.begin(),parfreq.end(),comp);
 	}
 }
 
@@ -219,10 +219,9 @@ int Texto::triar_text(set<string> paraules){
 	string p, aux;
 	set<string>::iterator it;
 	while (a>>p){
-		aux = p;
 		if (p[p.size()-1] == '.' or p[p.size()-1] == ',' or p[p.size()-1] == '!' or p[p.size()-1] == '?' or p[p.size()-1] == ':' or p[p.size()-1] == ';'){
-			aux.pop_back();
-			it = paraules.find(aux);
+			p.pop_back();
+			it = paraules.find(p);
 		}
 		else it = paraules.find(p);
 		if (it != paraules.end()) paraules.erase(it);
