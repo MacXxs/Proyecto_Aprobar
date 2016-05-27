@@ -9,34 +9,37 @@ Cjt_cites::Cjt_cites() {
 Cjt_cites::~Cjt_cites() {}
 
 void Cjt_cites::afegir_cita(Cjt_textos& textos, int& x, int& y) {
-	int numf = textos.consultar_num_frases();
-	if ((1 > x) or (x > y) or (y > numf)) cout << "error" << endl;
-	else {
-		map<string,Texto>::iterator it = textos.text_actual();
-		string autor, titol, a, ref;
-		autor = textos.consultar_autor();
-		istringstream iss(autor);
-		while (iss>>a) ref.push_back(a[0]);
-		int num_ref;
-		map<string,int>::iterator it2 = referencies.find(ref);
-		if (it2 != referencies.end())	{
-			++(*it2).second;
-			num_ref = (*it2).second;
-		}
+	if (textos.hi_ha_text_triat()){
+		int numf = textos.consultar_num_frases();
+		if ((1 > x) or (x > y) or (y > numf)) cout << "error" << endl;
 		else {
-			num_ref = 1;
-			referencies[ref] = 1;
+			map<string,Texto>::iterator it = textos.text_actual();
+			string autor, titol, a, ref;
+			autor = textos.consultar_autor();
+			istringstream iss(autor);
+			while (iss>>a) ref.push_back(a[0]);
+			int num_ref;
+			map<string,int>::iterator it2 = referencies.find(ref);
+			if (it2 != referencies.end())	{
+				++(*it2).second;
+				num_ref = (*it2).second;
+			}
+			else {
+				num_ref = 1;
+				referencies[ref] = 1;
+			}
+			ref += to_string(num_ref); //afegeix a les inicials del autor el numero de la referencia passat a string
+			Cita cita;
+			
+			map<int, Frase> frases;
+			textos.consultar_cont_frases(frases, x, y);
+			
+			titol = textos.consultar_titol();
+			cita.crear_cita(ref,x,y,autor,titol, frases);
+			cites[ref] = cita;
 		}
-		ref += to_string(num_ref); //afegeix a les inicials del autor el numero de la referencia passat a string
-		Cita cita;
-		
-		map<int, Frase> frases;
-		textos.consultar_cont_frases(frases, x, y);
-		
-		titol = textos.consultar_titol();
-		cita.crear_cita(ref,x,y,autor,titol, frases);
-		cites[ref] = cita;
 	}
+	else cout << "error" << endl;
 }
 
 void Cjt_cites::eliminar_cita(string& referencia) {
@@ -114,15 +117,18 @@ void Cjt_cites::cites_autor(string& aut) {
 
 
 void Cjt_cites::fun_cites(Cjt_textos& textos) {
-	string aut, tit;
-	textos.info_text_triat(aut, tit);
-	for (map<string, Cita>::iterator it = cites.begin(); it != cites.end(); ++it) {
-		if (it->second.consultar_autor() == aut) {
-			cout << it->first << endl; //escriu referencia
-			it->second.escriure_frases_cita(); //escriu les frases de la cita
-			cout << aut << ' ' << '"' << tit << '"' << endl;
+	if (textos.hi_ha_text_triat()){
+		string aut, tit;
+		textos.info_text_triat(aut, tit);
+		for (map<string, Cita>::iterator it = cites.begin(); it != cites.end(); ++it) {
+			if (it->second.consultar_autor() == aut) {
+				cout << it->first << endl; //escriu referencia
+				it->second.escriure_frases_cita(); //escriu les frases de la cita
+				cout << aut << ' ' << '"' << tit << '"' << endl;
+			}
 		}
 	}
+	else cout << "error" << endl;
 }
 
 

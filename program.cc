@@ -12,7 +12,7 @@ int main(){
 	while (getline(cin,linia) and not sortir){
 		istringstream iss(linia);
 		iss >> m;
-		if (not linia.empty() and m != "sortir" and m != "***"){
+		if (not linia.empty() and m != "sortir"){
 			cout << linia << endl;
 			if (m == "afegir"){
 				iss >> m;
@@ -20,9 +20,10 @@ int main(){
 					iss >> m;
 					linia.erase(0,13);
 					linia.pop_back();
-					string autor, text;
+					string autor, text, contingut;
+					text = "";
 					getline(cin,autor);
-					getline(cin,text,'*');
+					while(getline(cin,contingut) and contingut != "****") text += contingut;	
 					autor.erase(0,7);
 					autor.pop_back();
 					textos.llegir_tot(linia,autor,text);
@@ -102,7 +103,6 @@ int main(){
 				}
 				else{
 					linia.erase(0,7);
-					linia.pop_back();
 					textos.frases(linia);
 				}
 			}

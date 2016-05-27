@@ -15,15 +15,18 @@ void Cjt_textos::eliminar_text(){
 		if (it->second.size() == 0) textos.erase(it);
 		text_triat = false;
 	}
-	else cout << "Error al elimnar text (no hi ha text triat)" << endl; 
+	else cout << "error" << endl; 
 }
 
 void Cjt_textos::substituir(string &par1, string &par2){
-	par1.erase(0,1);
-	par1.pop_back();
-	par2.erase(0,1);
-	par2.pop_back();
-	it2->second.substituir(par1,par2);
+	if (text_triat){
+		par1.erase(0,1);
+		par1.pop_back();
+		par2.erase(0,1);
+		par2.pop_back();
+		it2->second.substituir(par1,par2);
+	}
+	else cout << "error" << endl;
 }
 
 void Cjt_textos::afegir_cita(int& x, int& y){
@@ -40,10 +43,12 @@ string Cjt_textos::consultar_titol(){
 
 void Cjt_textos::consultar_contingut(){
 	if (text_triat) it2->second.consultar_contingut();
+	else cout << "error" << endl;
 }
 
 void Cjt_textos::consultar_numf(){
-	cout << it2->second.consultar_numf() << endl;
+	if (text_triat) cout << it2->second.consultar_numf() << endl;
+	else cout << "error" << endl;
 }
 
 int Cjt_textos::consultar_num_frases() {
@@ -51,15 +56,18 @@ int Cjt_textos::consultar_num_frases() {
 }
 
 void Cjt_textos::consultar_nump(){
-	cout << it2->second.consultar_nump() << endl;
+	if (text_triat) cout << it2->second.consultar_nump() << endl;
+	else cout << "error" << endl;
 }
 
 void Cjt_textos::consultar_frases(int& x, int& y){
-	it2->second.consultar_frases(x,y);
+	if (text_triat) it2->second.consultar_frases(x,y);
+	else cout << "error" << endl;
 }
 
 void Cjt_textos::consultar_frases(string& paraules){
-	it2->second.consultar_frases(paraules);
+	if (text_triat) it2->second.consultar_frases(paraules);
+	else cout << "error" << endl;
 }
 
 void Cjt_textos::consultar_cont_frases(map<int, Frase>& frases, int& x, int& y) {
@@ -67,7 +75,8 @@ void Cjt_textos::consultar_cont_frases(map<int, Frase>& frases, int& x, int& y) 
 }
 
 void Cjt_textos::frases(string &expres){
-	it2->second.recur(expres);
+	if (text_triat) it2->second.recur(expres);
+	else cout << "error" << endl;
 }
 
 void Cjt_textos::taula_freq(){
@@ -155,6 +164,7 @@ void Cjt_textos::info(){
 
 void Cjt_textos::consultar_taula_freq(){
 	if (text_triat) it2->second.consultar_taula_freq();
+	else cout << "error" << endl;
 }
 
 void Cjt_textos::info_text_triat(string& aut, string& tit) {
