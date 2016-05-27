@@ -53,6 +53,10 @@ void Cjt_textos::consultar_frases(int& x, int& y){
 	it2->second.consultar_frases(x,y);
 }
 
+void Cjt_textos::consultar_frases(string& paraules){
+	it2->second.consultar_frases(paraules);
+}
+
 void Cjt_textos::consultar_cont_frases(map<int, Frase>& frases, int& x, int& y) {
 	it2->second.consultar_cont_frases(frases, x, y);
 }
@@ -99,7 +103,6 @@ void Cjt_textos::triar_text(string &paraules){
 }
 
 void Cjt_textos::textos_autor(string &autor){
-	cout << autor << endl;
 	map<string,Texto>::iterator it = textos[autor].begin();
 	while (it != textos[autor].end()){
 		cout << it->first << endl;

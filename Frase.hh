@@ -49,6 +49,8 @@ public:
 	
 	void buscar_par(string& p, bool& b); //Posa b = true si totes les paraules passades per parametre estan en la Frase	
 	
+	bool consultar_frases(string& paraules); //mostra la frase, si aquesta conte les paraules que es passen per parametre
+	
 	//Modificadora
 
 	/** @brief S'intercanvien dues paraules

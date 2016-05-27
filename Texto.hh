@@ -101,6 +101,8 @@ public:
 	*/
 	void consultar_frases(int &x, int &y);
 	
+	void consultar_frases(string& paraules); //busca les frases que contenen totes les paraules en el mateix ordre
+	
 	void consultar_cont_frases(map<int, Frase>& frases, int& x, int& y);
 	
 	/** @brief Mostra les frases que compleixen l'expressio

@@ -97,6 +97,8 @@ public:
 	*/
 	void consultar_frases(int &x, int &y);
 	
+	void consultar_frases(string& paraules); //crida a la funcio consultar_frases de l'ultim text triat
+	
 	void consultar_cont_frases(map<int, Frase>& frases, int& x, int& y);
 	
 	/** @brief Mostra les frases del contingut de l'ultim text triat que compleixin l'expressio

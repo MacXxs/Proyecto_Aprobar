@@ -86,6 +86,15 @@ void Texto::consultar_frases(int &x, int &y){
 	}
 }
 
+void Texto::consultar_frases(string& p){
+	for (int i = 1; i <= map_frases.size(); ++i){
+		if (map_frases[i].consultar_frases(p)){
+			cout << i << ' ';
+			map_frases[i].escriure();
+		}
+	}
+}
+
 void Texto::consultar_cont_frases(map<int, Frase>& frases, int& x, int& y) {
 	for (int i = 0; i <= y - x; ++i) {
 		frases.insert(make_pair(x + i, map_frases[x+i]));
@@ -210,7 +219,7 @@ int Texto::triar_text(set<string> paraules){
 	set<string>::iterator it;
 	while (a>>p){
 		aux = p;
-		if (p[p.size()-1] < 'A'){
+		if (p[p.size()-1] == '.' or p[p.size()-1] == ',' or p[p.size()-1] == '!' or p[p.size()-1] == '?' or p[p.size()-1] == ':' or p[p.size()-1] == ';'){
 			aux.pop_back();
 			it = paraules.find(aux);
 		}
@@ -219,7 +228,7 @@ int Texto::triar_text(set<string> paraules){
 	}
 	while (t>>p){
 		aux = p;
-		if (p[p.size()-1] < 'A'){
+		if (p[p.size()-1] == '.' or p[p.size()-1] == ',' or p[p.size()-1] == '!' or p[p.size()-1] == '?' or p[p.size()-1] == ':' or p[p.size()-1] == ';'){
 			aux.pop_back();
 			it = paraules.find(aux);
 		}

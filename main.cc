@@ -57,7 +57,7 @@ int main(){
 			}
 			else if (m == "textos"){
 				linia.erase(0,14);
-				linia.pop_back();
+				linia.erase(linia.end()-3,linia.end());
 				textos.textos_autor(linia);
 			}
 			else if (m == "tots"){
@@ -87,6 +87,11 @@ int main(){
 					iss >> m;
 					int y = atoi(m.c_str());
 					textos.consultar_frases(x,y);
+				}
+				else if (m[0] == '"'){
+					linia.erase(0,8);
+					linia.erase(linia.end()-3, linia.end());
+					textos.consultar_frases(linia);
 				}
 				else{
 					linia.erase(0,7);
