@@ -51,14 +51,14 @@ int main(){
 				iss >> m;
 				paraula1 = m;	
 				iss >> m;
+				iss >> m;
 				paraula2 = m;
 				textos.substituir(paraula1,paraula2);
 			}
 			else if (m == "textos"){
-				iss >> m;
-				m.erase(0,1);
-				m.pop_back();
-				textos.textos_autor(m);
+				linia.erase(0,14);
+				linia.pop_back();
+				textos.textos_autor(linia);
 			}
 			else if (m == "tots"){
 				iss >> m;
@@ -76,7 +76,7 @@ int main(){
 					cites.info_cita(m);
 				}
 			}
-			else if (m == "autor") textos.consultar_autor();
+			else if (m == "autor") cout << textos.consultar_autor() << endl;
 			else if (m == "contingut") {
 				textos.consultar_contingut();
 			}
@@ -100,7 +100,7 @@ int main(){
 				if (m == "frases") textos.consultar_numf();
 				else textos.consultar_nump();
 			}
-			else if (m == "taula") textos.taula_freq();
+			else if (m == "taula") textos.consultar_taula_freq();
 			/*else if (m == "cites"){
 				iss >> m;
 				if (m == "autor"){
