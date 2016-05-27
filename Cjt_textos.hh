@@ -85,6 +85,8 @@ public:
 	*/
 	void consultar_numf();
 	
+	int consultar_num_frases();
+	
 	/** @brief Consulta el nombre de paraules de l'ultim text triat
 		\pre <em>tenim un text triat</em>
 		\post treu per pantalla el resultat de cridar a la funcio de consultar_nump de la classe Texto per a l'ultim text triats
@@ -155,7 +157,11 @@ public:
 	*/
 	void info();
 	
+	void info_text_triat(string& aut, string& tit);
+	
 	void consultar_taula_freq(); //si hi ha un text triat es mostra la taula de frequencies
+	
+	bool hi_ha_text_triat(); //retorna una true si hi ha un text triat
 
     //Lectura
     

@@ -77,11 +77,11 @@ public:
 	*/
 	int consultar_numfin() const;
 	
-	/** @brief Mostra el el nombre de linia on es troba la ultima frase de la cita
-		\pre <em>cert</em>
-		\post el resultat es el nombre de linia on es troba la ultima frase de la cita
-	*/
-	void info() const;
+	// /** @brief 
+		//\pre <em>cert</em>
+		//\post 
+	//*/
+	//void info() const;
 	
 	//Escrptura
 	
@@ -91,6 +91,10 @@ public:
 	*/
 	void escriure();
 	
+    /** @brief Escriu la frase o frases que composen la cita
+		\pre <em>tenim una cita</em>
+		\post escriu per pantalla la referencia de la cita i el seu contingut
+	*/
 	void escriure_frases_cita();
     
 private:

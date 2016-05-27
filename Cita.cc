@@ -46,5 +46,7 @@ void Cita::escriure_frases_cita() {
 	while (it != frases.end()){
 		cout << it->first << ' ';
 		it->second.escriure();
+        ++it;
+		cout << endl;
 	}
 }

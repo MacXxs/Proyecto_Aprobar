@@ -91,6 +91,7 @@ void Texto::consultar_frases(string& p){
 		if (map_frases[i].consultar_frases(p)){
 			cout << i << ' ';
 			map_frases[i].escriure();
+			cout << endl;
 		}
 	}
 }
