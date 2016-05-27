@@ -76,6 +76,8 @@ public:
 		\post es mostren les cites del autor(referencia, contingut de les frases i titol del text)
 	*/
 	void cites_autor(string &aut);
+	
+	void fun_cites(Cjt_textos& textos);
 
 private:
 	

@@ -90,4 +90,5 @@ void Frase::escriure() const {
 		}
 		else cout << ' ' << frase[i];
 	}
+	cout << endl;
 }

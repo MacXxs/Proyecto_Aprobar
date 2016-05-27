@@ -111,7 +111,7 @@ int main(){
                     linia.pop_back();
 					cites.cites_autor(linia);
 				}
-				else cites.text_triat_cites();
+                else cites.fun_cites(textos);
 			}
 			
 			else if (m == "totes") cites.totes_cites();	

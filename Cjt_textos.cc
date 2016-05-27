@@ -45,6 +45,10 @@ void Cjt_textos::consultar_numf(){
 	cout << it2->second.consultar_numf() << endl;
 }
 
+int Cjt_textos::consultar_num_frases() {
+	return it2->second.consultar_numf();
+}
+
 void Cjt_textos::consultar_nump(){
 	cout << it2->second.consultar_nump() << endl;
 }

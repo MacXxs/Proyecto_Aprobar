@@ -85,6 +85,8 @@ public:
 	*/
 	void consultar_numf();
 	
+	int consultar_num_frases();
+	
 	/** @brief Consulta el nombre de paraules de l'ultim text triat
 		\pre <em>tenim un text triat</em>
 		\post treu per pantalla el resultat de cridar a la funcio de consultar_nump de la classe Texto per a l'ultim text triats
