@@ -88,7 +88,7 @@ void Frase::taula_freq(map<string,int>& a){
 	for(int i = 0; i < n_paraules; ++i){
 		aux = frase[i];
 		if (aux[aux.size()-1] == '.' or aux[aux.size()-1] == ',' or aux[aux.size()-1] == '?' or aux[aux.size()-1] == '!' or aux[aux.size()-1] == ':' or aux[aux.size()-1] == ';') aux.pop_back();
-		if (aux.size() > 0){
+		if (not aux.empty()){
 			it = a.find(aux);
 			if (it != a.end()) ++it->second;
 			else a[aux] = 1;

@@ -106,7 +106,8 @@ int main(){
 					int x = atoi(m.c_str());
 					iss >> m;
 					int y = atoi(m.c_str());
-					textos.consultar_frases(x,y);
+					if (x <= y)	textos.consultar_frases(x,y);
+					else cout << "error" << endl;
 				}
 			}
 			else if (m == "nombre"){
