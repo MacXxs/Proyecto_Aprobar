@@ -104,6 +104,8 @@ private:
     int numfin; //numero frase final
     string referencia; //referencia de la cita
     map<int,Frase> frases;
+	
+	//invariant: frases.size() = numfin - numini
 };
 
 #endif

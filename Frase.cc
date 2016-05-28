@@ -82,7 +82,7 @@ void Frase::substituir_paraula(string& a, string& b, int& par_subs) {
 	}
 }
 
-void Frase::taula_freq(map<string,int>& a){
+void Frase::taula_freq(map<string,int>& a) const{
 	map<string,int>::iterator it;
 	string aux;
 	for(int i = 0; i < n_paraules; ++i){

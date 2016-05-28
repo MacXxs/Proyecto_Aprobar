@@ -114,7 +114,9 @@ int main(){
 				iss >> m;
 				iss >> m;
 				if (m == "frases") {
-					textos.consultar_numf();
+					int result = textos.consultar_num_frases();
+					if (result != -1) cout << result << endl;
+					else cout << "error" << endl;
 				}
 				else{
 					textos.consultar_nump();

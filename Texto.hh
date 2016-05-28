@@ -62,19 +62,19 @@ public:
 		\pre <em>cert</em>
 		\post el resultat es el nombre de paraules d'una frase
 	*/
-	int paraules();
+	int paraules() const;
 	
 	/** @brief Indica el titol del text
 		\pre <em>cert</em>
 		\post retorna el titol del text
 	*/
-	string consultar_titol();
+	string consultar_titol() const ;
 	
 	/** @brief Mostra l'autor del text
 		\pre <em>cert</em>
 		\post mostra per pantalla l'autor del text
 	*/
-	void consultar_autor();
+	void consultar_autor() const;
 	
 	/** @brief Mostra el contingu d'unt text
 		\pre <em>cert</em>
@@ -87,13 +87,13 @@ public:
 		\pre <em>cert</em>
 		\post retorna el nombre de frases del contingut del text
 	*/
-	int consultar_numf();
+	int consultar_numf() const;
 	
 	/** @brief Indica el nombre de paraules del text
 		\pre <em>cert</em>
 		\post retorna el nombre de paraules del contingut del text
 	*/
-	int consultar_nump();
+	int consultar_nump() const;
 	
 	/** @brief Mostra les frases entre x i y
 		\pre <em>arriben dos caracters x i y</em>
@@ -105,11 +105,6 @@ public:
 	
 	void consultar_cont_frases(map<int, Frase>& frases, int& x, int& y);
 	
-	/** @brief Mostra les frases que compleixen l'expressio
-		\pre <em>arriba una expressio</em>
-		\post mostra per pantalla les frases que compleixen l'expressio
-	*/
-	void frases(string &expres);
 	
 	/** @brief Mostra totes les paraules del contingut del text
 		\pre <em>cert</em>
@@ -131,7 +126,6 @@ public:
         \pre <em>arriba un text</em>
         \post ordena el conjunt en funcio del titol del text
     */
-	bool operator<(const Texto &t) const; //ordena en funcio del titol del text.
 	
 	void recur(string& expres); //crida a la funcio recur_im per cada frase del text amb la expressio expres
 
@@ -152,6 +146,9 @@ private:
 	int numcites;         //nombre de cites associades a aquest text
 	int nump;             //nombtr de paraules del text
 	void recur_im(string& expres, int& pos, bool& b, Frase& f); //funcio recursiva que mira si la expresio expres que es compleix per la frase f
+	
+	/*invariant: 0 <= parfreq.size() <= nump
+				 si (parfreq.size() == nump i parfreq.size() != 0) -> totes les paraules de parfreq tenen frequencia de 1*/
 };
 
 #endif

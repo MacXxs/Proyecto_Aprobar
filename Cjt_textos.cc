@@ -47,13 +47,9 @@ void Cjt_textos::consultar_contingut(){
 	else cout << "error" << endl;
 }
 
-void Cjt_textos::consultar_numf(){
-	if (text_triat) cout << it2->second.consultar_numf() << endl;
-	else cout << "error" << endl;
-}
-
 int Cjt_textos::consultar_num_frases() {
-	return it2->second.consultar_numf();
+	if (text_triat) return it2->second.consultar_numf();
+	else return -1;
 }
 
 void Cjt_textos::consultar_nump(){
@@ -63,7 +59,7 @@ void Cjt_textos::consultar_nump(){
 
 void Cjt_textos::consultar_frases(int& x, int& y){
 	if (text_triat) {
-		if (x > 0){
+		if (x > 0 and x <= it2->second.consultar_numf()){
 			if (y > 0 and y <= it2->second.consultar_numf())it2->second.consultar_frases(x,y);
 			else cout << "error" << endl;
 		}

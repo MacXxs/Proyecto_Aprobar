@@ -50,15 +50,15 @@ void Texto::substituir(string &par1, string &par2){
 	}
 }
 
-int Texto::paraules(){
+int Texto::paraules() const{
     return parfreq.size();
 }
 
-string Texto::consultar_titol(){
+string Texto::consultar_titol() const{
 	return titol;
 }
 
-void Texto::consultar_autor(){
+void Texto::consultar_autor() const{
     cout << autor << endl;
 }
 
@@ -70,11 +70,11 @@ void Texto::consultar_contingut(){
     }
 }
 
-int Texto::consultar_numf(){
+int Texto::consultar_numf() const{
 	return map_frases.size();
 }
 
-int Texto::consultar_nump(){
+int Texto::consultar_nump() const{
 	return nump;
 }
 
@@ -96,7 +96,7 @@ void Texto::consultar_frases(string& p){
 	}
 }
 
-void Texto::consultar_cont_frases(map<int, Frase>& frases, int& x, int& y) {
+void Texto::consultar_cont_frases(map<int, Frase>& frases, int& x, int& y){
 	for (int i = 0; i <= y - x; ++i) {
 		frases.insert(make_pair(x + i, map_frases[x+i]));
 	}
@@ -118,16 +118,15 @@ void Texto::recur(string& expres){
 
 void Texto::recur_im(string& exp, int& pos, bool& b, Frase& f){
 	if (pos < exp.size()){
-		if (exp[pos] == '('){
-			recur_im(exp,++pos,b,f);
-			recur_im(exp,++pos,b,f);
-		}
-		else if (exp[pos] == '{'){
+		//invariant: 0 <= pos < exp.size()
+		if (exp[pos] == '{'){
+			//cas base: es tracta la expressio entre clau d'ators
 			string aux = "";
 			++pos;
 			while(exp[pos] != '}'){
 				aux += exp[pos];
 				++pos;
+				//les paraules entre claus d'ators es posen en un string
 			}
 			istringstream iss(aux);
 			string m;
@@ -136,20 +135,37 @@ void Texto::recur_im(string& exp, int& pos, bool& b, Frase& f){
 			while (iss >> m){
 				f.buscar_par(m,b2);
 				b1 = b1 and b2;
+				/*es mira si les paraules acumulades a aux compleixen que totes estiguin a la frase f
+				i si totes ho complexen es posa b1 a true */
 			}
 			b = b1;
+			//s'iguala b a b1
 		}
-		else if (exp[pos] == '&'){
-			bool b1;
-			recur_im(exp,++pos,b1,f);
-			b = b and b1;
+		else {
+			//cas recursiu
+			if (exp[pos] == '('){
+			recur_im(exp,++pos,b,f);
+			//es torna a cridar a la recursiva amb ++pos per avançar en cas de que s'apunti a un parentesis
+			recur_im(exp,++pos,b,f);
+			//es torna a cridar a la recursiva amb ++pos perque avanci i acabi d'evaluar tota la expresio
+			}
+			else if (exp[pos] == '&'){
+				bool b1;
+				recur_im(exp,++pos,b1,f);
+				b = b and b1;
+				/*en cas de que pos apunti a & es torna a cridar a la recursiva amb un nou bolea per despres
+				mirar si les expresions d'avanç i les de despres del & es compleixen*/
+			}
+			else if (exp[pos] == '|'){
+				bool b1;
+				recur_im(exp,++pos,b1,f);
+				b = b or b1;
+				/*en cas de que pos apunti a | es torna a cridar a la recursiva amb un nou bolea per despres
+				mirar si les expresions d'avanç o les de despres de | es compleixen*/
+			}
+			else recur_im(exp,++pos,b,f);
+			//es torna a cridar a la recursiva en el cas de que pos apunti a un espai
 		}
-		else if (exp[pos] == '|'){
-			bool b1;
-			recur_im(exp,++pos,b1,f);
-			b = b or b1;
-		}
-		else recur_im(exp,++pos,b,f);
 	}
 }
 
@@ -171,11 +187,6 @@ void Texto::consultar_taula_freq(){
 	for (int i = 0; i < parfreq.size(); ++i){
 		cout << parfreq[i].first << ' ' << parfreq[i].second << endl;
 	}
-}
-
-bool Texto::operator<(const Texto &t) const{
-	if (titol < t.titol) return true;
-	else return false;
 }
 
 void Texto::augmentar_numcites(){

@@ -79,12 +79,10 @@ public:
 	*/
 	void consultar_contingut();
 	
-	/** @brief Consulta el nombre de frases de l'ultim text triat
+	/** @brief Retorna el nombre de frases de l'ultim text triat
 		\pre <em>tenim un text triat</em>
-		\post treu per pantalla el resultat de cridar a la funcio de consultar_numf de la classe Texto per a l'ultim text triat
-	*/
-	void consultar_numf();
-	
+		\post retorna el resultat de cridar a la funcio de consultar_numf de la classe Texto per a l'ultim text triat
+	*/	
 	int consultar_num_frases();
 	
 	/** @brief Consulta el nombre de paraules de l'ultim text triat
@@ -177,6 +175,7 @@ private:
 	map<string,map<string,Texto> >::iterator it; // iterador que apunta al conjunt de textos d'un autor
 	map<string,Texto>::iterator it2; //iterador que apunta al ultim text triat del conjunt de textos d'un autor
 	bool text_triat; 				
+	//invariant: si hi ha un text triat it2 apunta al ultim text triat.
 
 };
 
