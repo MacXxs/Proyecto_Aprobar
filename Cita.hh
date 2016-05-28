@@ -77,12 +77,6 @@ public:
 	*/
 	int consultar_numfin() const;
 	
-	// /** @brief 
-		//\pre <em>cert</em>
-		//\post 
-	//*/
-	//void info() const;
-	
 	//Escrptura
 	
 	/** @brief Escriu la referencia de la cita
