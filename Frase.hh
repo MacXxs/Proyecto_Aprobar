@@ -45,10 +45,23 @@ public:
 	*/	
 	int paraules() const;
 	
-	void triar_text(set<string>& paraules); //consulta si a la frase hi ha alguna o totes les paraules del text, en cas afirmatiu la/les elimina del set
+    /** @brief Mira si hi ha tot el conjunt de paraules al text
+		\pre <em>arriba un conjunt de paraules</em>
+		\post mira si hi ha totes les paraules del conjunt al text, en cas
+                  afirmatiu, les elimina del set
+	*/
+	void triar_text(set<string>& paraules); 
 	
-	void buscar_par(string& p, bool& b); //Posa b = true si totes les paraules passades per parametre estan en la Frase	
+    /** @brief Mira si les paraules estan a la frase
+		\pre <em>arriben unes paraules i un bool b</em>
+		\post b es true si totes les paraules estan a la frase
+	*/
+	void buscar_par(string& p, bool& b);
 	
+    /** @brief Indica si la frase conte les paraules
+		\pre <em>arriben unes paraules</em>
+		\post retorna true si la frase conte les paraules passades per parametre
+	*/
 	bool consultar_frases(string& paraules); //mostra la frase, si aquesta conte les paraules que es passen per parametre
 	
 	//Modificadora
@@ -59,6 +72,10 @@ public:
 	*/
 	void substituir_paraula(string& a, string& b, int& par_subs);
 	
+    /** @brief Afegeix les paraules de la frase a la taula de frequencies
+		\pre <em>arriba un map de strings i enters</em>
+		\post afegeix les paraules de la frase a la taula de freq, al map de string i int
+	*/
 	void taula_freq(map<string,int>& parfreq) const; //afegeix les paraules de la frase a la taula de frequencies
 	
 	//Lectura

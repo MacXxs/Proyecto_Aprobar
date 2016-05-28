@@ -77,6 +77,10 @@ public:
 	*/
 	void cites_autor(string &aut);
 	
+     /** @brief Mostra totes les cites de l'ultim text triat
+		\pre <em>tenim un text triat</em>
+		\post es mostren les cites de l'ultim text triat (referencia, contingut de les frases, autor i titol del text)
+	*/
 	void fun_cites(Cjt_textos& textos);
 
 private:

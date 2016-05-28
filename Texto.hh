@@ -96,13 +96,21 @@ public:
 	int consultar_nump() const;
 	
 	/** @brief Mostra les frases entre x i y
-		\pre <em>arriben dos caracters x i y</em>
+		\pre <em>arriben dos enters x i y</em>
 		\post mostra per pantalla les frases entre la x-essima i la y-essima del contingut del text
 	*/
 	void consultar_frases(int &x, int &y);
 	
-	void consultar_frases(string& paraules); //busca les frases que contenen totes les paraules en el mateix ordre
+    /** @brief Mostra les frases on les paraules tinguin el mateix ordre
+		\pre <em>arriben un conjunt de paraules</em>
+		\post mostra per pantalla les frases que contenen totes les paraules en el mateix ordre
+	*/
+	void consultar_frases(string& paraules);
 	
+    /** @brief Guarda el contingut de la frase
+		\pre <em>arriben dos enters x i y i un conjunt de enters i Frase</em>
+		\post guardem al conjunt el contingut de la frase x-essima fins la y-essima
+	*/
 	void consultar_cont_frases(map<int, Frase>& frases, int& x, int& y);
 	
 	
@@ -113,6 +121,10 @@ public:
 	*/
 	void taula_freq();
 	
+    /** @brief Mostra la taula de frequencies
+		\pre <em>cert</em>
+		\post mostra per pantalla la taula de frequencies de l'ultim text triat
+	*/
 	void consultar_taula_freq(); //Es mostra la taula de frequencies
 	
      /** @brief Indica si les paraules estan al text, titol o autor del text
@@ -122,11 +134,11 @@ public:
 	*/
 	int triar_text(set<string> paraules);
 	
-    /** @brief Ordena en funcio del titol
-        \pre <em>arriba un text</em>
-        \post ordena el conjunt en funcio del titol del text
-    */
-	
+    /** @brief Mostra les frases que compleixin l'expressio
+        \pre <em>arriba una expressio</em>
+        \post es crida a la funcio recur_im per cada frase del text
+                  amb l'expressio expre
+    */	
 	void recur(string& expres); //crida a la funcio recur_im per cada frase del text amb la expressio expres
 
 	//Lectura

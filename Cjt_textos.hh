@@ -97,8 +97,16 @@ public:
 	*/
 	void consultar_frases(int &x, int &y);
 	
+    /** @brief Consulta les frases que continguin el conjunt de paraules
+		\pre <em>tenim un text triat i es passa un conjunt de paraules</em>
+		\post es crida a la funcio consultar_frases de la classe Texto per a l'ultim text triat
+	*/
 	void consultar_frases(string& paraules); //crida a la funcio consultar_frases de l'ultim text triat
 	
+    /** @brief Consulta les frases entre x i y de l'ultim text triat
+		\pre <em>tenim un text triat i es passen uns valors x i y i un map</em>
+		\post es crida a la funcio consultar_cont_frases de la classe Texto per a l'ultim text triat
+	*/
 	void consultar_cont_frases(map<int, Frase>& frases, int& x, int& y);
 	
 	/** @brief Mostra les frases del contingut de l'ultim text triat que compleixin l'expressio
@@ -155,10 +163,22 @@ public:
 	*/
 	void info();
 	
+    /** @brief Mostra la informacio de l'ultim text triat
+		\pre <em>tenim un text triat</em>
+		\post aut tindra el nom de l'autor i tit tindra el titol del text per a l'ultim text triat
+	*/
 	void info_text_triat(string& aut, string& tit);
 	
+    /** @brief Mostra la taula de frequencies de l'ultim text triat
+		\pre <em>tenim un text triat</em>
+		\post crida a la funcio consultar_taula_freq de la classe Texto per a l'ultim text triat
+	*/
 	void consultar_taula_freq(); //si hi ha un text triat es mostra la taula de frequencies
 	
+    /** @brief Indica si hi ha un text triat o no
+		\pre <em>cert</em>
+		\post el resultat es true si hi ha un text triat
+	*/
 	bool hi_ha_text_triat(); //retorna una true si hi ha un text triat
 
     //Lectura
