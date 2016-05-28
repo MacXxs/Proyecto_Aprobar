@@ -23,7 +23,10 @@ int main(){
 					string autor, text, contingut;
 					text = "";
 					getline(cin,autor);
-					while(getline(cin,contingut) and contingut != "****") text += contingut;	
+					while(getline(cin,contingut) and contingut != "****") {
+						text.push_back(' ');
+						text += contingut;
+					}
 					autor.erase(0,7);
 					autor.pop_back();
 					textos.llegir_tot(linia,autor,text);
@@ -90,20 +93,20 @@ int main(){
 			}
 			else if (m == "frases"){
 				iss >> m;
-				if (m[0] > '0' and m[0] < '9'){
-					int x = atoi(m.c_str());
-					iss >> m;
-					int y = atoi(m.c_str());
-					textos.consultar_frases(x,y);
+				if (m[0] == '(' or m[0] == '{'){
+					linia.erase(0,7);
+					textos.frases(linia);
 				}
 				else if (m[0] == '"'){
 					linia.erase(0,8);
 					linia.erase(linia.end()-3, linia.end());
 					textos.consultar_frases(linia);
 				}
-				else{
-					linia.erase(0,7);
-					textos.frases(linia);
+				else {
+					int x = atoi(m.c_str());
+					iss >> m;
+					int y = atoi(m.c_str());
+					textos.consultar_frases(x,y);
 				}
 			}
 			else if (m == "nombre"){

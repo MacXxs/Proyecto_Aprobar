@@ -69,6 +69,7 @@ void Cjt_cites::info_cita(string& referencia) {
 		cout << it->second.consultar_numini() << '-' << it->second.consultar_numfin() << endl;
 		it->second.escriure_frases_cita();
 	}
+	else cout << "error" << endl;
 }
 
 void Cjt_cites::info(Cjt_textos& textos){

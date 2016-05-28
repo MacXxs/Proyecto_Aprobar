@@ -154,6 +154,7 @@ void Texto::recur_im(string& exp, int& pos, bool& b, Frase& f){
 }
 
 void Texto::taula_freq(){
+	parfreq.clear();
 	map<string,int> a;
 	for(int i = 1; i <= map_frases.size(); ++i){
 		map_frases[i].taula_freq(a);
@@ -227,12 +228,11 @@ int Texto::triar_text(set<string> paraules){
 		if (it != paraules.end()) paraules.erase(it);
 	}
 	while (t>>p){
-		aux = p;
 		if (p[p.size()-1] == '.' or p[p.size()-1] == ',' or p[p.size()-1] == '!' or p[p.size()-1] == '?' or p[p.size()-1] == ':' or p[p.size()-1] == ';'){
-			aux.pop_back();
-			it = paraules.find(aux);
+			p.pop_back();
+			it = paraules.find(p);
 		}
-		it = paraules.find(p);
+		else it = paraules.find(p);
 		if (it != paraules.end()) paraules.erase(it);
 	}
 	for (int i = 1; i <= map_frases.size() and not paraules.empty(); ++i)
@@ -240,9 +240,6 @@ int Texto::triar_text(set<string> paraules){
 	if (paraules.empty()) return 1;
 	else return 0;
 }
-
-		
- 
 
     
     
