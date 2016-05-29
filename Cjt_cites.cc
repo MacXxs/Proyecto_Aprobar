@@ -133,9 +133,11 @@ void Cjt_cites::fun_cites(Cjt_textos& textos) {
 		textos.info_text_triat(aut, tit);
 		for (map<string, Cita>::iterator it = cites.begin(); it != cites.end(); ++it) {
 			if (it->second.consultar_autor() == aut) {
-				cout << it->first << endl; //escriu referencia
-				it->second.escriure_frases_cita(); //escriu les frases de la cita
-				cout << aut << ' ' << '"' << tit << '"' << endl;
+				if (it->second.consultar_titol() == tit){
+					cout << it->first << endl; //escriu referencia
+					it->second.escriure_frases_cita(); //escriu les frases de la cita
+					cout << aut << ' ' << '"' << tit << '"' << endl;
+				}
 			}
 		}
 	}
