@@ -131,20 +131,12 @@ void Cjt_cites::fun_cites(Cjt_textos& textos) {
 	if (textos.hi_ha_text_triat()){
 		string aut, tit;
 		textos.info_text_triat(aut, tit);
-        string m, ref, refe1;
-        istringstream iss(aut);
-        while (iss >> m) ref.push_back(m[0]);
-        refe1 = ref;
-        ref.push_back('1');
-        int top = referencies[refe1];
-        map<string, Cita>::iterator it = cites.find(ref);
-		for (int i = 0; i < top and it != cites.end(); ++i) {
+		for (map<string, Cita>::iterator it = cites.begin(); it != cites.end(); ++it) {
 			if (it->second.consultar_autor() == aut) {
 				cout << it->first << endl; //escriu referencia
 				it->second.escriure_frases_cita(); //escriu les frases de la cita
 				cout << aut << ' ' << '"' << tit << '"' << endl;
 			}
-			++it;
 		}
 	}
 	else cout << "error" << endl;
