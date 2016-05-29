@@ -25,12 +25,6 @@ class Texto {
 public:
 	
 	//Constructora
-
-    /** @brief Creadora amb un titol
-        \pre <em>cert</em>
-        \post el resultat es un text amb titol
-    */
-	Texto(string& titol);
 	
 	/** @brief Creadora per defecte
 		\pre <em>cert</em>
@@ -50,12 +44,6 @@ public:
 	*/
 	void substituir(string &par1, string &par2);
 	
-	/** @brief Contador del nombre de cites
-		\pre <em>cert</em>
-		\post augmentem en un el nombre de cites
-	*/
-	void augmentar_numcites();
-	
 	//Consultores
 
 	/** @brief Indica el nombre de paraules d'una frase
@@ -63,18 +51,6 @@ public:
 		\post el resultat es el nombre de paraules d'una frase
 	*/
 	int paraules() const;
-	
-	/** @brief Indica el titol del text
-		\pre <em>cert</em>
-		\post retorna el titol del text
-	*/
-	string consultar_titol() const ;
-	
-	/** @brief Mostra l'autor del text
-		\pre <em>cert</em>
-		\post mostra per pantalla l'autor del text
-	*/
-	void consultar_autor() const;
 	
 	/** @brief Mostra el contingu d'unt text
 		\pre <em>cert</em>
@@ -132,14 +108,14 @@ public:
 		\post retorna 1 si totes les paraules del set de paraules
                   es troben al text, autor o al titol
 	*/
-	int triar_text(set<string> paraules);
+	int triar_text(string& autor, string& titol, set<string> paraules);
 	
     /** @brief Mostra les frases que compleixin l'expressio
         \pre <em>arriba una expressio</em>
         \post es crida a la funcio recur_im per cada frase del text
-                  amb l'expressio expre
+                  amb l'expressio expres, i si la compleix es mostra per pantalla la frase
     */	
-	void recur(string& expres); //crida a la funcio recur_im per cada frase del text amb la expressio expres
+	void recur(string& expres); 
 
 	//Lectura
 
@@ -147,17 +123,20 @@ public:
 		\pre <em>arriben el titol, l'autor i el contingut del text</em>
 		\post afegim un Text al sistema amb Titol = titol, autor = autor i contingut = contingut
 	*/	
-	void llegir(string& titol, string& autor, string& contingut);
+	void llegir(string& contingut);
 	
 private:
-	string titol; 
-	string autor; 
 	vector<pair<string,int> > parfreq; //conjunt de paraules del text ordenades decreixentment per frequencia, 
 						//i en cas d'empat creixentment, primer per llargada i despres afabeticament
 	map<int,Frase> map_frases; //vector que conte totes las frases del text
-	int numcites;         //nombre de cites associades a aquest text
 	int nump;             //nombtr de paraules del text
-	void recur_im(string& expres, int& pos, bool& b, Frase& f); //funcio recursiva que mira si la expresio expres que es compleix per la frase f
+	
+	/** @brief Funcio recursiva que mira si la expresisio expres es compleix per la frase f
+		\pre <em>expres es la expressio que nosaltres introduim, pos = 0, b = false i f es una de les frases del ultim text triat</em>
+		\post per a la frase f es mira que tota la expressio f es compleixi, en cas afirmatiu es retorna b = true i f es mostra per pantalla. Al
+			  finalitzar la recursiva pos = expres.size();
+	*/
+	void recur_im(string& expres, int& pos, bool& b, Frase& f); 
 	
 	/*invariant: 0 <= parfreq.size() <= nump
 				 si (parfreq.size() == nump i parfreq.size() != 0) -> totes les paraules de parfreq tenen frequencia de 1*/

@@ -6,21 +6,9 @@ bool comp(const pair<string,int>& a, const pair<string,int>& b){
 	else return a.first < b.first;
 }
 
-Texto::Texto(string& titol){
-	this->titol = titol;
-	//vector<pair<string,int> > parfreq;
-	//autor;
-	nump = 0;
-    numcites = 0;
-    map<int,Frase> map_frases;
-}
-
 Texto::Texto(){
-    //autor;
-	//titol;
     //vector<pair<string,int> > parfreq;
 	nump = 0;
-    numcites = 0;
     map<int,Frase> map_frases;
     
 }
@@ -52,14 +40,6 @@ void Texto::substituir(string &par1, string &par2){
 
 int Texto::paraules() const{
     return parfreq.size();
-}
-
-string Texto::consultar_titol() const{
-	return titol;
-}
-
-void Texto::consultar_autor() const{
-    cout << autor << endl;
 }
 
 void Texto::consultar_contingut(){
@@ -189,13 +169,7 @@ void Texto::consultar_taula_freq(){
 	}
 }
 
-void Texto::augmentar_numcites(){
-	++numcites;
-}
-
-void Texto::llegir(string& titol, string& autor, string& contingut){
-	this->titol = titol;
-	this->autor = autor;
+void Texto::llegir(string& contingut){
 	bool buscar = true;
 	size_t pos, posp, pose, posi;
 	int count = 1, nump = 0;
@@ -225,7 +199,7 @@ void Texto::llegir(string& titol, string& autor, string& contingut){
 	}
 }
 
-int Texto::triar_text(set<string> paraules){
+int Texto::triar_text(string& autor, string& titol, set<string> paraules){
 	istringstream a(autor);
 	istringstream t(titol);
 	string p, aux;

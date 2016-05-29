@@ -31,7 +31,6 @@ void Cjt_textos::substituir(string &par1, string &par2){
 
 void Cjt_textos::afegir_cita(int& x, int& y){
 	it2->second.consultar_frases(x,y);
-	it2->second.augmentar_numcites();
 }
 string Cjt_textos::consultar_autor(){
 	if (text_triat) return it->first;
@@ -97,15 +96,17 @@ map<string,Texto>::iterator Cjt_textos::text_actual(){
 void Cjt_textos::triar_text(string &paraules){
 	istringstream iss(paraules);
 	set<string> p;
-	string paraula;
+	string paraula, autor, titol;
 	while (iss >> paraula) p.insert(paraula);
 	int trobats = 0, t;
 	map<string,map<string,Texto> >::iterator it = textos.begin();
 	map<string,Texto>::iterator it2;
 	while (it != textos.end() and trobats < 2){
 		it2 = it->second.begin();
+		autor = it->first;
 		while (it2 != it->second.end() and trobats < 2){
-			t = it2->second.triar_text(p);
+			titol = it2->first;
+			t = it2->second.triar_text(autor,titol,p);
 			trobats += t;
 			if (t == 1){
 				this->it = it;
@@ -187,13 +188,13 @@ void Cjt_textos::llegir_tot(string &titol, string &autor, string &text){
 	Texto Text;
 	if (textos.find(autor) != textos.end()){
 		if (textos[autor].find(titol) == textos[autor].end()){
-			Text.llegir(titol,autor,text);
+			Text.llegir(text);
 			textos[autor][titol] = Text;
 		}
 		else cout << "error" << endl;
 	}
 	else {
-		Text.llegir(titol,autor,text);
+		Text.llegir(text);
 		textos[autor][titol] = Text;
 	}
 }
