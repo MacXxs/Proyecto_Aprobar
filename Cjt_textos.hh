@@ -191,10 +191,17 @@ public:
 	
     
 private:
-	map<string,map<string,Texto> > textos; //mapa de set de textos ordenat per autor i set ordenat per titol del text
-	map<string,map<string,Texto> >::iterator it; // iterador que apunta al conjunt de textos d'un autor
-	map<string,Texto>::iterator it2; //iterador que apunta al ultim text triat del conjunt de textos d'un autor
-	bool text_triat; 				
+	/** @brief mapa de map de textos ordenat per autor i titol corresponentment*/
+	map<string,map<string,Texto> > textos;
+	
+	/** @brief iterador que apunta al conjunt de textos d'un autor*/
+	map<string,map<string,Texto> >::iterator it;
+	
+	/** @brief iterador que apunta al ultim text triat del conjunt de textos d'un autor*/
+	map<string,Texto>::iterator it2;
+	
+	/** @brief expressio boleana que indica si hi ha un text triat*/
+	bool text_triat; 
 	//invariant: si hi ha un text triat it2 apunta al ultim text triat.
 
 };

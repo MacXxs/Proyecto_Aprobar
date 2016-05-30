@@ -1,0 +1,450 @@
+//Prova 1
+
+afegir text "Sueno"
+
+triar text {es crepusculo alado Castro}
+
+triar text {Aurora}
+
+triar text {Sueno}
+
+contingut ?
+1 Aqui yo sueno, estoy mi vida es pajaro enjaulado, volar yo sueno, al otro lado en el cielo que miro, cielo sonado.
+2 La libertad, que es?
+3 Acaso un sueno, lo es?
+4 un crepusculo, una puesta de sol, un decano sueno acaso alado: libertad es sonar, volar fuera, es libertad, sonada libertad.
+
+taula de frequencies ?
+es 5
+sueno 4
+libertad 4
+un 3
+yo 2
+que 2
+cielo 2
+volar 2
+La 1
+al 1
+de 1
+el 1
+en 1
+lo 1
+mi 1
+sol 1
+una 1
+Aqui 1
+lado 1
+miro 1
+otro 1
+vida 1
+Acaso 1
+acaso 1
+alado 1
+estoy 1
+fuera 1
+sonar 1
+decano 1
+pajaro 1
+puesta 1
+sonada 1
+sonado 1
+enjaulado 1
+crepusculo 1
+
+substitueix "sol" per "tu"
+
+taula de frequencies ?
+es 5
+sueno 4
+libertad 4
+un 3
+yo 2
+que 2
+cielo 2
+volar 2
+La 1
+al 1
+de 1
+el 1
+en 1
+lo 1
+mi 1
+tu 1
+una 1
+Aqui 1
+lado 1
+miro 1
+otro 1
+vida 1
+Acaso 1
+acaso 1
+alado 1
+estoy 1
+fuera 1
+sonar 1
+decano 1
+pajaro 1
+puesta 1
+sonada 1
+sonado 1
+enjaulado 1
+crepusculo 1
+
+//Prova 2
+
+afegir text "El vuelo del fenix"
+
+triar text {anonimo y Oh Sol catastrofe}
+error
+
+taula de frequencies ?
+error
+
+contingut ?
+error
+
+triar text {anonimo y Oh Sol}
+
+taula de frequencies ?
+que 7
+de 6
+el 6
+y 5
+en 5
+la 5
+se 5
+lo 3
+mi 3
+tu 3
+los 3
+todo 3
+es 2
+amor 2
+pero 2
+vuelo 2
+vuelve 2
+sentimientos 2
+a 1
+Oh 1
+Su 1
+le 1
+ni 1
+no 1
+su 1
+un 1
+Has 1
+Sol 1
+aca 1
+amo 1
+asi 1
+ave 1
+con 1
+del 1
+luz 1
+mas 1
+son 1
+una 1
+vez 1
+Arde 1
+Bajo 1
+Pero 1
+Toma 1
+cada 1
+caos 1
+como 1
+ella 1
+este 1
+nido 1
+otra 1
+para 1
+teje 1
+alado 1
+atrae 1
+dolor 1
+entre 1
+fenix 1
+fuego 1
+hacia 1
+hecho 1
+polvo 1
+suave 1
+Hombre 1
+abrazo 1
+brillo 1
+ceniza 1
+cuerpo 1
+eterna 1
+fuerza 1
+lumbre 1
+manana 1
+muerte 1
+propio 1
+reduce 1
+rehace 1
+renace 1
+siento 1
+tiempo 1
+cenizas 1
+corazon 1
+eternos 1
+fuerzas 1
+hoguera 1
+levanta 1
+siempre 1
+caricias 1
+confines 1
+corrompe 1
+deshecho 1
+infinito 1
+juventud 1
+silencio 1
+conservas 1
+convierte 1
+despierta 1
+estrellas 1
+milenaria 1
+nuevamente 1
+ondulacion 1
+resplandor 1
+trasciende 1
+incendiario 1
+insondables 1
+
+contingut ?
+1 Arde en la hoguera de su propio vuelo.
+2 Bajo el cuerpo de lumbre ella es el Sol.
+3 Su resplandor la atrae y la convierte en ceniza.
+4 Pero entre lo deshecho se rehace.
+5 Toma fuerzas del caos, se teje en luz.
+6 Oh!
+7 ave milenaria conservas en tu fuego la eterna juventud de los sentimientos que son eternos que no los corrompe el tiempo ni el dolor, asi es este amor como un fenix que se vuelve polvo de estrellas pero que renace para siempre una y otra vez.
+8 Has hecho tu nido aca en mi corazon tu abrazo incendiario reduce todo a cenizas mi sentimientos mi amor, todo lo que amo se vuelve suave ondulacion de brillo y caricias pero cada manana se despierta nuevamente con mas fuerza y levanta le vuelo hacia el infinito todo lo que siento, Hombre alado que trasciende los insondables confines de la muerte y el silencio.
+
+frases -1 3
+error
+
+frases 1 3
+1 Arde en la hoguera de su propio vuelo.
+2 Bajo el cuerpo de lumbre ella es el Sol.
+3 Su resplandor la atrae y la convierte en ceniza.
+
+frases 5 4
+error
+
+afegir cita 1 3 
+
+afegir cita 2 4
+
+afegir text "Las semillas de la discordia"
+
+triar text {el entre hipopotamos hicieron}
+
+contingut ?
+1 Una noche un campesino de Africa vio que la discordia plantaba semillas en su campo.
+2 Se abstuvo de intervenir y la observo.
+3 Cuando ella termino y se fue, el se paso toda la noche recogiendo, con la ayuda de una linterna, las peligrosas semillas.
+4 Se las llevo a su casa sin decir una sola palabra a su familia.
+5 Al dia siguiente, para deshacerse de las semillas, les dio un punado a las gallinas.
+6 Pero apenas las picotearon se pusieron a pelear furiosamente, a muerte, entre ellas.
+7 Terminó con sus manos y brazos cubiertos de crueles picotazos.
+8 Buscando otra forma, tiro un puñado al rio.
+9 Pero los peces, anguilas e incluso los hipopotamos empezaron a desplazarse, mientras olas enormes recorrian ese rio habitualmente calmo, tan enormes que una parte de la llanura quedo inundada.
+10 Otro dia tuvo la idea de triturar una parte y, sin decirle de que se trataba, pedirle a su mujer que le preparara una torta.
+11 Se puso a comer aquella torta.
+12 pero apenas trago el primer bocado, la encontro mal cocida, demasiado salada y empezo a reprocharselo a su mujer.
+13 Ella, que tambien acababa de terminar su primer bocado, replico gritando que si su marido la encontraba mal preparada simplemente significaba que el era un imbecil, cosa que ella siempre habia sospechado.
+14 Se desato tal ira entre ellos que fue necesaria la intervencion de vecinos para separarlos.
+15 Pasaron unas semanas.
+16 Poco a poco recobraron la calma, pero el campesino, que haia perdido el sueno y la sonrisa, solo pensaba en las semillas que le quedaban.
+17 Penso en hacer un viaje a algún pais lejano.
+18 Sin embargo, como era un buen hombre, se decia que los paises lejanos estaban sembrados de suficientes semillas de la discordia.
+19 Incluso penso dirigirse hasta el mar para tirar su saco de semillas, pero temio crear una tempestad sin igual.
+20 Las buenas razones le hicieron renunciar a aquella idea.
+
+afegir cita 3 6
+
+afegir cita 5 8
+
+cites ?
+a3
+3 Cuando ella termino y se fue, el se paso toda la noche recogiendo, con la ayuda de una linterna, las peligrosas semillas.
+4 Se las llevo a su casa sin decir una sola palabra a su familia.
+5 Al dia siguiente, para deshacerse de las semillas, les dio un punado a las gallinas.
+6 Pero apenas las picotearon se pusieron a pelear furiosamente, a muerte, entre ellas.
+anonimo "Las semillas de la discordia"
+a4
+5 Al dia siguiente, para deshacerse de las semillas, les dio un punado a las gallinas.
+6 Pero apenas las picotearon se pusieron a pelear furiosamente, a muerte, entre ellas.
+7 Terminó con sus manos y brazos cubiertos de crueles picotazos.
+8 Buscando otra forma, tiro un puñado al rio.
+anonimo "Las semillas de la discordia"
+
+eliminar cita "a4" 
+
+afegir cita 1 7
+
+cites autor "anonimo" ?
+a1
+1 Arde en la hoguera de su propio vuelo.
+2 Bajo el cuerpo de lumbre ella es el Sol.
+3 Su resplandor la atrae y la convierte en ceniza.
+"El vuelo del fenix"
+a2
+2 Bajo el cuerpo de lumbre ella es el Sol.
+3 Su resplandor la atrae y la convierte en ceniza.
+4 Pero entre lo deshecho se rehace.
+"El vuelo del fenix"
+a3
+3 Cuando ella termino y se fue, el se paso toda la noche recogiendo, con la ayuda de una linterna, las peligrosas semillas.
+4 Se las llevo a su casa sin decir una sola palabra a su familia.
+5 Al dia siguiente, para deshacerse de las semillas, les dio un punado a las gallinas.
+6 Pero apenas las picotearon se pusieron a pelear furiosamente, a muerte, entre ellas.
+"Las semillas de la discordia"
+a5
+1 Una noche un campesino de Africa vio que la discordia plantaba semillas en su campo.
+2 Se abstuvo de intervenir y la observo.
+3 Cuando ella termino y se fue, el se paso toda la noche recogiendo, con la ayuda de una linterna, las peligrosas semillas.
+4 Se las llevo a su casa sin decir una sola palabra a su familia.
+5 Al dia siguiente, para deshacerse de las semillas, les dio un punado a las gallinas.
+6 Pero apenas las picotearon se pusieron a pelear furiosamente, a muerte, entre ellas.
+7 Terminó con sus manos y brazos cubiertos de crueles picotazos.
+"Las semillas de la discordia"
+
+afegir cita -1 2
+error
+
+afegir cita 2 -4
+error
+
+afegir cita 3 2
+error
+
+info cita "a7" ?
+error
+
+eliminar cita "b1"
+error
+
+//Prova 3
+
+afegir text "Poema XX"
+
+triar text {XX}
+
+contingut ?
+1 Puedo escribir los versos mas tristes esta noche.
+2 Yo la quise, y a veces ella tambien me quiso.
+3 En las noches como esta la tuve entre mis brazos.
+4 La bese tantas veces bajo el cielo infinito.
+5 Ella me quiso, a veces yo tambien la queria.
+6 Como no haber amado sus grandes ojos fijos.
+7 Puedo escribir los versos más tristes esta noche.
+8 Pensar que no la tengo.
+9 Sentir que la he perdido.
+10 Oir la noche inmensa, mas inmensa sin ella.
+11 Y el verso cae al alma como al pasto el rocio.
+12 Que importa que mi amor no pudiera guardarla.
+13 La noche esta estrellada y ella no esta conmigo.
+14 Eso es todo.
+15 A lo lejos alguien canta.
+16 A lo lejos.
+17 Mi alma no se contenta con haberla perdido.
+18 Como para acercarla mi mirada la busca.
+19 Mi corazon la busca, y ella no esta conmigo.
+20 La misma noche que hace blanquear los mismos arboles.
+21 Nosotros, los de entonces, ya no somos los mismos.
+22 Ya no la quiero, es cierto, pero cuanto la quise.
+23 Mi voz buscaba el viento para tocar su oido.
+24 De otro.
+25 Sera de otro.
+26 Como antes de mis besos.
+27 Su voz, su cuerpo claro.
+28 Sus ojos infinitos.
+29 Ya no la quiero, es cierto, pero tal vez la quiero.
+30 Es tan corto el amor, y es tan largo el olvido.
+31 Porque en noches como esta la tuve entre mis brazos, mi alma no se contenta con haberla perdido.
+32 Aunque este sea el ultimo dolor que ella me causa, y estos sean los ultimos versos que yo le escribo.
+
+frases ( {Puedo tristes} | {voz oido}       )
+1 Puedo escribir los versos mas tristes esta noche.
+7 Puedo escribir los versos más tristes esta noche.
+23 Mi voz buscaba el viento para tocar su oido.
+
+frases ((({corto} & {largo}) | {ella conmigo}) & {la corazon esta})
+19 Mi corazon la busca, y ella no esta conmigo.
+
+frases "importa que mi amor"
+
+frases "amor y tan largo olvido"
+
+afegir cita 1 27
+
+afegir cita 1 27
+error
+
+cites ?
+PN1
+1 Puedo escribir los versos mas tristes esta noche.
+2 Yo la quise, y a veces ella tambien me quiso.
+3 En las noches como esta la tuve entre mis brazos.
+4 La bese tantas veces bajo el cielo infinito.
+5 Ella me quiso, a veces yo tambien la queria.
+6 Como no haber amado sus grandes ojos fijos.
+7 Puedo escribir los versos más tristes esta noche.
+8 Pensar que no la tengo.
+9 Sentir que la he perdido.
+10 Oir la noche inmensa, mas inmensa sin ella.
+11 Y el verso cae al alma como al pasto el rocio.
+12 Que importa que mi amor no pudiera guardarla.
+13 La noche esta estrellada y ella no esta conmigo.
+14 Eso es todo.
+15 A lo lejos alguien canta.
+16 A lo lejos.
+17 Mi alma no se contenta con haberla perdido.
+18 Como para acercarla mi mirada la busca.
+19 Mi corazon la busca, y ella no esta conmigo.
+20 La misma noche que hace blanquear los mismos arboles.
+21 Nosotros, los de entonces, ya no somos los mismos.
+22 Ya no la quiero, es cierto, pero cuanto la quise.
+23 Mi voz buscaba el viento para tocar su oido.
+24 De otro.
+25 Sera de otro.
+26 Como antes de mis besos.
+27 Su voz, su cuerpo claro.
+Pablo Neruda "Poema XX"
+
+//Prova 4
+
+afegir text "prova: chars!"
+
+triar text {&&&<¬dao0231 & hola}
+error
+
+contingut ?
+error
+
+triar text {&&&<¬dao0231 & prova chars hola}
+error
+
+contingut ?
+error
+
+triar text {&&&<¬dao0231 & prova chars}
+
+contingut ?
+1 $$$%@#.
+2 &&&<¬dao0231!
+3 20000?
+4 3)()(·2; &, @.
+5 '?
+6 .
+
+taula de frequencies ?
+& 1
+' 1
+@ 1
+20000 1
+$$$%@# 1
+3)()(·2 1
+&&&<¬dao0231 1
+

@@ -18,4 +18,5 @@ program.o: program.cc
 clean:
 	rm *.o
 	rm *.exe
-
+tar:
+	tar -cvf practica.tar program.exe *.cc *.hh Makefile *.txt equip.pdf html.zip

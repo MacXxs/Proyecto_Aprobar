@@ -126,10 +126,14 @@ public:
 	void llegir(string& contingut);
 	
 private:
-	vector<pair<string,int> > parfreq; //conjunt de paraules del text ordenades decreixentment per frequencia, 
-						//i en cas d'empat creixentment, primer per llargada i despres afabeticament
+	/** @brief conjunt de paraules del text ordenades decreixentment per frequencia, i en cas d'empat creixentment, primer per llargada i despres afabeticament*/
+	vector<pair<string,int> > parfreq; 
+	
+	/** @brief vector que conte totes les frases del text*/
 	map<int,Frase> map_frases; //vector que conte totes las frases del text
-	int nump;             //nombtr de paraules del text
+	
+	/** @brief nombre de paraules del text*/
+	int nump;             
 	
 	/** @brief Funcio recursiva que mira si la expresisio expres es compleix per la frase f
 		\pre <em>expres es la expressio que nosaltres introduim, pos = 0, b = false i f es una de les frases del ultim text triat</em>

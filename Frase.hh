@@ -96,6 +96,8 @@ public:
 	
 private:
 	vector<string> frase;
+	
+	/** @brief nombre de paraules de la frase*/
 	int n_paraules;
 
 };

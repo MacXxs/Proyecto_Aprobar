@@ -1,0 +1,362 @@
+afegir text "Herido Diario"
+
+afegir text "Don Quijote de la Mancha"
+
+tots textos ?
+David Martinez Alvarez "Herido Diario"
+Miguel de Cervantes "Don Quijote de la Mancha"
+
+triar text {suenos ojos realidad}
+
+afegir cita -1 2
+error
+
+afegir cita 2 1
+error
+
+afegir cita 1 2
+
+contingut ?
+1 Hay suenos que se hacen realidad, y si, me refiero a los que suenas con los ojos abiertos.
+2 Suenos de pulmon que necesitan de la realidad para respirar, que encuentran en el miedo su dioxido y en las pequenas cosas un sorbo de vida, de ilusion, de oxigeno.
+
+triar text {Dulcinea}
+
+frases -1 2
+error
+
+frases 1 2
+1 En esto, le vino al pensamiento como le haria, y fue que rasgo una gran tira de las faldas de la camisa, que andaban colgando, y diole once nudos, el uno mas gordo que los demas, y esto le sirvio de rosario el tiempo que alli estuvo, donde rezo un millon de avemarias.
+2 Y lo que le fatigaba mucho era no hallar por alli otro ermitano que le confesase y con quien consolarse; y asi, se entretenia paseandose por el pradecillo, escribiendo y grabando por las cortezas de los arboles y por la menuda arena muchos versos, todos acomodados a su tristeza, y algunos en alabanza de Dulcinea.
+
+afegir cita 1 1
+
+afegir text "Where the wild things are"
+
+textos autor "David Martinez Alvarez" ?
+"Herido Diario"
+
+info ?
+Miguel de Cervantes "Don Quijote de la Mancha" 2 108
+Cites Associades:
+MdC1
+1 En esto, le vino al pensamiento como le haria, y fue que rasgo una gran tira de las faldas de la camisa, que andaban colgando, y diole once nudos, el uno mas gordo que los demas, y esto le sirvio de rosario el tiempo que alli estuvo, donde rezo un millon de avemarias.
+
+tots textos ?
+David Martinez Alvarez "Herido Diario"
+Maurice Sendak "Where the wild things are"
+Miguel de Cervantes "Don Quijote de la Mancha"
+
+triar text {red black}
+error
+
+triar text {blau amagat}
+error
+
+triar text {wild all}
+
+contingut ?
+1 The night Max wore his wolf suit and made mischief of one kind and another.
+2 That very night in his room a forest grew and grew.
+3 An ocean tumbled by with a private boat for Max and he sailed off.
+4 When he came to the place where the wild things are they roared their terrible roars and rolled their eyes.
+5 Max tamed them with the magic trick of staring into their yellow eyes without blinking once.
+6 They made him king of all wild things.
+
+nombre de frases ?
+6
+
+nombre de paraules ?
+84
+
+afegir cita 3 4
+
+afegir cita 6 7
+error
+
+afegir cita 6 6
+
+cites ?
+MS1
+3 An ocean tumbled by with a private boat for Max and he sailed off.
+4 When he came to the place where the wild things are they roared their terrible roars and rolled their eyes.
+Maurice Sendak "Where the wild things are"
+MS2
+6 They made him king of all wild things.
+Maurice Sendak "Where the wild things are"
+
+totes cites ?
+DMA1
+1 Hay suenos que se hacen realidad, y si, me refiero a los que suenas con los ojos abiertos.
+2 Suenos de pulmon que necesitan de la realidad para respirar, que encuentran en el miedo su dioxido y en las pequenas cosas un sorbo de vida, de ilusion, de oxigeno.
+David Martinez Alvarez "Herido Diario"
+MS1
+3 An ocean tumbled by with a private boat for Max and he sailed off.
+4 When he came to the place where the wild things are they roared their terrible roars and rolled their eyes.
+Maurice Sendak "Where the wild things are"
+MS2
+6 They made him king of all wild things.
+Maurice Sendak "Where the wild things are"
+MdC1
+1 En esto, le vino al pensamiento como le haria, y fue que rasgo una gran tira de las faldas de la camisa, que andaban colgando, y diole once nudos, el uno mas gordo que los demas, y esto le sirvio de rosario el tiempo que alli estuvo, donde rezo un millon de avemarias.
+Miguel de Cervantes "Don Quijote de la Mancha"
+
+triar text {oxigeno}
+
+contingut ?
+1 Hay suenos que se hacen realidad, y si, me refiero a los que suenas con los ojos abiertos.
+2 Suenos de pulmon que necesitan de la realidad para respirar, que encuentran en el miedo su dioxido y en las pequenas cosas un sorbo de vida, de ilusion, de oxigeno.
+
+frases ({night wolf} | {Max} & {king}) ?
+
+frases ({magic into} & {black}) ?
+
+afegir text "Terminamos y otros poemas sin terminar"
+
+triar text {sabio luna llama relaciones}
+
+contingut ?
+1 Un sabio dijo una vez: «Pocas cosas hipnotizan tanto en este mundo como una llama y como la luna, sera porque no podemos cogerlas o porque nos iluminan en la penumbra».
+2 Realmente no se si alguien dijo esta cita o me la acabo de inventar, pero deberian haberla escrito porque el poder hipnotico que ejercen esa mujer de rojo y esa dama blanca sobre el ser humano es digna de estudio.
+3 Todo final implica un principio y viceversa, como el ciclo de la noche y el dia, como las fases de la luna desde la nueva hasta la llena pasando por su sequia.
+4 Nosotros solo somos bolsas de agua con corazones, cerebros, piernas y entelquia, por lo que es normal que la luna nos afecte como lo hacen las mareas.
+5 Las relaciones tienen complejo de luna; salen, se ponen, se vacian y se ocultan pero no por ello dejan de intentarlo.
+
+frases "no se si alguien" ?
+2 Realmente no se si alguien dijo esta cita o me la acabo de inventar, pero deberian haberla escrito porque el poder hipnotico que ejercen esa mujer de rojo y esa dama blanca sobre el ser humano es digna de estudio.
+
+frases "Las mareas" ?
+
+afegir cita -2 1
+error
+
+afegir cita 1 3
+
+cites ?
+DMA2
+1 Un sabio dijo una vez: «Pocas cosas hipnotizan tanto en este mundo como una llama y como la luna, sera porque no podemos cogerlas o porque nos iluminan en la penumbra».
+2 Realmente no se si alguien dijo esta cita o me la acabo de inventar, pero deberian haberla escrito porque el poder hipnotico que ejercen esa mujer de rojo y esa dama blanca sobre el ser humano es digna de estudio.
+3 Todo final implica un principio y viceversa, como el ciclo de la noche y el dia, como las fases de la luna desde la nueva hasta la llena pasando por su sequia.
+David Martinez Alvarez "Terminamos y otros poemas sin terminar"
+
+info ?
+David Martinez Alvarez "Terminamos y otros poemas sin terminar" 5 151
+Cites Associades:
+DMA2
+1 Un sabio dijo una vez: «Pocas cosas hipnotizan tanto en este mundo como una llama y como la luna, sera porque no podemos cogerlas o porque nos iluminan en la penumbra».
+2 Realmente no se si alguien dijo esta cita o me la acabo de inventar, pero deberian haberla escrito porque el poder hipnotico que ejercen esa mujer de rojo y esa dama blanca sobre el ser humano es digna de estudio.
+3 Todo final implica un principio y viceversa, como el ciclo de la noche y el dia, como las fases de la luna desde la nueva hasta la llena pasando por su sequia.
+
+eliminar cita "DMA2"
+
+cites ?
+
+info ?
+David Martinez Alvarez "Terminamos y otros poemas sin terminar" 5 151
+Cites Associades:
+
+nombre de frases ?
+5
+
+nombre de paraules ?
+151
+
+taula de frequencies ?
+de 8
+la 8
+y 6
+como 5
+el 4
+se 4
+luna 4
+no 3
+por 3
+que 3
+porque 3
+o 2
+en 2
+es 2
+lo 2
+esa 2
+las 2
+nos 2
+una 2
+dijo 2
+pero 2
+Un 1
+me 1
+si 1
+su 1
+un 1
+Las 1
+con 1
+dia 1
+ser 1
+vez 1
+Todo 1
+agua 1
+cita 1
+dama 1
+ello 1
+esta 1
+este 1
+rojo 1
+sera 1
+solo 1
+acabo 1
+ciclo 1
+cosas 1
+dejan 1
+desde 1
+digna 1
+fases 1
+final 1
+hacen 1
+hasta 1
+llama 1
+llena 1
+mujer 1
+mundo 1
+noche 1
+nueva 1
+poder 1
+ponen 1
+sabio 1
+salen 1
+sobre 1
+somos 1
+tanto 1
+afecte 1
+blanca 1
+bolsas 1
+humano 1
+mareas 1
+normal 1
+sequia 1
+tienen 1
+vacian 1
+alguien 1
+ejercen 1
+escrito 1
+estudio 1
+haberla 1
+implica 1
+ocultan 1
+pasando 1
+piernas 1
+podemos 1
+«Pocas 1
+Nosotros 1
+cerebros 1
+cogerlas 1
+complejo 1
+deberian 1
+iluminan 1
+inventar 1
+Realmente 1
+corazones 1
+entelquia 1
+hipnotico 1
+principio 1
+viceversa 1
+hipnotizan 1
+intentarlo 1
+penumbra» 1
+relaciones 1
+
+afegir text "Si tu me olvidas"
+
+triar text {Si largo olvida}
+
+substitueix "cada" per "se"
+
+contingut ?
+1 QUIERO que sepas una cosa.
+2 Tu sabes como es esto: si miro la luna de cristal, la rama roja del lento otono en mi ventana, si toco junto al fuego la impalpable ceniza o el arrugado cuerpo de la lena, todo me lleva a ti, como si todo lo que existe, aromas, luz, metales, fueran pequenos barcos que navegan hacia las islas tuyas que me aguardan.
+3 Ahora bien, si poco a poco dejas de quererme dejare de quererte poco a poco.
+4 Si de pronto me olvidas no me busques, que ya te habre olvidado.
+5 Si consideras largo y loco el viento de banderas que pasa por mi vida y te decides a dejarme a la orilla del corazon en que tengo raices, piensa que en ese dia, a esa hora levantare los brazos y saldran mis raices a buscar otra tierra.
+6 Pero si se dia, se hora sientes que a mi estas destinada con dulzura implacable.
+7 Si se dia sube una flor a tus labios a buscarme, ay amor mio, ay mia, en mi todo ese fuego se repite, en mi nada se apaga ni se olvida, mi amor se nutre de tu amor, amada, y mientras vivas estara en tus brazos sin salir de los mios.
+
+autor ?
+Pablo Neruda
+
+afegir cita 1 3
+
+cites ?
+PN1
+1 QUIERO que sepas una cosa.
+2 Tu sabes como es esto: si miro la luna de cristal, la rama roja del lento otono en mi ventana, si toco junto al fuego la impalpable ceniza o el arrugado cuerpo de la lena, todo me lleva a ti, como si todo lo que existe, aromas, luz, metales, fueran pequenos barcos que navegan hacia las islas tuyas que me aguardan.
+3 Ahora bien, si poco a poco dejas de quererme dejare de quererte poco a poco.
+Pablo Neruda "Si tu me olvidas"
+
+totes cites ?
+DMA1
+1 Hay suenos que se hacen realidad, y si, me refiero a los que suenas con los ojos abiertos.
+2 Suenos de pulmon que necesitan de la realidad para respirar, que encuentran en el miedo su dioxido y en las pequenas cosas un sorbo de vida, de ilusion, de oxigeno.
+David Martinez Alvarez "Herido Diario"
+MS1
+3 An ocean tumbled by with a private boat for Max and he sailed off.
+4 When he came to the place where the wild things are they roared their terrible roars and rolled their eyes.
+Maurice Sendak "Where the wild things are"
+MS2
+6 They made him king of all wild things.
+Maurice Sendak "Where the wild things are"
+MdC1
+1 En esto, le vino al pensamiento como le haria, y fue que rasgo una gran tira de las faldas de la camisa, que andaban colgando, y diole once nudos, el uno mas gordo que los demas, y esto le sirvio de rosario el tiempo que alli estuvo, donde rezo un millon de avemarias.
+Miguel de Cervantes "Don Quijote de la Mancha"
+PN1
+1 QUIERO que sepas una cosa.
+2 Tu sabes como es esto: si miro la luna de cristal, la rama roja del lento otono en mi ventana, si toco junto al fuego la impalpable ceniza o el arrugado cuerpo de la lena, todo me lleva a ti, como si todo lo que existe, aromas, luz, metales, fueran pequenos barcos que navegan hacia las islas tuyas que me aguardan.
+3 Ahora bien, si poco a poco dejas de quererme dejare de quererte poco a poco.
+Pablo Neruda "Si tu me olvidas"
+
+cites autor "Pablo Neruda" ?
+PN1
+1 QUIERO que sepas una cosa.
+2 Tu sabes como es esto: si miro la luna de cristal, la rama roja del lento otono en mi ventana, si toco junto al fuego la impalpable ceniza o el arrugado cuerpo de la lena, todo me lleva a ti, como si todo lo que existe, aromas, luz, metales, fueran pequenos barcos que navegan hacia las islas tuyas que me aguardan.
+3 Ahora bien, si poco a poco dejas de quererme dejare de quererte poco a poco.
+"Si tu me olvidas"
+
+cites autor "David Martinez Alvarez" ?
+DMA1
+1 Hay suenos que se hacen realidad, y si, me refiero a los que suenas con los ojos abiertos.
+2 Suenos de pulmon que necesitan de la realidad para respirar, que encuentran en el miedo su dioxido y en las pequenas cosas un sorbo de vida, de ilusion, de oxigeno.
+"Herido Diario"
+
+tots autors ?
+David Martinez Alvarez 2 7 199
+Maurice Sendak 1 6 84
+Miguel de Cervantes 1 2 108
+Pablo Neruda 1 7 207
+
+info cita "DMA2" ?
+error
+
+info cita "PN1" ?
+Pablo Neruda "Si tu me olvidas"
+1-3
+1 QUIERO que sepas una cosa.
+2 Tu sabes como es esto: si miro la luna de cristal, la rama roja del lento otono en mi ventana, si toco junto al fuego la impalpable ceniza o el arrugado cuerpo de la lena, todo me lleva a ti, como si todo lo que existe, aromas, luz, metales, fueran pequenos barcos que navegan hacia las islas tuyas que me aguardan.
+3 Ahora bien, si poco a poco dejas de quererme dejare de quererte poco a poco.
+
+tots autors ?
+David Martinez Alvarez 2 7 199
+Maurice Sendak 1 6 84
+Miguel de Cervantes 1 2 108
+Pablo Neruda 1 7 207
+
+eliminar text
+
+tots autors ?
+David Martinez Alvarez 2 7 199
+Maurice Sendak 1 6 84
+Miguel de Cervantes 1 2 108
+
+tots textos ?
+David Martinez Alvarez "Herido Diario"
+David Martinez Alvarez "Terminamos y otros poemas sin terminar"
+Maurice Sendak "Where the wild things are"
+Miguel de Cervantes "Don Quijote de la Mancha"
+

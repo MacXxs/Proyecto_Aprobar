@@ -14,6 +14,10 @@
 using namespace std;
 #endif
 
+/** @class Cjt_cites
+	@brief Representa el conjunt de cites del conjunt de textos
+*/
+
 class Cjt_cites{
   
 public:
@@ -85,8 +89,11 @@ public:
 
 private:
 	
-	map<string,Cita> cites; //conjunt de totes les cites;
-	map<string, int> referencies; //conjunt per poder crear les referencies
+	/** @brief conjunt de totes les cites del conjunt de textos*/
+	map<string,Cita> cites; 
+	
+	/** @brief conjunt per poder crear les referencies*/
+	map<string, int> referencies; 
 	
 };
 

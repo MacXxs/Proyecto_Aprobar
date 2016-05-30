@@ -92,11 +92,22 @@ public:
 	void escriure_frases_cita();
     
 private:
+	/** @brief string encapuslat amb el nom del autor de la cita */
     string autor;
-    string Titol; //string encapsulado con el titulo del texto al que corresponde la cita
-    int numini; //numero frase inicial
-    int numfin; //numero frase final
-    string referencia; //referencia de la cita
+	
+	/** @brief string encapsulat amb el titol del text de la cita*/
+    string Titol; 
+	
+	/** @brief nombre de la frase inicial*/
+    int numini; 
+	
+	/** @brief nombre de la frase final*/
+    int numfin; 
+	
+	/** @brief referencia de la cita*/
+    string referencia;
+	
+	/** @brief frases de la cita*/
     map<int,Frase> frases;
 	
 	//invariant: frases.size() = numfin - numini

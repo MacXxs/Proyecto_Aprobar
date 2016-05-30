@@ -77,10 +77,7 @@ void Cjt_cites::info(Cjt_textos& textos){
 		textos.info();
 		cout << "Cites Associades:" << endl;
 		string aut = textos.consultar_autor();
-        
-        string tit = textos.consultar_titol();
-		
-        istringstream iss(aut);
+		istringstream iss(aut);
 		string ref, m;
 		while(iss>>m) ref.push_back(m[0]);
 		int top = referencies[ref];
@@ -92,10 +89,13 @@ void Cjt_cites::info(Cjt_textos& textos){
 			sortir = it != cites.end();
 			while (ref[ref.size()-1] >= '0' and ref[ref.size()-1] <= '9') ref.pop_back();
 		}
+		string tit = textos.consultar_titol();
 		for(int i = 0; i < top and it != cites.end(); ++i){
-			if (it->second.consultar_autor() == aut and it->second.consultar_titol() == tit){
-				cout << it->first << endl;
-				it->second.escriure_frases_cita();
+			if (it->second.consultar_autor() == aut){
+				if (it->second.consultar_titol() == tit){
+					cout << it->first << endl;
+					it->second.escriure_frases_cita();
+				}
 			}
 			++it;
 		}
